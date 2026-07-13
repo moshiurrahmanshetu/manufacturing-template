@@ -340,7 +340,7 @@ a:hover {
   color: var(--color-text-main) !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 8px 16px !important;
+  padding: 8px 10px !important;
   position: relative;
   transition: var(--transition-fast);
 }
