@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request A Quote - Vanguard Industrial & Manufacturing</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Request a premium, precise industrial engineering and smart factory manufacturing quote from Vanguard. Our expert response time is within 24 hours.">
+  <meta name="keywords" content="request quote, rfq manufacturing, industrial quote, factory engineering, custom manufacturing, vanguard quote">
+  <meta name="author" content="Vanguard Group">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+  <!-- AOS Scroll Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom Style CSS -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* ========================================================
+       PAGE-SPECIFIC INTERACTIVE STYLING
+       ======================================================== */
+    .hero-banner-quote {
+      position: relative;
+      background-image: linear-gradient(180deg, var(--color-hero-overlay), rgba(15, 17, 19, 0.9)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      padding: 180px 0 100px 0;
+      color: #FFFFFF;
+      text-align: center;
+    }
+    .hero-banner-quote .breadcrumb {
+      justify-content: center;
+      background: transparent;
+      padding: 0;
+      margin-top: 15px;
+    }
+    .hero-banner-quote .breadcrumb-item, .hero-banner-quote .breadcrumb-item a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .hero-banner-quote .breadcrumb-item.active {
+      color: var(--color-primary);
+    }
+    .hero-banner-quote .breadcrumb-item + .breadcrumb-item::before {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Parallax Illustration */
+    #interactiveIllustrationContainer {
+      position: relative;
+      height: 400px;
+      width: 100%;
+      background: radial-gradient(circle, var(--color-bg-sub) 0%, rgba(var(--color-primary-rgb), 0.05) 100%);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .parallax-layer {
+      position: absolute;
+      transition: transform 0.1s ease-out;
+      pointer-events: none;
+    }
+
+    /* Form Design */
+    .form-step-container {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      padding: 40px;
+      transition: var(--transition-smooth);
+    }
+    .form-step {
+      display: none;
+    }
+    .form-step.active {
+      display: block;
+      animation: formStepFadeIn 0.5s ease both;
+    }
+    @keyframes formStepFadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Progress Indicators */
+    .step-indicator-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      margin-bottom: 50px;
+    }
+    .step-indicator-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: var(--color-border);
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    .step-indicator-line-progress {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 0%;
+      height: 4px;
+      background-color: var(--color-primary);
+      transform: translateY(-50%);
+      z-index: 2;
+      transition: width 0.4s ease;
+    }
+    .step-indicator-item {
+      position: relative;
+      z-index: 3;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--color-bg-sub);
+      border: 2px solid var(--color-border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--color-text-muted);
+      transition: var(--transition-smooth);
+    }
+    .step-indicator-item.active {
+      background-color: var(--color-bg-card);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      box-shadow: 0 0 15px rgba(255, 94, 0, 0.2);
+    }
+    .step-indicator-item.completed {
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #FFFFFF;
+    }
+    .step-indicator-title {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+    }
+    .step-indicator-item.active .step-indicator-title {
+      color: var(--color-primary);
+    }
+
+    /* Drag and Drop Zone */
+    .file-drop-zone {
+      border: 2px dashed var(--color-border);
+      border-radius: 8px;
+      padding: 30px;
+      text-align: center;
+      background-color: rgba(var(--color-primary-rgb), 0.01);
+      transition: var(--transition-smooth);
+      cursor: pointer;
+    }
+    .file-drop-zone:hover, .file-drop-zone.drag-over {
+      border-color: var(--color-primary);
+      background-color: rgba(var(--color-primary-rgb), 0.05);
+    }
+    .file-drop-icon {
+      font-size: 2.5rem;
+      color: var(--color-text-muted);
+      margin-bottom: 15px;
+      transition: var(--transition-smooth);
+    }
+    .file-drop-zone:hover .file-drop-icon {
+      color: var(--color-primary);
+      transform: translateY(-5px);
+    }
+    .file-list-preview {
+      margin-top: 15px;
+      text-align: left;
+    }
+    .file-item-chip {
+      background-color: var(--color-bg-sub);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .file-item-remove {
+      color: #dc3545;
+      cursor: pointer;
+    }
+
+    /* Feature Cards */
+    .feature-card {
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 30px;
+      background-color: var(--color-bg-card);
+      height: 100%;
+      transition: var(--transition-smooth);
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-primary);
+    }
+    .feature-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      border-radius: 4px;
+      background-color: rgba(var(--color-primary-rgb), 0.1);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Process Timeline */
+    .timeline-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 40px 0;
+    }
+    .timeline-steps::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 5%;
+      width: 90%;
+      height: 2px;
+      background: repeating-linear-gradient(to right, var(--color-border) 0, var(--color-border) 10px, transparent 10px, transparent 20px);
+      z-index: 1;
+    }
+    .timeline-step-card {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      width: 11%;
+    }
+    .timeline-step-number {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--color-bg-card);
+      border: 2px solid var(--color-border);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      font-family: var(--font-display);
+      margin-bottom: 15px;
+      transition: var(--transition-smooth);
+    }
+    .timeline-step-card:hover .timeline-step-number {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+      transform: scale(1.1);
+    }
+    .timeline-step-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Floating card */
+    #quickQuoteFloatingCard {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 320px;
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-primary);
+      border-radius: 8px;
+      box-shadow: var(--shadow-xl);
+      z-index: 999;
+      transition: var(--transition-smooth);
+    }
+    #quickQuoteFloatingCard.dismissed {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      pointer-events: none;
+    }
+    .quick-quote-header {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      padding: 12px 20px;
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .quick-quote-body {
+      padding: 20px;
+    }
+    .quick-quote-dismiss-btn {
+      background: transparent;
+      border: none;
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    /* Ripple effect */
+    .btn-ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Custom Input Focus Underline */
+    .form-control:focus, .form-select:focus {
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 0.25rem rgba(255, 94, 0, 0.15);
+    }
+
+    /* Mobile Timeline Layout */
+    @media (max-width: 992px) {
+      .timeline-steps {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 30px;
+        margin: 20px 0;
+      }
+      .timeline-steps::before {
+        top: 0;
+        left: 58px;
+        width: 2px;
+        height: 100%;
+      }
+      .timeline-step-card {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        margin-bottom: 25px;
+        gap: 20px;
+      }
+      .timeline-step-number {
+        margin-bottom: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP INFO BAR
+       ======================================================== -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info d-flex gap-4">
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+18005550199">+1 (800) 555-0199</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:info@vanguard-industry.com">info@vanguard-industry.com</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-clock"></i>
+          Mon - Fri: 08:00 AM - 06:00 PM
+        </span>
+      </div>
+      <div class="topbar-socials d-flex gap-3 align-items-center">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <span class="ms-3 border-start ps-3 border-secondary d-inline-flex align-items-center gap-2 text-white-50">
+          <i class="fa-solid fa-earth-americas text-primary"></i>
+          HQ: Houston, TX
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. STICKY HEADER & NAVBAR
+       ======================================================== -->
+  <header class="header-wrap" id="mainHeader">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <!-- Logo -->
+        <a class="brand-logo" id="headerLogo" href="index.html">
+          <i class="fa-solid fa-gears text-primary"></i>
+          VANGUARD<span>.</span>
+        </a>
+        
+        <!-- Controls (Toggle + Night Mode on Mobile / Tablet) -->
+        <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+          <button class="theme-toggle-btn" id="themeToggleMobile" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <!-- Navbar Menu links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Mobile Secondary CTA -->
+          <div class="d-md-none mt-2 mb-3 px-3">
+            <a class="btn-custom btn-custom-outline border-secondary w-100 justify-content-center" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          
+          <!-- Actions -->
+          <div class="d-flex align-items-center gap-3">
+            <button class="theme-toggle-btn d-none d-xl-flex" id="themeToggle" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <a class="btn-custom btn-custom-outline border-secondary d-none d-md-inline-flex" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+            <a class="btn-custom btn-custom-primary" href="request-quote.html">
+              <span>Get A Quote</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       3. LARGE HERO BANNER
+       ======================================================== -->
+  <section class="hero-banner-quote">
+    <div class="container" data-aos="fade-up">
+      <h1 class="display-4 font-display fw-bold text-white mb-3">Request A Quotation</h1>
+      <p class="lead text-white-50 max-w-600 mx-auto">Vanguard Heavy Duty Smart RFQ & Multi-Stage Production Cost Estimate Portal</p>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Request Quote</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. INTRODUCTION SECTION
+       ======================================================== -->
+  <section class="py-5" style="background-color: var(--color-bg-sub);">
+    <div class="container py-lg-4">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="hero-badge">Enterprise RFQ Portal</span>
+          <h2 class="section-title mt-2">Precision Cost Cost Estimating & Resource Planning</h2>
+          <p class="text-muted fs-5 mb-4">
+            Our specialized RFQ system is custom-built for large-scale corporate, smart manufacturing facility upgrades, custom metal metallurgical castings, and production line automations. We ensure rigorous evaluation parameters, materials tracking, and engineering checks.
+          </p>
+          <div class="row g-4 py-2">
+            <div class="col-md-6">
+              <div class="d-flex gap-3 align-items-start">
+                <div class="text-primary fs-3"><i class="fa-solid fa-business-time"></i></div>
+                <div>
+                  <h5 class="fw-bold text-main mb-1">Expected SLA Response</h5>
+                  <p class="text-muted small mb-0">Preliminary feasibility & cost estimate report returned within 24 business hours.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex gap-3 align-items-start">
+                <div class="text-primary fs-3"><i class="fa-solid fa-user-shield"></i></div>
+                <div>
+                  <h5 class="fw-bold text-main mb-1">Corporate Non-Disclosure</h5>
+                  <p class="text-muted small mb-0">All specifications, technical drawings, and files are protected under standard IP agreements.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div id="interactiveIllustrationContainer">
+            <!-- Layers of custom structural elements floating elegantly with parallax -->
+            <svg class="parallax-layer" data-parallax-speed="0.02" width="280" height="280" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="30" y="30" width="140" height="140" rx="10" fill="rgba(var(--color-primary-rgb), 0.05)" stroke="var(--color-primary)" stroke-width="1.5" stroke-dasharray="5 5" />
+            </svg>
+            <svg class="parallax-layer" data-parallax-speed="0.08" width="160" height="160" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));">
+              <circle cx="50" cy="50" r="30" fill="var(--color-bg-card)" stroke="var(--color-border)" stroke-width="2"/>
+              <path d="M42 50L48 56L58 44" stroke="var(--color-primary)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="parallax-layer position-absolute p-3 rounded bg-card border text-center font-display" data-parallax-speed="0.12" style="bottom: 40px; right: 50px; min-width: 150px; box-shadow: var(--shadow-md);">
+              <i class="fa-solid fa-gears text-primary fs-4 mb-2 animate-spin"></i>
+              <div class="fw-bold small">SYSTEM OK</div>
+              <div class="text-muted text-xs">Vanguard ERP</div>
+            </div>
+            <div class="parallax-layer position-absolute p-3 rounded bg-card border text-center font-display" data-parallax-speed="0.05" style="top: 40px; left: 50px; min-width: 150px; box-shadow: var(--shadow-md);">
+              <i class="fa-solid fa-chart-line text-success fs-4 mb-2"></i>
+              <div class="fw-bold small">OPTIMIZED</div>
+              <div class="text-muted text-xs">Resource Map</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. MULTI-STEP QUOTE FORM
+       ======================================================== -->
+  <section class="py-5">
+    <div class="container py-lg-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-11">
+          
+          <!-- Progress Indicator wrapper -->
+          <div class="step-indicator-wrapper" id="formProgress">
+            <div class="step-indicator-line"></div>
+            <div class="step-indicator-line-progress" id="stepProgressLine"></div>
+            
+            <div class="step-indicator-item active" data-step="1">
+              1
+              <span class="step-indicator-title d-none d-md-block">Contact</span>
+            </div>
+            <div class="step-indicator-item" data-step="2">
+              2
+              <span class="step-indicator-title d-none d-md-block">Project</span>
+            </div>
+            <div class="step-indicator-item" data-step="3">
+              3
+              <span class="step-indicator-title d-none d-md-block">Specs</span>
+            </div>
+            <div class="step-indicator-item" data-step="4">
+              4
+              <span class="step-indicator-title d-none d-md-block">Budget</span>
+            </div>
+            <div class="step-indicator-item" data-step="5">
+              5
+              <span class="step-indicator-title d-none d-md-block">Upload</span>
+            </div>
+            <div class="step-indicator-item" data-step="6">
+              6
+              <span class="step-indicator-title d-none d-md-block">Review</span>
+            </div>
+          </div>
+
+          <!-- Wizard Form Container -->
+          <div class="form-step-container">
+            <form id="rfqForm" class="needs-validation" novalidate>
+              
+              <!-- STEP 1: Personal Information -->
+              <div class="form-step active" id="step1">
+                <div class="border-bottom pb-3 mb-4">
+                  <h3 class="fw-bold font-display text-main"><i class="fa-solid fa-id-card text-primary me-2"></i> Step 1: Personal & Corporate Profile</h3>
+                  <p class="text-muted mb-0">Provide basic identity information so that our industrial representative can establish communications.</p>
+                </div>
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label for="fullName" class="form-label fw-bold">Full Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-lg" id="fullName" placeholder="John Doe" required>
+                    <div class="invalid-feedback">Please enter your full name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="companyName" class="form-label fw-bold">Company Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-lg" id="companyName" placeholder="Vanguard Industrial Ltd" required>
+                    <div class="invalid-feedback">Please enter your company name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="emailAddress" class="form-label fw-bold">Corporate Email Address <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control form-control-lg" id="emailAddress" placeholder="j.doe@vanguard-industry.com" required>
+                    <div class="invalid-feedback">Please enter a valid corporate email.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phoneNumber" class="form-label fw-bold">Corporate Phone Number <span class="text-danger">*</span></label>
+                    <input type="tel" class="form-control form-control-lg" id="phoneNumber" placeholder="+1 (555) 019-9234" required>
+                    <div class="invalid-feedback">Please enter your phone number.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="countryName" class="form-label fw-bold">HQ Country <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-lg" id="countryName" placeholder="United States" required>
+                    <div class="invalid-feedback">Please enter your country.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="cityName" class="form-label fw-bold">City <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-lg" id="cityName" placeholder="Houston" required>
+                    <div class="invalid-feedback">Please enter your city.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 2: Project Information -->
+              <div class="form-step" id="step2">
+                <div class="border-bottom pb-3 mb-4">
+                  <h3 class="fw-bold font-display text-main"><i class="fa-solid fa-industry text-primary me-2"></i> Step 2: Project Information</h3>
+                  <p class="text-muted mb-0">Describe the basic scope, industry category, and target facility characteristics.</p>
+                </div>
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label for="projectName" class="form-label fw-bold">Project / RFQ Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-lg" id="projectName" placeholder="Automation Line Upgrade Phase II" required>
+                    <div class="invalid-feedback">Please enter a project name.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="industryCategory" class="form-label fw-bold">Target Industry <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="industryCategory" required>
+                      <option value="" selected disabled>Select Industry...</option>
+                      <option value="Automotive">Automotive & Heavy Truck</option>
+                      <option value="Aerospace">Aerospace & Defense</option>
+                      <option value="Medical">Medical Devices & Pharma</option>
+                      <option value="Heavy Machinery">Heavy Industrial Machinery</option>
+                      <option value="Electronics">High-Tech & Electronics</option>
+                      <option value="Construction">Infrastructure & Construction</option>
+                      <option value="Metallurgy">Metallurgy & Heavy Metallurgy</option>
+                      <option value="Others">Others</option>
+                    </select>
+                    <div class="invalid-feedback">Please select an industry category.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="serviceRequired" class="form-label fw-bold">Primary Service Required <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="serviceRequired" required>
+                      <option value="" selected disabled>Select Primary Service...</option>
+                      <option value="Smart Automation">Smart Assembly Line Automation</option>
+                      <option value="CNC Machining">High-Precision CNC Machining</option>
+                      <option value="Metallurgy">Specialized Casting & Metallurgy</option>
+                      <option value="Industrial Design">Prototype CAD/CAM Engineering</option>
+                      <option value="Custom Solutions">Full-Scale turnkey Plant Integration</option>
+                    </select>
+                    <div class="invalid-feedback">Please select the required service.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="factoryType" class="form-label fw-bold">Facility / Factory Type <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="factoryType" required>
+                      <option value="" selected disabled>Select Facility Type...</option>
+                      <option value="Greenfield Plant">Greenfield Plant (New Build)</option>
+                      <option value="Existing Upgrade">Existing Facility Upgrade</option>
+                      <option value="Pilot Line">Pilot / R&D Testing Line</option>
+                      <option value="Component Manufacturing">Discrete Component Facility</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a facility type.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="productionCapacity" class="form-label fw-bold">Target Production Capacity</label>
+                    <input type="text" class="form-control form-control-lg" id="productionCapacity" placeholder="e.g. 50,000 units/month">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="projectLocation" class="form-label fw-bold">Deployment Location <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control form-control-lg" id="projectLocation" placeholder="e.g. Houston Facility, TX" required>
+                    <div class="invalid-feedback">Please enter deployment location.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 3: Technical Specifications & Requirements -->
+              <div class="form-step" id="step3">
+                <div class="border-bottom pb-3 mb-4">
+                  <h3 class="fw-bold font-display text-main"><i class="fa-solid fa-microchip text-primary me-2"></i> Step 3: Technical Specifications</h3>
+                  <p class="text-muted mb-0">Define specific physical requirements, material grades, quality compliance standards, and timelines.</p>
+                </div>
+                <div class="row g-4">
+                  <div class="col-12">
+                    <label for="projectDescription" class="form-label fw-bold">Detailed Technical Requirements <span class="text-danger">*</span></label>
+                    <textarea class="form-control" id="projectDescription" rows="4" placeholder="Detail dimensions, specific chemical composition, tolerance parameters (e.g. ±0.01mm), automation load capacities, speed targets..." required></textarea>
+                    <div class="invalid-feedback">Please enter details about your technical requirements.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="preferredMaterial" class="form-label fw-bold">Primary Material Grade <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="preferredMaterial" required>
+                      <option value="" selected disabled>Select Material Grade...</option>
+                      <option value="Titanium Alloys">Aerospace Titanium Alloys (Grade 5)</option>
+                      <option value="Stainless Steel">Corrosion-Resistant Stainless (316L/304)</option>
+                      <option value="Carbon Fiber">Premium Carbon Fiber Composites</option>
+                      <option value="Aircraft Aluminum">High-Strength Aircraft Aluminum (7075-T6)</option>
+                      <option value="Tool Steel">Hardened Tool Steels (H13, D2)</option>
+                      <option value="Polymers">High-performance Engineering Polymers (PEEK, Delrin)</option>
+                      <option value="Custom Alloys">Custom Cast Metallurgy Formula</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a primary material grade.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="qualityStandard" class="form-label fw-bold">Quality Standard & Compliance <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="qualityStandard" required>
+                      <option value="" selected disabled>Select Compliance...</option>
+                      <option value="ISO 9001:2015">ISO 9001:2015 (Standard Commercial Quality)</option>
+                      <option value="AS9100D">AS9100D (Aerospace Quality Standard)</option>
+                      <option value="IATF 16949">IATF 16949 (Automotive Quality Standard)</option>
+                      <option value="ISO 13485">ISO 13485 (Medical Quality Standard)</option>
+                      <option value="Mil-Spec">Military Specifications (Mil-Spec Standards)</option>
+                    </select>
+                    <div class="invalid-feedback">Please select quality compliance standard.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="expectedDelivery" class="form-label fw-bold">Expected Target Delivery Date <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control form-control-lg" id="expectedDelivery" required>
+                    <div class="invalid-feedback">Please pick an expected delivery date.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="machiningTolerance" class="form-label fw-bold">Required Tolerance Standards</label>
+                    <select class="form-select form-select-lg" id="machiningTolerance">
+                      <option value="Standard">Standard Commercial (±0.1mm)</option>
+                      <option value="Precision">Precision Engineering (±0.05mm)</option>
+                      <option value="Ultra-Precision">Ultra-Precision Machining (±0.005mm)</option>
+                      <option value="Not Applicable">Not Applicable</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 4: Budget Range & Priority -->
+              <div class="form-step" id="step4">
+                <div class="border-bottom pb-3 mb-4">
+                  <h3 class="fw-bold font-display text-main"><i class="fa-solid fa-coins text-primary me-2"></i> Step 4: Budget & Planning Parameters</h3>
+                  <p class="text-muted mb-0">Vanguard manages projects of various scale. Informing our planners helps optimize component selections.</p>
+                </div>
+                <div class="row g-4">
+                  <div class="col-md-6">
+                    <label for="budgetRange" class="form-label fw-bold">Project Budget Allocation Range <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="budgetRange" required>
+                      <option value="" selected disabled>Select Budget Allocation...</option>
+                      <option value="$10,000 - $50,000">$10,000 - $50,000 (Small Component Batch)</option>
+                      <option value="$50,000 - $250,000">$50,000 - $250,000 (Medium Batch & Metallurgy)</option>
+                      <option value="$250,000 - $1,000,000">$250,000 - $1,000,000 (Automation Station / Tooling)</option>
+                      <option value="$1,000,000+">$1,000,000+ (Enterprise Full-Line Turnkey)</option>
+                      <option value="Custom Quote Required">Custom / TBD Enterprise Tender</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a budget range.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="projectPriority" class="form-label fw-bold">Project Execution Priority <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="projectPriority" required>
+                      <option value="" selected disabled>Select Priority...</option>
+                      <option value="Immediate / Emergency">Immediate / Emergency Line Stoppage (24h action)</option>
+                      <option value="High Priority">High Priority (Active planning - 1-2 months deploy)</option>
+                      <option value="Standard">Standard Execution (Planned quarterly schedule)</option>
+                      <option value="Low Priority">Low / R&D Discovery phase</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a project priority.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="expectedTimeline" class="form-label fw-bold">Target Launch Timeline <span class="text-danger">*</span></label>
+                    <select class="form-select form-select-lg" id="expectedTimeline" required>
+                      <option value="" selected disabled>Select Timeline...</option>
+                      <option value="Under 30 Days">Under 30 Days (Rushed)</option>
+                      <option value="1 - 3 Months">1 - 3 Months</option>
+                      <option value="3 - 6 Months">3 - 6 Months</option>
+                      <option value="6+ Months">6+ Months (Long-Term Program)</option>
+                    </select>
+                    <div class="invalid-feedback">Please select timeline.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="tenderReference" class="form-label fw-bold">Internal Reference/Tender Code (If any)</label>
+                    <input type="text" class="form-control form-control-lg" id="tenderReference" placeholder="e.g. RFQ-2026-VG-098">
+                  </div>
+                  <div class="col-12">
+                    <label for="specialInstructions" class="form-label fw-bold">Special Packing, Transport or Security Instructions</label>
+                    <textarea class="form-control" id="specialInstructions" rows="3" placeholder="Specify cleanroom packaging standards, shipping freight modes, military ITAR transport security requirements, customs processing preferences..."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 5: Frontend Upload UI -->
+              <div class="form-step" id="step5">
+                <div class="border-bottom pb-3 mb-4">
+                  <h3 class="fw-bold font-display text-main"><i class="fa-solid fa-file-arrow-up text-primary me-2"></i> Step 5: CAD / Specification Uploads</h3>
+                  <p class="text-muted mb-0">Upload high-resolution DWG, STP, PDF files. Files remain fully encrypted and secure.</p>
+                </div>
+                <div class="row g-4">
+                  <div class="col-12">
+                    <div class="file-drop-zone" id="drawingDropZone">
+                      <div class="file-drop-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                      <h5 class="fw-bold font-display text-main">Drag & Drop CAD Drawings & Specs here</h5>
+                      <p class="text-muted small">Supports: .dwg, .dxf, .step, .stp, .pdf, .zip, .png, .jpg (Max 50MB per file)</p>
+                      <span class="btn btn-custom btn-custom-outline border-secondary py-2 btn-sm">Or Select Files Manually</span>
+                      <input type="file" id="drawingFileInput" class="d-none" multiple>
+                    </div>
+                    <div class="file-list-preview" id="uploadedFileList">
+                      <!-- Dynamically added files chips -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- STEP 6: Review & Submit -->
+              <div class="form-step" id="step6">
+                <div class="border-bottom pb-3 mb-4">
+                  <h3 class="fw-bold font-display text-main"><i class="fa-solid fa-clipboard-check text-primary me-2"></i> Step 6: Final Review & Submit</h3>
+                  <p class="text-muted mb-0">Review all technical parameters and contact credentials before final ERP submission.</p>
+                </div>
+                
+                <div class="row g-4" id="reviewSummaryContainer">
+                  <!-- Generated Dynamically by JS -->
+                </div>
+
+                <div class="form-check mt-4 p-3 bg-light rounded border border-warning-subtle">
+                  <input class="form-check-input ms-0 me-2" type="checkbox" id="ndaCheck" required>
+                  <label class="form-check-label text-muted small" for="ndaCheck">
+                    I verify that all technical values submitted are correct and agree to Vanguard's standard non-disclosure operation policies and global industrial terms. <span class="text-danger">*</span>
+                  </label>
+                  <div class="invalid-feedback">You must agree to the technical validation standards to proceed.</div>
+                </div>
+              </div>
+
+              <!-- Success Screen Block -->
+              <div class="form-step" id="successScreen">
+                <div class="text-center py-5">
+                  <div class="mb-4 text-success display-1"><i class="fa-solid fa-circle-check"></i></div>
+                  <h2 class="display-5 font-display fw-bold text-main mb-3">RFQ Submitted Successfully!</h2>
+                  <p class="fs-5 text-muted max-w-600 mx-auto">
+                    Your request has been processed and written to the Vanguard CRM & resource management queue under registration code: <strong id="dynamicQuoteId" class="text-primary">RFQ-2026-VG-5921</strong>.
+                  </p>
+                  <p class="text-muted small mb-4">
+                    Our lead planning engineer will finalize feasibility checks and present the preliminary costing map within 24 working hours.
+                  </p>
+                  <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="index.html" class="btn-custom btn-custom-primary">Return To Home</a>
+                    <a href="services.html" class="btn-custom btn-custom-outline border-secondary">Explore Solutions</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Buttons for Wizard -->
+              <div class="d-flex justify-content-between mt-5 pt-3 border-top" id="wizardButtons">
+                <button type="button" class="btn-custom btn-custom-secondary btn-ripple" id="prevBtn" disabled>
+                  <i class="fa-solid fa-arrow-left"></i> <span>Previous</span>
+                </button>
+                <button type="button" class="btn-custom btn-custom-primary btn-ripple" id="nextBtn">
+                  <span>Next Step</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. WHY REQUEST A QUOTE (PREMIUM FEATURES)
+       ======================================================= -->
+  <section class="py-5" style="background-color: var(--color-bg-sub);">
+    <div class="container py-lg-4">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="hero-badge">Enterprise Assurance</span>
+        <h2 class="section-title mt-2">Vanguard Quote Benefits</h2>
+        <p class="text-muted max-w-600 mx-auto">Discover why international businesses and OEM partners choose Vanguard's technical planning teams.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+            <h4 class="fw-bold font-display text-main mb-3">Fast Response Guarantee</h4>
+            <p class="text-muted mb-0">Our structured RFQ engineering team answers preliminary drawings with custom feasibility analyses in under 24 business hours.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-user-gear"></i></div>
+            <h4 class="fw-bold font-display text-main mb-3">Expert Team Design</h4>
+            <p class="text-muted mb-0">Your requirements are parsed directly by expert manufacturing mechanical, tooling, casting, and metallurgical engineers.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-cubes"></i></div>
+            <h4 class="fw-bold font-display text-main mb-3">Custom Material Casting</h4>
+            <p class="text-muted mb-0">We support custom titanium alloy forging, metal metallurgy fabrication, smart IoT sensors integration, and assembly calibrating.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-tags"></i></div>
+            <h4 class="fw-bold font-display text-main mb-3">Transparent Pricing Line</h4>
+            <p class="text-muted mb-0">Get clear cost decompositions including direct raw materials, labor, specialized machine-hours, and custom tooling costs.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-medal"></i></div>
+            <h4 class="fw-bold font-display text-main mb-3">Strict Quality Verification</h4>
+            <p class="text-muted mb-0">Fully compliant operations aligning with AS9100D, ISO 9001:2015, and high-tolerance aerospace and defense certifications.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="feature-card">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-headset"></i></div>
+            <h4 class="fw-bold font-display text-main mb-3">Dedicated Support Desk</h4>
+            <p class="text-muted mb-0">A single designated point of contact remains at your service throughout production planning, scheduling, and logistics delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       7. OUR QUOTATION PROCESS (TIMELINE)
+       ======================================================== -->
+  <section class="py-5">
+    <div class="container py-lg-4">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="hero-badge">How It Works</span>
+        <h2 class="section-title mt-2">Our Estimation Journey</h2>
+        <p class="text-muted max-w-600 mx-auto">Vanguard's structured methodology ensures error-free translations from digital drawings to active smart fabrication lines.</p>
+      </div>
+
+      <div class="timeline-steps">
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="timeline-step-number">01</div>
+          <h5 class="timeline-step-title text-main">Request</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Submit specs & drawings through the portal.</p>
+        </div>
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="timeline-step-number">02</div>
+          <h5 class="timeline-step-title text-main">Review</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Engineers inspect specifications & tolerances.</p>
+        </div>
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="timeline-step-number">03</div>
+          <h5 class="timeline-step-title text-main">Discussion</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Refining material options and tolerances.</p>
+        </div>
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="timeline-step-number">04</div>
+          <h5 class="timeline-step-title text-main">Engineering</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Calculate machine tooling & assembly workloads.</p>
+        </div>
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="timeline-step-number">05</div>
+          <h5 class="timeline-step-title text-main">Quotation</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Issue detailed decompose line pricing map.</p>
+        </div>
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="timeline-step-number">06</div>
+          <h5 class="timeline-step-title text-main">Approval</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Confirm contract under full secure NDA.</p>
+        </div>
+        <div class="timeline-step-card" data-aos="fade-up" data-aos-delay="350">
+          <div class="timeline-step-number">07</div>
+          <h5 class="timeline-step-title text-main">Production</h5>
+          <p class="text-muted small d-none d-lg-block mt-2">Deploy tools, CNC programs and castings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. FREQUENTLY ASKED QUESTIONS
+       ======================================================== -->
+  <section class="py-5" style="background-color: var(--color-bg-sub);">
+    <div class="container py-lg-4">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="hero-badge">FAQ Database</span>
+        <h2 class="section-title mt-2">Quotation Inquiries</h2>
+        <p class="text-muted max-w-600 mx-auto">Get answers to standard questions about custom metallurgy castings, drawings formats, and budget calibrations.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9" data-aos="fade-up">
+          <div class="accordion accordion-flush bg-card rounded p-3 border" id="quoteAccordion">
+            
+            <div class="accordion-item mb-3 border rounded">
+              <h2 class="accordion-header" id="faqHead1">
+                <button class="accordion-button collapsed fw-bold font-display" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="false" aria-controls="faqCollapse1">
+                  What drawing formats does Vanguard accept for custom machining?
+                </button>
+              </h2>
+              <div id="faqCollapse1" class="accordion-collapse collapse" aria-labelledby="faqHead1" data-bs-parent="#quoteAccordion">
+                <div class="accordion-body text-muted">
+                  We accept 3D formats including .STEP, .STP, .IGES, .IGS, and solid parts files from SolidWorks/NX. For 2D drawing specifications (highly recommended to detail tight tolerancing), we accept standard .DWG, .DXF, and high-resolution vector PDF formats.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded">
+              <h2 class="accordion-header" id="faqHead2">
+                <button class="accordion-button collapsed fw-bold font-display" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                  How does Vanguard protect corporate intellectual property?
+                </button>
+              </h2>
+              <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHead2" data-bs-parent="#quoteAccordion">
+                <div class="accordion-body text-muted">
+                  All shared files, documents, drawings, and formulas are covered under standard global mutual NDA. Our data infrastructure is fully secured, strictly restricting specifications files access only to our direct production and engineering planners.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded">
+              <h2 class="accordion-header" id="faqHead3">
+                <button class="accordion-button collapsed fw-bold font-display" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                  Do you support high-volume manufacturing pilot lines?
+                </button>
+              </h2>
+              <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHead3" data-bs-parent="#quoteAccordion">
+                <div class="accordion-body text-muted">
+                  Yes. Vanguard specializes in multi-stage scaling. We can manage rapid low-volume prototype batches in high-performance materials and subsequently design custom high-capacity tooling lines for million-unit global OEM rollouts.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item mb-3 border rounded">
+              <h2 class="accordion-header" id="faqHead4">
+                <button class="accordion-button collapsed fw-bold font-display" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                  What is the typical lead time from quote approval to delivery?
+                </button>
+              </h2>
+              <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHead4" data-bs-parent="#quoteAccordion">
+                <div class="accordion-body text-muted">
+                  Lead times depend strictly on raw material availability, casting complexities, and tooling setup demands. Discrete CNC precision parts typically ship within 7 to 15 business days, while comprehensive turnkey automation lines require structured 2 to 6 months milestones schedules.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. LARGE CTA ASSISTANCE BANNER
+       ======================================================== -->
+  <section class="py-5" style="background-image: linear-gradient(135deg, var(--color-secondary), #0F1113); color: #FFFFFF;">
+    <div class="container py-lg-4 text-center" data-aos="fade-up">
+      <span class="hero-badge text-white border-white mb-3">Support Desk</span>
+      <h2 class="display-5 font-display fw-bold text-white mb-3">Need Immediate Planning Assistance?</h2>
+      <p class="lead text-white-50 max-w-600 mx-auto mb-4">Our commercial division is available for immediate technical discussions, emergency line stoppages, and bulk contract optimizations.</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <a href="tel:+18005550199" class="btn-custom btn-custom-primary py-3 px-4">
+          <i class="fa-solid fa-phone"></i>
+          <span>Call Headquarters</span>
+        </a>
+        <a href="mailto:contact@vanguard-industry.com" class="btn-custom btn-custom-outline border-white text-white py-3 px-4">
+          <i class="fa-solid fa-envelope"></i>
+          <span>Email Our Planners</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. FOOTER SECTION
+       ======================================================== -->
+  <footer class="footer-section pt-5 bg-dark text-white">
+    <div class="container py-lg-4">
+      <div class="row g-4">
+        
+        <!-- Column 1: Brand -->
+        <div class="col-lg-3 col-md-6">
+          <a class="brand-logo mb-3 text-white" href="index.html">
+            <i class="fa-solid fa-gears text-primary"></i>
+            VANGUARD<span>.</span>
+          </a>
+          <p class="footer-desc text-muted mb-4">Vanguard Group is a premier engineering operations integrator specializing in automated line deployments, metallurgy cast forging, and ultra-precision industrial machinery.</p>
+          <div class="footer-certifications d-flex gap-2">
+            <span class="badge border border-secondary text-muted py-2 px-3 rounded">ISO 9001:2015</span>
+            <span class="badge border border-secondary text-muted py-2 px-3 rounded">AS9100D</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title text-white">Links</h4>
+          <ul class="footer-links list-unstyled">
+            <li><a href="about.html" class="text-white-50 text-decoration-none">About</a></li>
+            <li><a href="projects.html" class="text-white-50 text-decoration-none">Projects</a></li>
+            <li><a href="gallery.html" class="text-white-50 text-decoration-none">Gallery</a></li>
+            <li><a href="blog.html" class="text-white-50 text-decoration-none">News</a></li>
+            <li><a href="pricing.html" class="text-white-50 text-decoration-none">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Services -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title text-white">Services</h4>
+          <ul class="footer-links list-unstyled">
+            <li><a href="service-details.html?service=manufacturing" class="text-white-50 text-decoration-none">Manufacturing</a></li>
+            <li><a href="service-details.html?service=automation" class="text-white-50 text-decoration-none">Automation</a></li>
+            <li><a href="service-details.html?service=engineering" class="text-white-50 text-decoration-none">Engineering</a></li>
+            <li><a href="service-details.html?service=maintenance" class="text-white-50 text-decoration-none">Maintenance</a></li>
+            <li><a href="service-details.html?service=quality-control" class="text-white-50 text-decoration-none">Quality Control</a></li>
+            <li><a href="service-details.html?service=custom-solutions" class="text-white-50 text-decoration-none">Custom Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Support -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title text-white">Support</h4>
+          <ul class="footer-links list-unstyled">
+            <li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+            <li><a href="faq.html" class="text-white-50 text-decoration-none">FAQ</a></li>
+            <li><a href="careers.html" class="text-white-50 text-decoration-none">Careers</a></li>
+            <li><a href="team.html" class="text-white-50 text-decoration-none">Our Team</a></li>
+            <li><a href="about.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('Privacy Policy Portal Coming Soon!');">Privacy Policy (Coming Soon)</a></li>
+            <li><a href="contact.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('Terms Portal Coming Soon!');">Terms & Conditions (Coming Soon)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Contact -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-widget-title text-white">Contact</h4>
+          <div class="footer-contact-item mb-3 text-white-50">
+            <i class="fa-solid fa-location-dot text-primary me-2"></i>
+            7850 Industrial Blvd, Suite 240, Houston, TX 77001
+          </div>
+          <div class="footer-contact-item mb-3 text-white-50">
+            <i class="fa-solid fa-phone text-primary me-2"></i>
+            <a href="tel:+18005550199" class="text-white-50 text-decoration-none">+1 (800) 555-0199</a>
+          </div>
+          <div class="footer-contact-item mb-3 text-white-50">
+            <i class="fa-solid fa-envelope text-primary me-2"></i>
+            <a href="mailto:contact@vanguard-industry.com" class="text-white-50 text-decoration-none">contact@vanguard-industry.com</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom border-top border-secondary py-3 mt-4" style="background-color: #0b0c0e;">
+      <div class="container d-flex justify-content-between align-items-center flex-wrap">
+        <div class="text-muted small">&copy; 2026 Vanguard Group Inc. All rights reserved. Managed under global standard compliance operations.</div>
+        <div class="footer-socials d-flex gap-2 mb-0">
+          <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon text-white-50 mx-1" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon text-white-50 mx-1" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon text-white-50 mx-1" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon text-white-50 mx-1" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       11. BACK TO TOP BUTTON
+       ======================================================== -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </button>
+
+  <!-- ========================================================
+       12. FLOATING QUICK RFQ DESKTOP CARD
+       ======================================================== -->
+  <div id="quickQuoteFloatingCard" class="d-none d-lg-block">
+    <div class="quick-quote-header">
+      <span class="fw-bold"><i class="fa-solid fa-bolt text-warning animate-bounce"></i> Quick Assistance</span>
+      <button class="quick-quote-dismiss-btn" id="dismissQuickQuote" aria-label="Dismiss quick quote popup">&times;</button>
+    </div>
+    <div class="quick-quote-body text-center">
+      <p class="small text-muted mb-3">Speak with a lead engineering cost planner right now:</p>
+      <div class="d-grid gap-2">
+        <a href="tel:+18005550199" class="btn btn-outline-dark btn-sm py-2 d-flex align-items-center justify-content-center gap-2">
+          <i class="fa-solid fa-phone text-primary"></i> <strong>+1 (800) 555-0199</strong>
+        </a>
+        <a href="#" class="btn btn-outline-success btn-sm py-2 d-flex align-items-center justify-content-center gap-2" onclick="event.preventDefault(); alert('Connecting to Vanguard WhatsApp Corporate Support...');">
+          <i class="fa-brands fa-whatsapp text-success fs-5"></i> <strong>WhatsApp Support</strong>
+        </a>
+        <a href="mailto:contact@vanguard-industry.com" class="btn btn-dark btn-sm py-2 d-flex align-items-center justify-content-center gap-2">
+          <i class="fa-solid fa-envelope text-white"></i> <span>Direct Email</span>
+        </a>
+      </div>
+      <div class="text-xs text-muted mt-3">
+        <i class="fa-solid fa-circle text-success animate-pulse text-xxs me-1"></i> Average Response Time: <strong>15 Minutes</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       13. THIRD PARTY LIBRARIES & INTEGRATED JS
+       ======================================================== -->
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- AOS Scroll Animations JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom JS Operations -->
+  <script src="/assets/js/main.js"></script>
+  
+  <script>
+    // Initialize Scroll Animations
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 50
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initParallaxIllustration();
+      initMultiStepWizard();
+      initFloatingCardDismiss();
+      initRippleButtons();
+    });
+
+    /* ========================================================
+       PARALLAX FLOATING ILLUSTRATION
+       ======================================================== */
+    function initParallaxIllustration() {
+      const container = document.getElementById('interactiveIllustrationContainer');
+      const layers = document.querySelectorAll('.parallax-layer');
+      if (!container || layers.length === 0) return;
+
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left - (rect.width / 2);
+        const y = e.clientY - rect.top - (rect.height / 2);
+
+        layers.forEach(layer => {
+          const speed = parseFloat(layer.getAttribute('data-parallax-speed')) || 0.05;
+          layer.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+        });
+      });
+
+      container.addEventListener('mouseleave', () => {
+        layers.forEach(layer => {
+          layer.style.transform = 'translate(0px, 0px)';
+        });
+      });
+    }
+
+    /* ========================================================
+       MULTI-STEP WIZARD FORM LOGIC
+       ======================================================== */
+    function initMultiStepWizard() {
+      const form = document.getElementById('rfqForm');
+      const steps = Array.from(document.querySelectorAll('.form-step'));
+      const indicatorItems = Array.from(document.querySelectorAll('.step-indicator-item'));
+      const progressLine = document.getElementById('stepProgressLine');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const wizardButtons = document.getElementById('wizardButtons');
+      const uploadedFileList = document.getElementById('uploadedFileList');
+      const drawingDropZone = document.getElementById('drawingDropZone');
+      const drawingFileInput = document.getElementById('drawingFileInput');
+
+      let currentStepIndex = 0;
+      let uploadedFiles = [];
+
+      // Update indicator bar percentage
+      function updateIndicator() {
+        const totalSteps = steps.length - 1; // excluding success screen
+        const pct = (currentStepIndex / (totalSteps - 1)) * 100;
+        if (progressLine) {
+          progressLine.style.width = `${pct}%`;
+        }
+
+        indicatorItems.forEach((item, index) => {
+          if (index < currentStepIndex) {
+            item.classList.add('completed');
+            item.classList.remove('active');
+          } else if (index === currentStepIndex) {
+            item.classList.add('active');
+            item.classList.remove('completed');
+          } else {
+            item.classList.remove('active', 'completed');
+          }
+        });
+
+        // Prev Btn state
+        if (currentStepIndex === 0) {
+          prevBtn.disabled = true;
+        } else {
+          prevBtn.disabled = false;
+        }
+
+        // Next Btn text
+        if (currentStepIndex === steps.length - 2) { // Review step is the last before success
+          nextBtn.innerHTML = '<span>Submit RFQ</span> <i class="fa-solid fa-paper-plane"></i>';
+        } else {
+          nextBtn.innerHTML = '<span>Next Step</span> <i class="fa-solid fa-arrow-right"></i>';
+        }
+      }
+
+      // Step transition logic
+      function showStep(index) {
+        steps.forEach((step, i) => {
+          if (i === index) {
+            step.classList.add('active');
+          } else {
+            step.classList.remove('active');
+          }
+        });
+        currentStepIndex = index;
+        updateIndicator();
+
+        if (index === steps.length - 1) { // Success screen
+          wizardButtons.style.display = 'none';
+        }
+      }
+
+      // Validate inputs in current step
+      function validateStep(index) {
+        const currentStepEl = steps[index];
+        const inputs = Array.from(currentStepEl.querySelectorAll('input[required], select[required], textarea[required]'));
+        let stepValid = true;
+
+        inputs.forEach(input => {
+          if (!input.checkValidity()) {
+            input.classList.add('is-invalid');
+            stepValid = false;
+          } else {
+            input.classList.remove('is-invalid');
+            input.classList.add('is-valid');
+          }
+        });
+
+        // Special handling for the standard checkbox on Step 6
+        if (index === 5) {
+          const ndaCheck = document.getElementById('ndaCheck');
+          if (ndaCheck && !ndaCheck.checked) {
+            ndaCheck.classList.add('is-invalid');
+            stepValid = false;
+          } else if (ndaCheck) {
+            ndaCheck.classList.remove('is-invalid');
+            ndaCheck.classList.add('is-valid');
+          }
+        }
+
+        return stepValid;
+      }
+
+      // Dynamic review state generation
+      function generateReviewSummary() {
+        const summaryContainer = document.getElementById('reviewSummaryContainer');
+        if (!summaryContainer) return;
+
+        const val = (id) => document.getElementById(id)?.value || '<span class="text-danger">Not specified</span>';
+        
+        let filesHtml = 'No documents selected';
+        if (uploadedFiles.length > 0) {
+          filesHtml = uploadedFiles.map(f => `<div class="badge bg-secondary p-2 me-2 mb-2"><i class="fa-solid fa-file-invoice"></i> ${f.name} (${(f.size/1024/1024).toFixed(2)} MB)</div>`).join('');
+        }
+
+        summaryContainer.innerHTML = `
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-light h-100">
+              <h5 class="fw-bold text-primary font-display mb-3 border-bottom pb-2">1. Profile</h5>
+              <p class="mb-1"><strong>Name:</strong> ${val('fullName')}</p>
+              <p class="mb-1"><strong>Company:</strong> ${val('companyName')}</p>
+              <p class="mb-1"><strong>Email:</strong> ${val('emailAddress')}</p>
+              <p class="mb-1"><strong>Phone:</strong> ${val('phoneNumber')}</p>
+              <p class="mb-1"><strong>Location:</strong> ${val('cityName')}, ${val('countryName')}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-light h-100">
+              <h5 class="fw-bold text-primary font-display mb-3 border-bottom pb-2">2. Project</h5>
+              <p class="mb-1"><strong>Project Name:</strong> ${val('projectName')}</p>
+              <p class="mb-1"><strong>Industry:</strong> ${val('industryCategory')}</p>
+              <p class="mb-1"><strong>Service Required:</strong> ${val('serviceRequired')}</p>
+              <p class="mb-1"><strong>Deployment Location:</strong> ${val('projectLocation')}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-light h-100">
+              <h5 class="fw-bold text-primary font-display mb-3 border-bottom pb-2">3. Specifications</h5>
+              <p class="mb-1"><strong>Material:</strong> ${val('preferredMaterial')}</p>
+              <p class="mb-1"><strong>Compliance:</strong> ${val('qualityStandard')}</p>
+              <p class="mb-1"><strong>Delivery Target:</strong> ${val('expectedDelivery')}</p>
+              <p class="mb-1"><strong>Tolerances:</strong> ${val('machiningTolerance')}</p>
+              <p class="mb-2"><strong>Detailed Specs:</strong></p>
+              <div class="bg-card p-2 rounded border small text-muted text-truncate" style="max-height:60px;">${val('projectDescription')}</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3 border rounded bg-light h-100">
+              <h5 class="fw-bold text-primary font-display mb-3 border-bottom pb-2">4. Budget & Uploads</h5>
+              <p class="mb-1"><strong>Budget Range:</strong> ${val('budgetRange')}</p>
+              <p class="mb-1"><strong>Priority:</strong> ${val('projectPriority')}</p>
+              <p class="mb-1"><strong>Timeline:</strong> ${val('expectedTimeline')}</p>
+              <p class="mb-2"><strong>Attachments:</strong></p>
+              <div class="d-flex flex-wrap">${filesHtml}</div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Next button click
+      nextBtn.addEventListener('click', () => {
+        if (!validateStep(currentStepIndex)) {
+          return; // block navigation on invalid inputs
+        }
+
+        if (currentStepIndex === steps.length - 2) {
+          // Submit action - loading transition
+          nextBtn.disabled = true;
+          nextBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Processing RFQ...';
+          
+          setTimeout(() => {
+            // Generate dynamic randomized quote number
+            const randNum = Math.floor(1000 + Math.random() * 9000);
+            const dynamicQuoteId = document.getElementById('dynamicQuoteId');
+            if (dynamicQuoteId) {
+              dynamicQuoteId.textContent = `RFQ-2026-VG-${randNum}`;
+            }
+
+            showStep(steps.length - 1);
+          }, 1500);
+
+        } else {
+          // Advance step
+          const nextIndex = currentStepIndex + 1;
+          if (nextIndex === 5) {
+            generateReviewSummary();
+          }
+          showStep(nextIndex);
+        }
+      });
+
+      // Previous button click
+      prevBtn.addEventListener('click', () => {
+        if (currentStepIndex > 0) {
+          showStep(currentStepIndex - 1);
+        }
+      });
+
+      // DRAG & DROP ZONE LOGIC
+      if (drawingDropZone && drawingFileInput) {
+        drawingDropZone.addEventListener('click', () => {
+          drawingFileInput.click();
+        });
+
+        drawingFileInput.addEventListener('change', (e) => {
+          handleFiles(e.target.files);
+        });
+
+        // drag behaviors
+        ['dragenter', 'dragover'].forEach(eventName => {
+          drawingDropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            drawingDropZone.classList.add('drag-over');
+          }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+          drawingDropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            drawingDropZone.classList.remove('drag-over');
+          }, false);
+        });
+
+        drawingDropZone.addEventListener('drop', (e) => {
+          const dt = e.dataTransfer;
+          const files = dt.files;
+          handleFiles(files);
+        });
+      }
+
+      function handleFiles(files) {
+        const fileArr = Array.from(files);
+        fileArr.forEach(file => {
+          // prevent duplicate files from showing twice
+          if (!uploadedFiles.some(f => f.name === file.name)) {
+            uploadedFiles.push(file);
+          }
+        });
+        renderFileList();
+      }
+
+      function renderFileList() {
+        if (!uploadedFileList) return;
+        uploadedFileList.innerHTML = '';
+        
+        uploadedFiles.forEach((file, index) => {
+          const chip = document.createElement('div');
+          chip.className = 'file-item-chip';
+          chip.innerHTML = `
+            <i class="fa-solid fa-file-code text-primary"></i>
+            <span>${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)</span>
+            <i class="fa-solid fa-xmark file-item-remove" data-index="${index}"></i>
+          `;
+          uploadedFileList.appendChild(chip);
+        });
+
+        // Bind delete listeners
+        const removeBtns = uploadedFileList.querySelectorAll('.file-item-remove');
+        removeBtns.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const idx = parseInt(e.target.getAttribute('data-index'), 10);
+            uploadedFiles.splice(idx, 1);
+            renderFileList();
+          });
+        });
+      }
+    }
+
+    /* ========================================================
+       FLOATING QUICK RFQ DISMISS LOGIC
+       ======================================================== */
+    function initFloatingCardDismiss() {
+      const dismissBtn = document.getElementById('dismissQuickQuote');
+      const card = document.getElementById('quickQuoteFloatingCard');
+      if (dismissBtn && card) {
+        dismissBtn.addEventListener('click', () => {
+          card.classList.add('dismissed');
+          // Save in localStorage to persist dismissal for the current session
+          sessionStorage.setItem('dismissedQuickQuote', 'true');
+        });
+
+        // Auto hide if previously dismissed in session
+        if (sessionStorage.getItem('dismissedQuickQuote') === 'true') {
+          card.classList.add('dismissed');
+        }
+      }
+    }
+
+    /* ========================================================
+       BUTTON RIPPLE EFFECT
+       ======================================================== */
+    function initRippleButtons() {
+      const buttons = document.querySelectorAll('.btn-ripple');
+      buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const circle = document.createElement('span');
+          circle.className = 'ripple';
+          circle.style.left = `${x}px`;
+          circle.style.top = `${y}px`;
+
+          this.appendChild(circle);
+
+          circle.addEventListener('animationend', () => {
+            circle.remove();
+          });
+        });
+      });
+    }
+  </script>
+</body>
+</html>

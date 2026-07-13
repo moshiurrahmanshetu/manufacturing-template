@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Plans & Pricing - Vanguard Manufacturing Group</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Transparent industrial service packages, annual maintenance contracts (AMC), and customized engineering solutions from Vanguard Manufacturing Group.">
+  <meta name="keywords" content="industrial service plans, AMC, mechanical maintenance contracts, custom engineering solutions, industrial pricing">
+  <meta name="author" content="Vanguard Group">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+  <!-- AOS Scroll Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom Style CSS -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* ========================================================
+       PRICING PAGE CUSTOM STYLING
+       ======================================================== */
+    :root {
+      --primary-glow: rgba(255, 94, 0, 0.15);
+      --blueprint-grid: rgba(255, 94, 0, 0.03);
+    }
+
+    [data-theme="dark"] {
+      --blueprint-grid: rgba(255, 94, 0, 0.05);
+    }
+
+    /* Steel blueprint aesthetic backgrounds */
+    .blueprint-bg {
+      background-image: linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* Technical blueprint accents */
+    .blueprint-border-box {
+      border: 1px dashed var(--color-border);
+      position: relative;
+    }
+    .blueprint-border-box::before, .blueprint-border-box::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border: 1px solid var(--color-primary);
+    }
+    .blueprint-border-box::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+    .blueprint-border-box::after { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+    /* Divider with center gear indicator */
+    .section-divider-gear {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 40px 0;
+      position: relative;
+    }
+    .section-divider-gear::before, .section-divider-gear::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+    }
+    .section-divider-gear i {
+      color: var(--color-primary);
+      margin: 0 15px;
+      animation: spinGear 8s linear infinite;
+    }
+    @keyframes spinGear {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Interactive illustration container */
+    .illustration-parallax-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      aspect-ratio: 4/3;
+      cursor: crosshair;
+    }
+    .illustration-parallax-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.15s ease-out;
+    }
+    .illustration-overlay-badge {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      background: rgba(31, 36, 41, 0.9);
+      backdrop-filter: blur(5px);
+      border-left: 4px solid var(--color-primary);
+      padding: 15px 20px;
+      border-radius: 4px;
+      z-index: 10;
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .illustration-parallax-container:hover .illustration-overlay-badge {
+      transform: translateY(-5px);
+    }
+
+    /* Working Switcher Toggle styling */
+    .pricing-toggle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 50px;
+    }
+    .pricing-toggle-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      transition: var(--transition-smooth);
+    }
+    .pricing-toggle-label.active {
+      color: var(--color-text-main);
+    }
+    .pricing-toggle-switch {
+      position: relative;
+      width: 250px;
+      height: 48px;
+      background: var(--color-bg-sub);
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      user-select: none;
+    }
+    .pricing-toggle-bg {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 118px;
+      height: 40px;
+      background: var(--color-primary);
+      border-radius: 20px;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+      box-shadow: 0 4px 10px rgba(255, 94, 0, 0.2);
+    }
+    .pricing-toggle-switch.premium-active .pricing-toggle-bg {
+      transform: translateX(124px);
+    }
+    .pricing-toggle-btn-label {
+      width: 118px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--color-text-muted);
+      z-index: 2;
+      transition: var(--transition-smooth);
+    }
+    .pricing-toggle-switch:not(.premium-active) .label-standard {
+      color: #FFFFFF !important;
+    }
+    .pricing-toggle-switch.premium-active .label-premium {
+      color: #FFFFFF !important;
+    }
+
+    /* Card Lift / Hover Layout Elements */
+    .pricing-card-col {
+      transition: var(--transition-smooth);
+    }
+    .pricing-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 40px 30px;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+    }
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-primary);
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition-smooth);
+    }
+    .pricing-card:hover::before {
+      transform: scaleX(1);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+      box-shadow: 0 3px 6px rgba(255, 94, 0, 0.15);
+    }
+    .pricing-card-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 8px;
+      background: var(--color-bg-sub);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      transition: var(--transition-smooth);
+    }
+    .pricing-card:hover .pricing-card-icon {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      transform: scale(1.08) rotate(5deg);
+    }
+    .pricing-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--color-text-main);
+    }
+    .pricing-card-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+    }
+    .pricing-card-price {
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+    }
+    .pricing-card-price span {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .pricing-card-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+      flex-grow: 1;
+    }
+    .pricing-card-features li {
+      padding: 8px 0;
+      font-size: 0.92rem;
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px dashed var(--color-border);
+    }
+    .pricing-card-features li:last-child {
+      border-bottom: none;
+    }
+    .pricing-card-features li i {
+      color: var(--color-primary);
+      font-size: 0.85rem;
+    }
+    .pricing-card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Comparison Table Styling */
+    .comparison-table-wrap {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .comparison-table {
+      margin-bottom: 0;
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 16px 20px;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .comparison-table th:first-child, .comparison-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+    .comparison-table thead th {
+      background: var(--color-bg-sub);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      color: var(--color-text-main);
+      border-bottom: 2px solid var(--color-border);
+      text-transform: uppercase;
+    }
+    .comparison-table tbody tr:hover {
+      background: rgba(255, 94, 0, 0.02);
+    }
+    .comparison-table .feature-check {
+      color: var(--color-primary);
+      font-size: 1.15rem;
+    }
+    .comparison-table .feature-cross {
+      color: var(--color-text-muted);
+      opacity: 0.35;
+      font-size: 1.05rem;
+    }
+
+    /* Work Process Timeline Layout */
+    .timeline-container {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 0;
+    }
+    .timeline-line {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: var(--color-border);
+      z-index: 1;
+    }
+    .timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 0;
+      background: var(--color-primary);
+      z-index: 2;
+      transition: height 1s ease-out;
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+      z-index: 3;
+    }
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+    .timeline-dot {
+      position: absolute;
+      top: 35px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--color-bg-card);
+      border: 3px solid var(--color-border);
+      z-index: 4;
+      transition: var(--transition-smooth);
+    }
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -9px;
+    }
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -9px;
+    }
+    .timeline-item.active .timeline-dot {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+      box-shadow: 0 0 0 6px rgba(255, 94, 0, 0.25);
+    }
+    .timeline-content-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+    .timeline-item:hover .timeline-content-card {
+      border-color: var(--color-primary);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .timeline-step-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: rgba(255, 94, 0, 0.12);
+      line-height: 1;
+      margin-bottom: 10px;
+      transition: var(--transition-smooth);
+    }
+    .timeline-item:hover .timeline-step-num {
+      color: rgba(255, 94, 0, 0.25);
+    }
+
+    /* Why Invest Features Card */
+    .invest-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 30px;
+      transition: var(--transition-smooth);
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+    }
+    .invest-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .invest-icon-box {
+      width: 55px;
+      height: 55px;
+      border-radius: 8px;
+      background: var(--color-bg-sub);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      transition: var(--transition-smooth);
+    }
+    .invest-card:hover .invest-icon-box {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      transform: rotateY(180deg);
+    }
+
+    /* AMC Premium Cards */
+    .amc-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 10px;
+      padding: 30px 25px;
+      transition: var(--transition-smooth);
+      height: 100%;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .amc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .amc-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .amc-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--color-bg-sub);
+      color: var(--color-primary);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+    .amc-card:hover .amc-icon {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+    .amc-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 0;
+    }
+
+    /* Custom counters styling */
+    .stats-block {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 40px 20px;
+      text-align: center;
+      transition: var(--transition-smooth);
+      box-shadow: var(--shadow-sm);
+    }
+    .stats-block:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+    .stat-icon {
+      font-size: 2.25rem;
+      color: var(--color-primary);
+      margin-bottom: 15px;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      line-height: 1.2;
+      margin-bottom: 5px;
+    }
+
+    /* FAQ accordion styling overrides */
+    .pricing-faq-accordion .accordion-item {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .pricing-faq-accordion .accordion-button {
+      background-color: var(--color-bg-card);
+      color: var(--color-text-main);
+      font-weight: 600;
+      font-size: 1.05rem;
+      padding: 20px 25px;
+      box-shadow: none;
+    }
+    .pricing-faq-accordion .accordion-button:not(.collapsed) {
+      background-color: var(--color-bg-sub);
+      color: var(--color-primary);
+    }
+    .pricing-faq-accordion .accordion-button::after {
+      filter: invert(var(--theme-invert-value, 0));
+    }
+    .pricing-faq-accordion .accordion-body {
+      background-color: var(--color-bg-card);
+      color: var(--color-text-muted);
+      padding: 20px 25px 25px 25px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* Button Ripple Effect */
+    .btn-ripple {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple-effect {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: rippleAnim 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive tables constraints */
+    @media (max-width: 991px) {
+      .comparison-table-wrap {
+        overflow-x: auto;
+      }
+      .comparison-table {
+        min-width: 850px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP INFO BAR
+       ======================================================== -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info d-flex gap-4">
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+18005550199">+1 (800) 555-0199</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:info@vanguard-industry.com">info@vanguard-industry.com</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-clock"></i>
+          Mon - Fri: 08:00 AM - 06:00 PM
+        </span>
+      </div>
+      <div class="topbar-socials d-flex gap-3 align-items-center">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <span class="ms-3 border-start ps-3 border-secondary d-inline-flex align-items-center gap-2 text-white-50">
+          <i class="fa-solid fa-earth-americas text-primary"></i>
+          HQ: Houston, TX
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. STICKY HEADER & NAVBAR
+       ======================================================== -->
+  <header class="header-wrap" id="mainHeader">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <!-- Logo -->
+        <a class="brand-logo" id="headerLogo" href="index.html">
+          <i class="fa-solid fa-gears text-primary"></i>
+          VANGUARD<span>.</span>
+        </a>
+        
+        <!-- Controls (Toggle + Night Mode on Mobile / Tablet) -->
+        <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+          <button class="theme-toggle-btn" id="themeToggleMobile" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <!-- Navbar Menu links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Mobile Secondary CTA -->
+          <div class="d-md-none mt-2 mb-3 px-3">
+            <a class="btn-custom btn-custom-outline border-secondary w-100 justify-content-center" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          
+          <!-- Actions -->
+          <div class="d-flex align-items-center gap-3">
+            <button class="theme-toggle-btn d-none d-xl-flex" id="themeToggle" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <a class="btn-custom btn-custom-outline border-secondary d-none d-md-inline-flex" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+            <a class="btn-custom btn-custom-primary btn-ripple" href="request-quote.html">
+              <span>Get A Quote</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       3. HERO BANNER
+       ======================================================== -->
+  <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop');">
+    <div class="page-banner-overlay"></div>
+    <div class="container text-center text-md-start">
+      <div class="row align-items-center">
+        <div class="col-md-9 col-lg-8">
+          <span class="text-primary text-uppercase fw-bold letter-spacing-1 d-block mb-2" data-aos="fade-up">Industrial Investment</span>
+          <h1 class="page-banner-title mb-3" data-aos="fade-up" data-aos-delay="50">Service Packages & AMC</h1>
+          <ul class="page-breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="fa-solid fa-chevron-right text-white-50 small"></i></li>
+            <li class="active">Pricing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. PRICING INTRODUCTION WITH ILLUSTRATION
+       ======================================================== -->
+  <section class="section-padding bg-main">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="section-title-wrap mb-4">
+            <span class="section-subtitle">Flexible Operations</span>
+            <h2 class="h1 text-main fw-bold">Engineered For Growth: Transparent Service Plans</h2>
+          </div>
+          <p class="text-muted leading-relaxed mb-4">
+            At Vanguard Manufacturing Group, we configure strategic partnerships. We don't believe in rigid, opaque pricing schedules. Our tiered, specialized service plans provide standard and complex options tailored specifically to raw casting, rapid parts diagnostics, structural welding integration, and heavy automation deployment.
+          </p>
+          <p class="text-muted leading-relaxed mb-4">
+            Whether you operate a boutique workshop seeking occasional on-floor diagnostic testing or run a massive, multi-facility international conglomerate requiring structured, dedicated engineers and complete predictive analytics monitoring, Vanguard has a certified plan configured for your operational output goals.
+          </p>
+          <div class="row g-3 mt-3">
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center gap-3">
+                <div class="pricing-card-icon m-0" style="width:45px; height:45px; font-size:1.25rem;"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <span class="d-block text-main fw-bold small">Zero Risk Guarantee</span>
+                  <span class="text-muted small">Full safety certification</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="d-flex align-items-center gap-3">
+                <div class="pricing-card-icon m-0" style="width:45px; height:45px; font-size:1.25rem;"><i class="fa-solid fa-user-tie"></i></div>
+                <div>
+                  <span class="d-block text-main fw-bold small">Dedicated Field Engineers</span>
+                  <span class="text-muted small">On-call certified support</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="illustration-parallax-container" id="illustrationParallax">
+            <img class="illustration-parallax-img" src="https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1200&auto=format&fit=crop" alt="Smart Factory Floor Assembly">
+            <div class="illustration-overlay-badge">
+              <span class="text-white small text-uppercase letter-spacing-1 d-block fw-bold">VANGUARD LABS</span>
+              <span class="text-primary fw-bold" style="font-size: 1.1rem;">Interactive Blueprint Simulation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. PACKAGE TOGGLE & SERVICE PACKAGE CARDS
+       ======================================================== -->
+  <section class="section-padding bg-sub blueprint-bg">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Operational Tiers</span>
+        <h2 class="h2 text-main fw-bold">Structured Service Packages</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">Toggle between Standard and Premium packages. Select a plan to scale up your manufacturing output, maximize equipment lifetime, and eliminate unexpected downtime.</p>
+      </div>
+
+      <!-- Working toggle with Vanilla JS -->
+      <div class="pricing-toggle-container" data-aos="fade-up" data-aos-delay="100">
+        <span class="pricing-toggle-label label-lbl-std active" id="labelStdText">Standard Packages</span>
+        <div class="pricing-toggle-switch" id="pricingToggleSwitch" aria-label="Toggle standard or premium service packages">
+          <div class="pricing-toggle-bg" id="pricingToggleBg"></div>
+          <span class="pricing-toggle-btn-label label-standard">Standard</span>
+          <span class="pricing-toggle-btn-label label-premium">Premium</span>
+        </div>
+        <span class="pricing-toggle-label label-lbl-prem" id="labelPremText">Premium Packages</span>
+      </div>
+
+      <!-- Packages Cards Wrapper -->
+      <div class="row g-4" id="packagesGrid">
+        
+        <!-- ====================================================
+             STANDARD PACKAGE CARDS (Visible by Default)
+             ==================================================== -->
+        
+        <!-- CARD 1: Basic Manufacturing Support -->
+        <div class="col-lg-4 pricing-card-col standard-tier" data-aos="fade-up">
+          <div class="pricing-card">
+            <div>
+              <div class="pricing-card-icon"><i class="fa-solid fa-gears"></i></div>
+              <h3 class="pricing-card-title">Basic Support</h3>
+              <p class="pricing-card-desc">Ideal for small machine shops seeking reliable basic diagnostics, remote troubleshooting, and priority spare parts acquisition pipelines.</p>
+              <div class="pricing-card-price">
+                $4,500 <span>/ Setup</span>
+              </div>
+            </div>
+            <div>
+              <ul class="pricing-card-features">
+                <li><i class="fa-solid fa-circle-check"></i> 150-ton Production Capacity</li>
+                <li><i class="fa-solid fa-circle-check"></i> Business Hours Support (8/5)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Standard Quality Inspection</li>
+                <li><i class="fa-solid fa-circle-xmark text-muted opacity-50"></i> <span class="text-muted opacity-50">Dedicated Engineer On-site</span></li>
+                <li><i class="fa-solid fa-circle-xmark text-muted opacity-50"></i> <span class="text-muted opacity-50">Custom Design blueprints</span></li>
+              </ul>
+              <div class="pricing-card-actions">
+                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
+                  <span>Request Quote</span>
+                </a>
+                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
+                  Compare Package
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Industrial Production Package -->
+        <div class="col-lg-4 pricing-card-col standard-tier" data-aos="fade-up" data-aos-delay="100">
+          <div class="pricing-card">
+            <span class="pricing-badge">Most Popular</span>
+            <div>
+              <div class="pricing-card-icon"><i class="fa-solid fa-industry"></i></div>
+              <h3 class="pricing-card-title">Industrial Production</h3>
+              <p class="pricing-card-desc">Structured for scaling facilities requiring regular performance analysis, certified quality inspections, and on-site preventative tuning blocks.</p>
+              <div class="pricing-card-price">
+                $9,500 <span>/ Setup</span>
+              </div>
+            </div>
+            <div>
+              <ul class="pricing-card-features">
+                <li><i class="fa-solid fa-circle-check"></i> 500-ton Production Capacity</li>
+                <li><i class="fa-solid fa-circle-check"></i> Extended Support Hours (16/6)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Double Quality Inspection Rounds</li>
+                <li><i class="fa-solid fa-circle-check"></i> Shared On-site Field Engineer</li>
+                <li><i class="fa-solid fa-circle-check"></i> CAD Custom Design Tweaks</li>
+              </ul>
+              <div class="pricing-card-actions">
+                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
+                  <span>Request Quote</span>
+                </a>
+                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
+                  Compare Package
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: Maintenance Package -->
+        <div class="col-lg-4 pricing-card-col standard-tier" data-aos="fade-up" data-aos-delay="200">
+          <div class="pricing-card">
+            <div>
+              <div class="pricing-card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              <h3 class="pricing-card-title">Maintenance Package</h3>
+              <p class="pricing-card-desc">Dedicated preventive program for heavy CNC routers, mills, and hydraulic presses to ensure stable performance and minimized operational wear.</p>
+              <div class="pricing-card-price">
+                $6,800 <span>/ Setup</span>
+              </div>
+            </div>
+            <div>
+              <ul class="pricing-card-features">
+                <li><i class="fa-solid fa-circle-check"></i> 300-ton Production Capacity</li>
+                <li><i class="fa-solid fa-circle-check"></i> Business Hours Support (12/5)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Quarterly Preventative Audits</li>
+                <li><i class="fa-solid fa-circle-check"></i> Spindle & Spool Alignment</li>
+                <li><i class="fa-solid fa-circle-xmark text-muted opacity-50"></i> <span class="text-muted opacity-50">Custom Design blueprints</span></li>
+              </ul>
+              <div class="pricing-card-actions">
+                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
+                  <span>Request Quote</span>
+                </a>
+                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
+                  Compare Package
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- ====================================================
+             PREMIUM PACKAGE CARDS (Hidden on Load, visible via toggle)
+             ==================================================== -->
+        
+        <!-- CARD 4: Automation Package -->
+        <div class="col-lg-4 pricing-card-col premium-tier d-none" data-aos="fade-up">
+          <div class="pricing-card">
+            <div>
+              <div class="pricing-card-icon"><i class="fa-solid fa-robot"></i></div>
+              <h3 class="pricing-card-title">Automation Package</h3>
+              <p class="pricing-card-desc">Advanced systems integration. Program robotic arms, deploy PLC networks, configure multi-axis feedback sensors, and establish central SCADA dashboards.</p>
+              <div class="pricing-card-price">
+                $18,000 <span>/ Setup</span>
+              </div>
+            </div>
+            <div>
+              <ul class="pricing-card-features">
+                <li><i class="fa-solid fa-circle-check"></i> 1000-ton Production Capacity</li>
+                <li><i class="fa-solid fa-circle-check"></i> 24/7 Priority Emergency Hotline</li>
+                <li><i class="fa-solid fa-circle-check"></i> Dedicated Automation Engineer</li>
+                <li><i class="fa-solid fa-circle-check"></i> IoT Vibration/Thermal Telemetry</li>
+                <li><i class="fa-solid fa-circle-check"></i> Full PLC Cabinet Design</li>
+              </ul>
+              <div class="pricing-card-actions">
+                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
+                  <span>Request Quote</span>
+                </a>
+                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
+                  Compare Package
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Enterprise Manufacturing -->
+        <div class="col-lg-4 pricing-card-col premium-tier d-none" data-aos="fade-up">
+          <div class="pricing-card">
+            <span class="pricing-badge">Max Value</span>
+            <div>
+              <div class="pricing-card-icon"><i class="fa-solid fa-building-circle-check"></i></div>
+              <h3 class="pricing-card-title">Enterprise Manufacturing</h3>
+              <p class="pricing-card-desc">Vanguard's gold standard. Complete assembly operations management, deep metallurgical quality audits, dedicated on-site teams, and rapid tooling.</p>
+              <div class="pricing-card-price">
+                $29,000 <span>/ Setup</span>
+              </div>
+            </div>
+            <div>
+              <ul class="pricing-card-features">
+                <li><i class="fa-solid fa-circle-check"></i> Unlimited Production Capacity</li>
+                <li><i class="fa-solid fa-circle-check"></i> 24/7/365 On-site Support Staff</li>
+                <li><i class="fa-solid fa-circle-check"></i> 2 Dedicated Resident Engineers</li>
+                <li><i class="fa-solid fa-circle-check"></i> ISO 9001 Metallurgy Audits</li>
+                <li><i class="fa-solid fa-circle-check"></i> Turnkey Smart Factory Overhauls</li>
+              </ul>
+              <div class="pricing-card-actions">
+                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
+                  <span>Request Quote</span>
+                </a>
+                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
+                  Compare Package
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6: Custom Engineering Solution -->
+        <div class="col-lg-4 pricing-card-col premium-tier d-none" data-aos="fade-up">
+          <div class="pricing-card">
+            <div>
+              <div class="pricing-card-icon"><i class="fa-solid fa-microchip"></i></div>
+              <h3 class="pricing-card-title">Custom Engineering</h3>
+              <p class="pricing-card-desc">Fully bespoke project-based plans. Custom mold development, structural finite element calculations, unique alloy forging, and custom-designed conveyor lines.</p>
+              <div class="pricing-card-price">
+                Custom <span>/ Spec</span>
+              </div>
+            </div>
+            <div>
+              <ul class="pricing-card-features">
+                <li><i class="fa-solid fa-circle-check"></i> Custom-tailored Capacity specs</li>
+                <li><i class="fa-solid fa-circle-check"></i> Dedicated Project Manager</li>
+                <li><i class="fa-solid fa-circle-check"></i> R&D Custom Metallurgy Forging</li>
+                <li><i class="fa-solid fa-circle-check"></i> Finite Element Stress Analysis</li>
+                <li><i class="fa-solid fa-circle-check"></i> Rapid Prototype CNC Tooling</li>
+              </ul>
+              <div class="pricing-card-actions">
+                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
+                  <span>Request Quote</span>
+                </a>
+                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
+                  Compare Package
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. ANNUAL MAINTENANCE CONTRACTS (AMC)
+       ======================================================== -->
+  <section class="section-padding bg-main">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Long-term Reliability</span>
+        <h2 class="h2 text-main fw-bold">Annual Maintenance Contracts (AMC)</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">Eliminate operational uncertainty. Our AMCs secure guaranteed response times, structured calibration blocks, safety cert audits, and on-floor cooling buffer checks.</p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- AMC 1: Machine Maintenance -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="amc-card">
+            <div>
+              <div class="amc-header">
+                <div class="amc-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                <h3 class="amc-title">Machine Maintenance</h3>
+              </div>
+              <p class="text-muted small mb-4">Focuses on mechanical spindle calibration, guide rails, tool loaders, and pneumatic vacuum seals. Includes 4 scheduled tune-ups yearly and spindle run-out diagnostics.</p>
+            </div>
+            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
+              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- AMC 2: Electrical Maintenance -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="amc-card">
+            <div>
+              <div class="amc-header">
+                <div class="amc-icon"><i class="fa-solid fa-bolt"></i></div>
+                <h3 class="amc-title">Electrical Maintenance</h3>
+              </div>
+              <p class="text-muted small mb-4">Inspecting high-voltage mainboards, breakers, safety interlocks, and servo motor controllers. Includes thermo-imaging audits to prevent core-cabinet overheating risks.</p>
+            </div>
+            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
+              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- AMC 3: Factory Equipment -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="amc-card">
+            <div>
+              <div class="amc-header">
+                <div class="amc-icon"><i class="fa-solid fa-dumpster-fire"></i></div>
+                <h3 class="amc-title">Factory Equipment</h3>
+              </div>
+              <p class="text-muted small mb-4">Covers heavy ventilation extraction stacks, pressurized hydraulic reservoirs, furnaces, cooling pools, and heavy hoisting rigging assemblies.</p>
+            </div>
+            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
+              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- AMC 4: Industrial Automation -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="amc-card">
+            <div>
+              <div class="amc-header">
+                <div class="amc-icon"><i class="fa-solid fa-microchip"></i></div>
+                <h3 class="amc-title">Industrial Automation</h3>
+              </div>
+              <p class="text-muted small mb-4">Software patches, PLC firmware validation, sensor mesh calibration, industrial ethernet health checks, SCADA database backup, and safety PLC audits.</p>
+            </div>
+            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
+              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- AMC 5: Production Line Maintenance -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="amc-card">
+            <div>
+              <div class="amc-header">
+                <div class="amc-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3 class="amc-title">Production Line</h3>
+              </div>
+              <p class="text-muted small mb-4">End-to-end alignment check on sorting conveyor tables, packaging line speed optimizations, precision weight scales calibration, and robotic lifters synchronization.</p>
+            </div>
+            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
+              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- AMC 6: Emergency Support -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="amc-card">
+            <div>
+              <div class="amc-header">
+                <div class="amc-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                <h3 class="amc-title">Emergency Support</h3>
+              </div>
+              <p class="text-muted small mb-4">Guaranteed 2-hour on-site response window for unexpected critical machine crashes. Includes emergency replacement parts allotment and dedicated on-site logistics coordination.</p>
+            </div>
+            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
+              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       7. FEATURE COMPARISON TABLE
+       ======================================================== -->
+  <section class="section-padding bg-sub blueprint-bg" id="comparisonTable">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Deep Contrast</span>
+        <h2 class="h2 text-main fw-bold">Feature Comparison Table</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">Technical side-by-side analysis of all six manufacturing packages to help your procurement division make an informed investment decision.</p>
+      </div>
+
+      <div class="comparison-table-wrap" data-aos="fade-up" data-aos-delay="100">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature Details</th>
+              <th>Basic Support</th>
+              <th>Industrial Prod.</th>
+              <th>Maintenance</th>
+              <th>Automation</th>
+              <th>Enterprise</th>
+              <th>Custom Eng.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Production Capacity</td>
+              <td>150 Tons</td>
+              <td>500 Tons</td>
+              <td>300 Tons</td>
+              <td>1000 Tons</td>
+              <td>Unlimited</td>
+              <td>Bespoke</td>
+            </tr>
+            <tr>
+              <td>Support Hours</td>
+              <td>8/5 Business</td>
+              <td>16/6 Extended</td>
+              <td>12/5 Extended</td>
+              <td>24/7 Priority</td>
+              <td>24/7/365 Onsite</td>
+              <td>Project-based</td>
+            </tr>
+            <tr>
+              <td>Dedicated Engineer</td>
+              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
+              <td><span class="small fw-semibold text-main">Shared</span></td>
+              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
+              <td><i class="fa-solid fa-circle-check feature-check"></i></td>
+              <td><i class="fa-solid fa-circle-check feature-check"></i> (2 engineers)</td>
+              <td><i class="fa-solid fa-circle-check feature-check"></i> (Project lead)</td>
+            </tr>
+            <tr>
+              <td>Quality Inspection</td>
+              <td>Standard</td>
+              <td>Standard x2</td>
+              <td>Quarterly Audit</td>
+              <td>Advanced Sensor</td>
+              <td>ISO 9001 Metallurgy</td>
+              <td>Forced Tolerance</td>
+            </tr>
+            <tr>
+              <td>Custom Design</td>
+              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
+              <td>Basic adjustments</td>
+              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
+              <td>PLC Schematic</td>
+              <td>Full CAD Blueprint</td>
+              <td>Bespoke Modeling</td>
+            </tr>
+            <tr>
+              <td>Installation Support</td>
+              <td>Remote Only</td>
+              <td>On-site Assistance</td>
+              <td>Calibration Check</td>
+              <td>Turnkey Install</td>
+              <td>Full Commission</td>
+              <td>Bespoke Setup</td>
+            </tr>
+            <tr>
+              <td>Maintenance Frequency</td>
+              <td>Ad-hoc</td>
+              <td>Quarterly</td>
+              <td>Bi-monthly</td>
+              <td>Monthly Audit</td>
+              <td>Continuous</td>
+              <td>Project Phase</td>
+            </tr>
+            <tr>
+              <td>Warranty Period</td>
+              <td>1 Year Limited</td>
+              <td>2 Years Standard</td>
+              <td>1 Year Limited</td>
+              <td>3 Years Premium</td>
+              <td>5 Years Extended</td>
+              <td>Bespoke Spec</td>
+            </tr>
+            <tr>
+              <td>Emergency Support</td>
+              <td>Next Day</td>
+              <td>8-Hour Response</td>
+              <td>12-Hour Response</td>
+              <td>4-Hour Response</td>
+              <td>Instant On-site</td>
+              <td>Next-Day On-site</td>
+            </tr>
+            <tr>
+              <td>Operational Training</td>
+              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
+              <td>1 Session (Basic)</td>
+              <td>1 Session (Safety)</td>
+              <td>3 Sessions (Robotics)</td>
+              <td>Unlimited Coaching</td>
+              <td>Custom Curriculum</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. OUR WORK PROCESS TIMELINE
+       ======================================================== -->
+  <section class="section-padding bg-main" id="workProcessSection">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Execution Pipeline</span>
+        <h2 class="h2 text-main fw-bold">Our Work Process</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">From technical initial blueprint evaluation to deployment verification, here is how we execute and deliver industrial excellence.</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Connecting Line background -->
+        <div class="timeline-line"></div>
+        <div class="timeline-progress" id="timelineProgress"></div>
+
+        <!-- STEP 1: Consultation -->
+        <div class="timeline-item" data-step="1" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">01</div>
+            <h3 class="h5 text-main fw-bold">Consultation</h3>
+            <p class="text-muted small mb-0">Initial meeting to discuss structural targets, plant parameters, material properties, and operational output needs.</p>
+          </div>
+        </div>
+
+        <!-- STEP 2: Requirement Analysis -->
+        <div class="timeline-item" data-step="2" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">02</div>
+            <h3 class="h5 text-main fw-bold">Requirement Analysis</h3>
+            <p class="text-muted small mb-0">Our senior engineering teams analyze metallurgical stress loads, existing factory spacing, and current PLC systems.</p>
+          </div>
+        </div>
+
+        <!-- STEP 3: Planning -->
+        <div class="timeline-item" data-step="3" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">03</div>
+            <h3 class="h5 text-main fw-bold">Planning</h3>
+            <p class="text-muted small mb-0">Drafting strict production schedules, logistics manifests, raw alloy procurement plans, and resource allocations.</p>
+          </div>
+        </div>
+
+        <!-- STEP 4: Engineering -->
+        <div class="timeline-item" data-step="4" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">04</div>
+            <h3 class="h5 text-main fw-bold">Engineering</h3>
+            <p class="text-muted small mb-0">Generative 3D CAD modeling, finite element analysis (FEA), PLC cabinet wiring design, and custom mold parameters drafting.</p>
+          </div>
+        </div>
+
+        <!-- STEP 5: Manufacturing -->
+        <div class="timeline-item" data-step="5" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">05</div>
+            <h3 class="h5 text-main fw-bold">Manufacturing</h3>
+            <p class="text-muted small mb-0">Casting, high-precision multi-axis CNC machining, structural welding, control console assembly, and wiring checks.</p>
+          </div>
+        </div>
+
+        <!-- STEP 6: Installation -->
+        <div class="timeline-item" data-step="6" data-aos="fade-left">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">06</div>
+            <h3 class="h5 text-main fw-bold">Installation</h3>
+            <p class="text-muted small mb-0">On-site equipment positioning, high-voltage panel hookups, sensor diagnostics synchronization, and simulator trial runs.</p>
+          </div>
+        </div>
+
+        <!-- STEP 7: Support -->
+        <div class="timeline-item" data-step="7" data-aos="fade-right">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content-card">
+            <div class="timeline-step-num">07</div>
+            <h3 class="h5 text-main fw-bold">Continuous Support</h3>
+            <p class="text-muted small mb-0">Scheduled safety audits, spare tool supply pipelines, continuous technical coaching, and responsive emergency diagnostics.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. WHY INVEST WITH US FEATURE CARDS
+       ======================================================== -->
+  <section class="section-padding bg-sub blueprint-bg">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Vanguard Shield</span>
+        <h2 class="h2 text-main fw-bold">Why Invest With Us</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">Deploying capital into industrial infrastructure requires complete risk mitigation. Here is why global leaders choose Vanguard Group.</p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- CARD 1: Certified Engineers -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="invest-card">
+            <div class="invest-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 class="h5 text-main fw-bold mb-3">Certified Engineers</h3>
+            <p class="text-muted small mb-0">All our field engineers hold ASME, AWS, and ISO 9001 individual certifications and undergo rigorous bi-annual safety audits at our Houston simulation hubs.</p>
+          </div>
+        </div>
+
+        <!-- CARD 2: Latest Technology -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="invest-card">
+            <div class="invest-icon-box"><i class="fa-solid fa-microchip"></i></div>
+            <h3 class="h5 text-main fw-bold mb-3">Latest Technology</h3>
+            <p class="text-muted small mb-0">We operate state-of-the-art 5-axis Mazak milling centers, high-capacity vacuum forging furnaces, and advanced Fanuc automated controllers.</p>
+          </div>
+        </div>
+
+        <!-- CARD 3: Quality Assurance -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="invest-card">
+            <div class="invest-icon-box"><i class="fa-solid fa-microscope"></i></div>
+            <h3 class="h5 text-main fw-bold mb-3">Quality Assurance</h3>
+            <p class="text-muted small mb-0">With coordinate measuring machines (CMM) and non-destructive ultrasonic testing, we verify metallurgical tolerances down to 5 micrometers.</p>
+          </div>
+        </div>
+
+        <!-- CARD 4: Fast Delivery -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="invest-card">
+            <div class="invest-icon-box"><i class="fa-solid fa-truck-ramp-box"></i></div>
+            <h3 class="h5 text-main fw-bold mb-3">Fast Delivery</h3>
+            <p class="text-muted small mb-0">With dual logistics and fabrication centers in Pasadena and Houston, we coordinate efficient container routing to guarantee strict deadline compliance.</p>
+          </div>
+        </div>
+
+        <!-- CARD 5: Long-Term Support -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="invest-card">
+            <div class="invest-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h3 class="h5 text-main fw-bold mb-3">Long-Term Support</h3>
+            <p class="text-muted small mb-0">We stand by our work for decades. Vanguard provides custom tooling, on-demand spare parts manufacturing, and decades-long archiving for all blueprint files.</p>
+          </div>
+        </div>
+
+        <!-- CARD 6: Global Standards -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="invest-card">
+            <div class="invest-icon-box"><i class="fa-solid fa-globe"></i></div>
+            <h3 class="h5 text-main fw-bold mb-3">Global Standards</h3>
+            <p class="text-muted small mb-0">Vanguard operates in strict accordance with OSHA, ANSI, CE, and DIN guidelines, guaranteeing seamless certification loops for international setups.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. CLIENT SUCCESS NUMBERS
+       ======================================================== -->
+  <section class="section-padding bg-main" id="statsSection">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Vanguard Reach</span>
+        <h2 class="h2 text-main fw-bold">Global Achievements</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">Our performance metrics indicate structured engineering commitment, high operational capacity, and exceptional industrial scale.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Stat 1: Projects -->
+        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in">
+          <div class="stats-block">
+            <div class="stat-icon"><i class="fa-solid fa-folder-closed"></i></div>
+            <div class="stat-number" data-target="1850+">0</div>
+            <span class="text-muted small fw-bold">Projects Complete</span>
+          </div>
+        </div>
+
+        <!-- Stat 2: Clients -->
+        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="stats-block">
+            <div class="stat-icon"><i class="fa-solid fa-building-user"></i></div>
+            <div class="stat-number" data-target="640+">0</div>
+            <span class="text-muted small fw-bold">Global Clients</span>
+          </div>
+        </div>
+
+        <!-- Stat 3: Factories -->
+        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="stats-block">
+            <div class="stat-icon"><i class="fa-solid fa-industry"></i></div>
+            <div class="stat-number" data-target="180+">0</div>
+            <span class="text-muted small fw-bold">Smart Factories</span>
+          </div>
+        </div>
+
+        <!-- Stat 4: Countries -->
+        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="stats-block">
+            <div class="stat-icon"><i class="fa-solid fa-earth-americas"></i></div>
+            <div class="stat-number" data-target="42">0</div>
+            <span class="text-muted small fw-bold">Countries Active</span>
+          </div>
+        </div>
+
+        <!-- Stat 5: Engineers -->
+        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="stats-block">
+            <div class="stat-icon"><i class="fa-solid fa-user-gear"></i></div>
+            <div class="stat-number" data-target="350+">0</div>
+            <span class="text-muted small fw-bold">On-Floor Engineers</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       11. FAQ ACCORDION
+       ======================================================== -->
+  <section class="section-padding bg-sub blueprint-bg">
+    <div class="container">
+      
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">FAQ</span>
+        <h2 class="h2 text-main fw-bold">Pricing-Related Inquiries</h2>
+        <p class="text-muted max-w-2xl mx-auto mt-2">Answers to the most common inquiries regarding our service plans, annual maintenance structures, and payment terms.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion pricing-faq-accordion" id="faqPricingAccordion">
+            
+            <!-- Item 1 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Can we transition between standard and premium plans?
+                </button>
+              </h3>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqPricingAccordion">
+                <div class="accordion-body">
+                  Yes, absolutely. You can upgrade or adjust your current service parameters at any point. Our engineering logistics manager will conduct a brief on-site visit to inspect the active line configuration and smoothly update the service boundaries without halting active production.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  What is included in the standard AMC package?
+                </button>
+              </h3>
+              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
+                <div class="accordion-body">
+                  Our standard Annual Maintenance Contracts include 4 scheduled full-facility tune-up blocks (spindle alignment, lubrication pressure testing, safety circuit checkups), emergency troubleshooting support with next-day diagnostic response, and continuous digital archiving of all custom blueprint revisions.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  How are custom engineering quotes calculated?
+                </button>
+              </h3>
+              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
+                <div class="accordion-body">
+                  Custom engineering projects are analyzed by a specialized Vanguard estimator. We base the quote directly on finite element calculation complexity, mold tooling requirements, alloy grades selected (e.g. specialized titanium or high-stress steel), on-site installation difficulty, and hours needed for specialized programmers.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Do you provide emergency troubleshooting for non-Vanguard equipment?
+                </button>
+              </h3>
+              <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
+                <div class="accordion-body">
+                  Yes, under our Enterprise and Custom Engineering packages, our engineers are fully authorized and trained to troubleshoot, repair, and calibrate third-party manufacturing systems, PLC cabinets, and CNC mills, provided we perform an initial safety audit and system documentation map.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  What are the standard billing and payment terms?
+                </button>
+              </h3>
+              <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
+                <div class="accordion-body">
+                  Service plans and set-ups are invoiced upon successful commissioning. For ongoing AMCs, we support flexible quarterly or bi-annual billing plans. Custom project components are structured with standard 30-40-30 payment milestones (initial planning, production start, and final commissioning sign-off).
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       12. REQUEST CUSTOM QUOTE CTA BANNER
+       ======================================================== -->
+  <section class="section-padding bg-main text-center">
+    <div class="container">
+      <div class="blueprint-border-box p-5 max-w-5xl mx-auto" data-aos="zoom-in">
+        <span class="text-primary text-uppercase fw-bold letter-spacing-1 d-block mb-3">Custom Configuration</span>
+        <h2 class="h1 text-main fw-bold mb-3">Ready For A Tailor-Made Engineering Plan?</h2>
+        <p class="text-muted max-w-3xl mx-auto mb-4">
+          If our standard packages don't fully fit your exact operational parameters, contact our senior consulting board. We will design a custom manufacturing SLA tailored to your strict requirements.
+        </p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple py-3 px-4">
+            <span>Request Bespoke Quote</span>
+            <i class="fa-solid fa-paper-plane"></i>
+          </a>
+          <a href="tel:+18005550199" class="btn btn-outline-secondary py-3 px-4 border-secondary text-main" style="border-radius: 6px; font-weight: 600;">
+            <i class="fa-solid fa-phone me-2"></i> Speak With Estimator
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       13. GLOBAL FOOTER
+       ======================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="col-lg-4">
+          <a class="brand-logo mb-3 d-inline-block" href="index.html">
+            <i class="fa-solid fa-gears text-primary"></i>
+            VANGUARD<span>.</span>
+          </a>
+          <p class="footer-desc">
+            Vanguard Group is a premier international manufacturing and engineering heavy-machinery provider. We configure multi-axis robotic systems, metallurgy components, and infrastructure assemblies.
+          </p>
+          <div class="footer-social-icons d-flex gap-3 mt-4">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">News</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Main Solutions -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Multi-Axis CNC Milling</a></li>
+            <li><a href="service-details.html">Robotic Assembly Design</a></li>
+            <li><a href="service-details.html">Aerospace Alloys Metallurgy</a></li>
+            <li><a href="service-details.html">Structural Fabrications</a></li>
+            <li><a href="service-details.html">High-throughput Diagnostics</a></li>
+            <li><a href="service-details.html">Custom Mold Prototyping</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Newsletter -->
+        <div class="col-lg-4">
+          <h4 class="footer-widget-title">Corporate Office</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot footer-contact-icon"></i>
+            <div class="footer-contact-text">
+              <span>Main Facility HQ</span>
+              7850 Industrial Blvd, Suite 240, Houston, TX 77001
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope footer-contact-icon"></i>
+            <div class="footer-contact-text">
+              <span>Direct Inquiries</span>
+              contact@vanguard-industry.com
+            </div>
+          </div>
+
+          <h4 class="footer-widget-title mt-4">Industry Bulletin</h4>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Vanguard Bulletins!');">
+            <input type="email" class="footer-newsletter-input" placeholder="Your corporate email..." required aria-label="Newsletter email">
+            <button class="footer-newsletter-btn" type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            &copy; 2026 Vanguard Group Inc. All rights reserved. Managed under global standard compliance operations.
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-bottom-links">
+              <li><a href="about.html">FAQ</a></li>
+              <li><a href="about.html">Corporate Rates</a></li>
+              <li><a href="about.html">Privacy Covenant</a></li>
+              <li><a href="contact.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       14. BACK TO TOP BUTTON
+       ======================================================== -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </button>
+
+  <!-- ========================================================
+       15. THIRD PARTY LIBRARIES & INTEGRATED JS
+       ======================================================== -->
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- AOS Scroll Animations JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom JS Operations -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Initialize Animations & Custom Interactive JS effects -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 50
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initPricingToggle();
+      initIllustrationParallax();
+      initTimelineProgressAnimation();
+      initButtonRipple();
+    });
+
+    // Working Switcher Toggle Functionality
+    function initPricingToggle() {
+      const toggleSwitch = document.getElementById('pricingToggleSwitch');
+      const labelStdText = document.getElementById('labelStdText');
+      const labelPremText = document.getElementById('labelPremText');
+      const standardCards = document.querySelectorAll('.standard-tier');
+      const premiumCards = document.querySelectorAll('.premium-tier');
+
+      if (!toggleSwitch) return;
+
+      const performToggle = () => {
+        const isPremiumActive = toggleSwitch.classList.toggle('premium-active');
+        
+        if (isPremiumActive) {
+          labelStdText.classList.remove('active');
+          labelPremText.classList.add('active');
+
+          // Switch Cards with smooth animation
+          standardCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(15px)';
+            setTimeout(() => {
+              card.classList.add('d-none');
+            }, 300);
+          });
+
+          setTimeout(() => {
+            premiumCards.forEach(card => {
+              card.classList.remove('d-none');
+              // Trigger reflow
+              void card.offsetWidth;
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          }, 310);
+
+        } else {
+          labelPremText.classList.remove('active');
+          labelStdText.classList.add('active');
+
+          // Switch Cards with smooth animation
+          premiumCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(15px)';
+            setTimeout(() => {
+              card.classList.add('d-none');
+            }, 300);
+          });
+
+          setTimeout(() => {
+            standardCards.forEach(card => {
+              card.classList.remove('d-none');
+              // Trigger reflow
+              void card.offsetWidth;
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            });
+          }, 310);
+        }
+      };
+
+      toggleSwitch.addEventListener('click', performToggle);
+      labelStdText.addEventListener('click', () => {
+        if (toggleSwitch.classList.contains('premium-active')) {
+          performToggle();
+        }
+      });
+      labelPremText.addEventListener('click', () => {
+        if (!toggleSwitch.classList.contains('premium-active')) {
+          performToggle();
+        }
+      });
+    }
+
+    // Interactive mouse movement parallax effect on illustration
+    function initIllustrationParallax() {
+      const container = document.getElementById('illustrationParallax');
+      if (!container) return;
+      const img = container.querySelector('.illustration-parallax-img');
+      if (!img) return;
+
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x position within element
+        const y = e.clientY - rect.top;  // y position within element
+
+        // Calculate offset percentages
+        const pctX = (x / rect.width) - 0.5; // -0.5 to 0.5
+        const pctY = (y / rect.height) - 0.5;
+
+        // Apply translation
+        const moveX = pctX * 20; // max 10px shift
+        const moveY = pctY * 15; // max 7.5px shift
+
+        img.style.transform = `scale(1.05) translate3d(${moveX}px, ${moveY}px, 0)`;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1) translate3d(0, 0, 0)';
+      });
+    }
+
+    // Work Process Timeline line animation on scroll
+    function initTimelineProgressAnimation() {
+      const timelineSection = document.getElementById('workProcessSection');
+      const progressLine = document.getElementById('timelineProgress');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      if (!timelineSection || !progressLine || timelineItems.length === 0) return;
+
+      const handleScroll = () => {
+        const rect = timelineSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        // Calculate progress line percentage based on scroll entry
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+          const totalDist = timelineSection.offsetHeight + viewportHeight;
+          const currentProgress = viewportHeight - rect.top;
+          let pct = (currentProgress / totalDist) * 1.5; // Acceleration factor
+          pct = Math.max(0, Math.min(1, pct));
+          progressLine.style.height = (pct * 100) + '%';
+
+          // Activate timeline dots/cards sequentially based on scrolled position
+          timelineItems.forEach(item => {
+            const itemRect = item.getBoundingClientRect();
+            if (itemRect.top < viewportHeight * 0.75) {
+              item.classList.add('active');
+            } else {
+              item.classList.remove('active');
+            }
+          });
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Trigger initial check
+    }
+
+    // Button Click Ripple Effect for extra premium micro-interactions
+    function initButtonRipple() {
+      const rippleBtns = document.querySelectorAll('.btn-ripple');
+      rippleBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const circle = document.createElement('span');
+          circle.classList.add('ripple-effect');
+          circle.style.left = x + 'px';
+          circle.style.top = y + 'px';
+
+          // Remove existing ripples if any
+          const existingRipple = btn.querySelector('.ripple-effect');
+          if (existingRipple) {
+            existingRipple.remove();
+          }
+
+          btn.appendChild(circle);
+
+          setTimeout(() => {
+            circle.remove();
+          }, 600);
+        });
+      });
+    }
+
+    // Compare Package button smooth anchor scroll
+    document.querySelectorAll('a[href^="#comparisonTable"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.getElementById('comparisonTable');
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

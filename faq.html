@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vanguard - Help & Frequently Asked Questions (FAQ)</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Access Vanguard's comprehensive Help Center and FAQs. Find technical answers regarding heavy manufacturing, industrial engineering, automated systems, metallurgy, and safety compliance.">
+  <meta name="keywords" content="vanguard help, manufacturing faq, heavy engineering support, industrial automation inquiries, precision metallurgy help">
+  <meta name="author" content="Vanguard Group">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+  <!-- AOS Scroll Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom Style CSS -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* ========================================================
+       FAQ PORTAL CUSTOM PREMIUM STYLES
+       ======================================================== */
+    :root {
+      --widget-bg: var(--color-bg-card);
+      --widget-border: var(--color-border);
+      --widget-shadow: var(--shadow-lg);
+    }
+
+    /* Category Card Enhancements */
+    .category-card {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      transition: var(--transition-smooth);
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+    }
+    .category-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 4px;
+      background-color: var(--color-primary);
+      transition: var(--transition-smooth);
+    }
+    .category-card:hover, .category-card.active {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(var(--color-primary-rgb), 0.3);
+    }
+    .category-card:hover::after, .category-card.active::after {
+      width: 100%;
+    }
+    .category-card.active {
+      background-color: var(--color-bg-accent);
+    }
+    .category-card .icon-wrap {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      background-color: rgba(var(--color-primary-rgb), 0.08);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+    .category-card:hover .icon-wrap, .category-card.active .icon-wrap {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      transform: rotate(10deg);
+    }
+
+    /* Accordion Custom Styling */
+    .faq-accordion .accordion-item {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      margin-bottom: 1rem;
+      border-radius: 12px !important;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+    .faq-accordion .accordion-item:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(var(--color-primary-rgb), 0.2);
+    }
+    .faq-accordion .accordion-button {
+      background-color: var(--color-bg-card);
+      color: var(--color-text-main);
+      font-family: var(--font-display);
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      border: none;
+      box-shadow: none;
+      transition: var(--transition-smooth);
+    }
+    .faq-accordion .accordion-button:not(.collapsed) {
+      background-color: var(--color-bg-accent);
+      color: var(--color-primary);
+    }
+    .faq-accordion .accordion-button::after {
+      font-family: "Font Awesome 6 Free";
+      content: "\f078";
+      font-weight: 900;
+      background-image: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      transition: var(--transition-smooth);
+    }
+    .faq-accordion .accordion-button:not(.collapsed)::after {
+      transform: rotate(180deg);
+      color: var(--color-primary);
+    }
+    .faq-accordion .accordion-body {
+      background-color: var(--color-bg-card);
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    /* Search Bar Design */
+    .faq-search-wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .faq-search-input {
+      background-color: var(--color-bg-card);
+      color: var(--color-text-main);
+      border: 2px solid var(--color-border);
+      border-radius: 40px;
+      padding: 1.1rem 1.5rem 1.1rem 3.5rem;
+      font-size: 1.1rem;
+      width: 100%;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+    }
+    .faq-search-input:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-md);
+    }
+    .faq-search-icon {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+      font-size: 1.2rem;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+    .faq-search-input:focus + .faq-search-icon {
+      color: var(--color-primary);
+    }
+    .faq-search-clear {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      display: none;
+      transition: var(--transition-smooth);
+    }
+    .faq-search-clear:hover {
+      color: var(--color-primary);
+    }
+
+    /* Quick Support Cards */
+    .support-card {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 2.2rem 1.8rem;
+      text-align: center;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .support-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(var(--color-primary-rgb), 0.2);
+    }
+    .support-icon {
+      font-size: 2.2rem;
+      color: var(--color-primary);
+      margin-bottom: 1.2rem;
+      transition: var(--transition-smooth);
+    }
+    .support-card:hover .support-icon {
+      transform: scale(1.1) translateY(-3px);
+    }
+    .support-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .support-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    /* Download Card Design */
+    .download-card {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+    .download-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(var(--color-primary-rgb), 0.25);
+    }
+    .download-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background-color: rgba(var(--color-primary-rgb), 0.08);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-right: 1.2rem;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+    .download-card:hover .download-icon {
+      background-color: var(--color-primary);
+      color: #ffffff;
+    }
+    .download-details {
+      flex-grow: 1;
+    }
+    .download-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .download-meta {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+    .download-action-btn {
+      color: var(--color-text-muted);
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      border-radius: 50%;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-smooth);
+    }
+    .download-card:hover .download-action-btn {
+      color: var(--color-primary);
+      background-color: rgba(var(--color-primary-rgb), 0.05);
+    }
+
+    /* Illustration Interactive Parallax Container */
+    .interactive-illustration-container {
+      position: relative;
+      perspective: 1000px;
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .interactive-illustration {
+      width: 100%;
+      max-width: 420px;
+      height: 100%;
+      background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.1) 0%, rgba(255,255,255,0) 70%);
+      position: relative;
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-bg-card);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out;
+    }
+    .ill-gear-1 {
+      position: absolute;
+      top: 20%;
+      left: 25%;
+      font-size: 6rem;
+      color: rgba(var(--color-primary-rgb), 0.15);
+      animation: rotateGear 12s linear infinite;
+    }
+    .ill-gear-2 {
+      position: absolute;
+      top: 40%;
+      left: 55%;
+      font-size: 4rem;
+      color: rgba(var(--color-primary-rgb), 0.08);
+      animation: rotateGearRev 8s linear infinite;
+    }
+    .ill-gear-3 {
+      position: absolute;
+      top: 55%;
+      left: 15%;
+      font-size: 3rem;
+      color: rgba(var(--color-primary-rgb), 0.12);
+      animation: rotateGear 6s linear infinite;
+    }
+    .ill-badge {
+      position: absolute;
+      background-color: var(--color-bg-sub);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      box-shadow: var(--shadow-md);
+      transform: translateZ(30px);
+      transition: var(--transition-smooth);
+    }
+    .ill-badge-1 {
+      top: 15%;
+      right: 10%;
+    }
+    .ill-badge-2 {
+      bottom: 15%;
+      left: 10%;
+    }
+    .ill-center-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) translateZ(50px);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      box-shadow: 0 10px 25px rgba(var(--color-primary-rgb), 0.4);
+      animation: floatCenter 4s ease-in-out infinite;
+    }
+
+    @keyframes rotateGear {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes rotateGearRev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    @keyframes floatCenter {
+      0%, 100% { transform: translate(-50%, -50%) translateZ(50px) translateY(0); }
+      50% { transform: translate(-50%, -50%) translateZ(50px) translateY(-10px); }
+    }
+
+    /* Sticky Desktop Support Widget */
+    .sticky-support-widget {
+      position: fixed;
+      right: -100px;
+      bottom: 110px;
+      z-index: 1040;
+      width: 70px;
+      border-radius: 35px;
+      background-color: var(--color-secondary);
+      box-shadow: var(--shadow-lg);
+      padding: 0.8rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      pointer-events: none;
+    }
+    .sticky-support-widget.visible {
+      right: 25px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .widget-item {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+    .widget-item:hover {
+      background-color: var(--color-primary);
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+    .widget-tooltip {
+      position: absolute;
+      right: 65px;
+      background-color: var(--color-secondary);
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: var(--transition-smooth);
+      pointer-events: none;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .widget-item:hover .widget-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Theme adaptive overrides for widget */
+    [data-theme="dark"] .sticky-support-widget {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+    }
+    [data-theme="dark"] .widget-tooltip {
+      background-color: var(--color-bg-sub);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Accordion Category Filtering Section Display */
+    .faq-category-section {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .faq-category-section.filtered-out {
+      display: none !important;
+    }
+
+    /* Highlighting Search Match */
+    .faq-highlight {
+      background-color: rgba(var(--color-primary-rgb), 0.18);
+      color: var(--color-text-main);
+      padding: 0 0.15rem;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP INFO BAR
+       ======================================================== -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info d-flex gap-4">
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+18005550199">+1 (800) 555-0199</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:info@vanguard-industry.com">info@vanguard-industry.com</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-clock"></i>
+          Mon - Fri: 08:00 AM - 06:00 PM
+        </span>
+      </div>
+      <div class="topbar-socials d-flex gap-3 align-items-center">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <span class="ms-3 border-start ps-3 border-secondary d-inline-flex align-items-center gap-2 text-white-50">
+          <i class="fa-solid fa-earth-americas text-primary"></i>
+          HQ: Houston, TX
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. STICKY HEADER & NAVBAR
+       ======================================================== -->
+  <header class="header-wrap" id="mainHeader">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <!-- Logo -->
+        <a class="brand-logo" id="headerLogo" href="index.html">
+          <i class="fa-solid fa-gears text-primary"></i>
+          VANGUARD<span>.</span>
+        </a>
+        
+        <!-- Controls (Toggle + Night Mode on Mobile / Tablet) -->
+        <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+          <button class="theme-toggle-btn" id="themeToggleMobile" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <!-- Navbar Menu links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Mobile Secondary CTA -->
+          <div class="d-md-none mt-2 mb-3 px-3">
+            <a class="btn-custom btn-custom-outline border-secondary w-100 justify-content-center" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          
+          <!-- Actions -->
+          <div class="d-flex align-items-center gap-3">
+            <button class="theme-toggle-btn d-none d-xl-flex" id="themeToggle" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <a class="btn-custom btn-custom-outline border-secondary d-none d-md-inline-flex" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+            <a class="btn-custom btn-custom-primary" href="request-quote.html">
+              <span>Get A Quote</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       3. PAGE BANNER (HERO)
+       ======================================================== -->
+  <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop');">
+    <div class="page-banner-overlay"></div>
+    <div class="container text-center text-md-start">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <h1 class="page-banner-title" data-aos="fade-up">Help Center & FAQ</h1>
+          <ul class="page-breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="fa-solid fa-chevron-right text-white-50 small"></i></li>
+            <li class="active">FAQ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. HELP CENTER INTRODUCTION
+       ======================================================== -->
+  <section class="section-padding" id="helpIntro">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <!-- Text & Intro side -->
+        <div class="col-lg-6" data-aos="fade-right">
+          <span class="section-subtitle">Vanguard Knowledge Base</span>
+          <h2 class="section-title">Industrial Solutions & Professional Support Hub</h2>
+          <p class="lead mb-4 text-muted">Empowering partners with real-time technical documentation, system answers, and engineering specifications. Our gold-standard compliance guidelines are accessible 24/7.</p>
+          <p class="mb-4 text-muted">Browse comprehensive explanations covering multi-axis CNC milling, complex robotic automation integration, custom structural alloy metallurgy, safety certifications, and global pricing structures. If you can't find what you need, our direct hotlines are fully active.</p>
+          
+          <div class="d-flex flex-wrap gap-3 pt-2">
+            <a href="contact.html" class="btn-custom btn-custom-primary">
+              <span>Contact Support Desk</span>
+              <i class="fa-solid fa-headset ms-2"></i>
+            </a>
+            <button onclick="downloadMockFile('vanguard-company-profile.pdf', 'Vanguard Heavy Industrial Engineering Company Profile. Standard corporate overview & factory capabilities sheet 2026.')" class="btn-custom btn-custom-secondary border border-secondary text-main bg-transparent">
+              <span>Download Company Profile</span>
+              <i class="fa-solid fa-file-arrow-down ms-2 text-primary"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Illustration side -->
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="interactive-illustration-container">
+            <div class="interactive-illustration" id="heroIllustration">
+              <div class="ill-gear-1"><i class="fa-solid fa-gear"></i></div>
+              <div class="ill-gear-2"><i class="fa-solid fa-gears"></i></div>
+              <div class="ill-gear-3"><i class="fa-solid fa-gear"></i></div>
+              
+              <div class="ill-badge ill-badge-1 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-success"></i>
+                <div class="text-start">
+                  <div class="fw-bold small">TRIR 0.15</div>
+                  <div class="text-muted" style="font-size: 0.7rem;">Safety Standard</div>
+                </div>
+              </div>
+              
+              <div class="ill-center-icon">
+                <i class="fa-solid fa-microchip"></i>
+              </div>
+              
+              <div class="ill-badge ill-badge-2 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-bolt text-warning"></i>
+                <div class="text-start">
+                  <div class="fw-bold small">Industry 4.0</div>
+                  <div class="text-muted" style="font-size: 0.7rem;">Smart Factory</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. SEARCH FAQ
+       ======================================================== -->
+  <section class="section-padding bg-sub border-top border-bottom" id="searchFaqSection">
+    <div class="container text-center">
+      <span class="section-subtitle">Instant Query Resolution</span>
+      <h2 class="section-title mb-4">Search Our Knowledge Base</h2>
+      <p class="text-muted max-w-7xl mx-auto mb-5" style="max-width: 600px;">Type keywords or questions below to instantly filter matching heavy manufacturing procedures, pricing details, safety covenants, and operational guides.</p>
+      
+      <div class="faq-search-wrapper" data-aos="fade-up">
+        <input type="text" id="faqSearchInput" class="faq-search-input" placeholder="Search by keywords (e.g. 'metallurgy', 'pricing', 'safety', 'SLA')..." aria-label="Search FAQs">
+        <i class="fa-solid fa-magnifying-glass faq-search-icon"></i>
+        <button id="faqSearchClear" class="faq-search-clear" aria-label="Clear Search"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      
+      <!-- No search results placeholder -->
+      <div id="noResultsMessage" class="mt-5 py-4 d-none" data-aos="fade-up">
+        <div class="fs-1 text-muted mb-3"><i class="fa-regular fa-folder-open"></i></div>
+        <h4>No Matching FAQ Items Found</h4>
+        <p class="text-muted small">Try refining your search term or select one of the categories below.</p>
+        <button onclick="resetSearch()" class="btn-custom btn-custom-outline btn-sm py-2 px-4 border border-secondary text-main mt-2">Reset Filter</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. FAQ CATEGORIES
+       ======================================================== -->
+  <section class="section-padding" id="categoriesSection">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-subtitle">Structured Solutions</span>
+        <h2 class="section-title">Browse By Department</h2>
+        <p class="text-muted mx-auto" style="max-width: 650px;">Select a specific industrial division to jump directly to related compliance regulations, system guides, and operational details.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Category All -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up">
+          <div class="category-card active p-4 text-center d-flex flex-column align-items-center" data-category="all">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-cubes"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">All Categories</h3>
+          </div>
+        </div>
+        <!-- Category General -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="general">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-industry"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">General</h3>
+          </div>
+        </div>
+        <!-- Category Manufacturing -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="manufacturing">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Manufacturing</h3>
+          </div>
+        </div>
+        <!-- Category Engineering -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="engineering">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-compass-drafting"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Engineering</h3>
+          </div>
+        </div>
+        <!-- Category Automation -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="automation">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Automation</h3>
+          </div>
+        </div>
+        <!-- Category Projects -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="250">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="projects">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-folder-open"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Projects</h3>
+          </div>
+        </div>
+        <!-- Category Pricing -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="pricing">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-receipt"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Pricing</h3>
+          </div>
+        </div>
+        <!-- Category Maintenance -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="350">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="maintenance">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-oil-can"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Maintenance</h3>
+          </div>
+        </div>
+        <!-- Category Quality Control -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="quality-control">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Quality Control</h3>
+          </div>
+        </div>
+        <!-- Category Safety -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4" data-aos="fade-up" data-aos-delay="450">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center" data-category="safety">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-hard-hat"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Safety</h3>
+          </div>
+        </div>
+        <!-- Category Support -->
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2-4 d-none d-sm-flex" data-aos="fade-up" data-aos-delay="500">
+          <div class="category-card p-4 text-center d-flex flex-column align-items-center w-100" data-category="support">
+            <div class="icon-wrap mb-3">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="h6 fw-bold mb-0">Support</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom layout utility class for col-lg-2-4 grids (approx 20% on desktop) -->
+  <style>
+    @media (min-width: 992px) {
+      .col-lg-2-4 {
+        flex: 0 0 20%;
+        max-width: 20%;
+      }
+    }
+  </style>
+
+  <!-- ========================================================
+       7. FREQUENTLY ASKED QUESTIONS (40 Real FAQs)
+       ======================================================== -->
+  <section class="section-padding bg-sub border-top" id="faqAccordionSection">
+    <div class="container" style="max-width: 1000px;">
+      
+      <!-- Accordion Groups for each of the 10 Categories -->
+
+      <!-- 1. GENERAL -->
+      <div class="faq-category-section mb-5" data-section-category="general" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">1. General Inquiries</h3>
+        <div class="accordion faq-accordion" id="accordionGeneral">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#gen-q1" aria-expanded="true" aria-controls="gen-q1">
+                What is Vanguard's primary core operation?
+              </button>
+            </h4>
+            <div id="gen-q1" class="accordion-collapse collapse show" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body">
+                Vanguard is a globally certified heavy manufacturing, metallurgy fabrication, and automated robotics systems engineering group. We design, prototype, and build gold-standard mechanical components, automated systems, and structural modules for industrial enterprises worldwide.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen-q2" aria-expanded="false" aria-controls="gen-q2">
+                Where is Vanguard's global headquarters located?
+              </button>
+            </h4>
+            <div id="gen-q2" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body">
+                Our global corporate headquarters, research labs, and main high-throughput manufacturing facility are located at <strong>7850 Industrial Blvd, Suite 240, Houston, TX 77001</strong>. We also operate regional support offices and logistics depots throughout North America, Europe, and Asia.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen-q3" aria-expanded="false" aria-controls="gen-q3">
+                How long has Vanguard been in business?
+              </button>
+            </h4>
+            <div id="gen-q3" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body">
+                Vanguard Group Inc. was established in 1988, representing over 38 years of heavy manufacturing excellence, metallurgical innovation, and smart automation systems design. We have managed over 4,500 enterprise projects successfully.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#gen-q4" aria-expanded="false" aria-controls="gen-q4">
+                Is Vanguard publicly traded or privately held?
+              </button>
+            </h4>
+            <div id="gen-q4" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body">
+                Vanguard operates as a privately held group. This structure allows us to maintain a rigorous, long-term focus on exceptional quality controls, dedicated capital investments in modern machining facilities, and custom partnership covenants with our clients, completely free from quarterly public stock market noise.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2. MANUFACTURING -->
+      <div class="faq-category-section mb-5" data-section-category="manufacturing" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">2. Manufacturing Procedures</h3>
+        <div class="accordion faq-accordion" id="accordionManufacturing">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mfg-q1" aria-expanded="false" aria-controls="mfg-q1">
+                What CNC machining capacities does Vanguard possess?
+              </button>
+            </h4>
+            <div id="mfg-q1" class="accordion-collapse collapse" data-bs-parent="#accordionManufacturing">
+              <div class="accordion-body">
+                We operate state-of-the-art multi-axis (including 5-axis and 9-axis) CNC milling and turning machinery. Our high-precision machining systems can comfortably hold micro-tolerances up to ±0.005mm (0.0002 inches) on complex geometries for components up to 4.5 meters in total length.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mfg-q2" aria-expanded="false" aria-controls="mfg-q2">
+                Can Vanguard handle custom heavy fabrication on demand?
+              </button>
+            </h4>
+            <div id="mfg-q2" class="accordion-collapse collapse" data-bs-parent="#accordionManufacturing">
+              <div class="accordion-body">
+                Yes. We operate extensive heavy structural fabrication bays equipped with overhead heavy gantry cranes capable of coordinated single-lifts up to 120 metric tons. Our robotic welding structures and metallurgy certified teams can execute heavy fabrications matching extreme stress ratings.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mfg-q3" aria-expanded="false" aria-controls="mfg-q3">
+                What types of raw materials do you primarily process?
+              </button>
+            </h4>
+            <div id="mfg-q3" class="accordion-collapse collapse" data-bs-parent="#accordionManufacturing">
+              <div class="accordion-body">
+                We work with high-strength structural carbon steels, titanium alloys (Grade 5/Ti-6Al-4V), aerospace-grade aluminum (6000 & 7000 series), stainless steels (316L, Duplex, Super Duplex), and custom nickel-chromium superalloys (Inconel 625, Monel, Hastelloy) designed for severe operating pressures.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mfg-q4" aria-expanded="false" aria-controls="mfg-q4">
+                What is your average production lead time for custom parts?
+              </button>
+            </h4>
+            <div id="mfg-q4" class="accordion-collapse collapse" data-bs-parent="#accordionManufacturing">
+              <div class="accordion-body">
+                Average production lead times vary between 4 to 12 weeks. This timeframe accounts for meticulous raw materials acquisition, metallurgy validation, precision CNC tooling setup, comprehensive Quality Control diagnostics, and delivery packaging. Express expediting is available for critical utility components.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 3. ENGINEERING -->
+      <div class="faq-category-section mb-5" data-section-category="engineering" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">3. Engineering & CAD Customizations</h3>
+        <div class="accordion faq-accordion" id="accordionEngineering">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eng-q1" aria-expanded="false" aria-controls="eng-q1">
+                Do you offer in-house engineering and structural simulation?
+              </button>
+            </h4>
+            <div id="eng-q1" class="accordion-collapse collapse" data-bs-parent="#accordionEngineering">
+              <div class="accordion-body">
+                Yes, Vanguard operates an elite in-house engineering group. We utilize advanced Finite Element Analysis (FEA) for mechanical stress simulations and Computational Fluid Dynamics (CFD) to validate structural thermal expansion and fluids behavior before toolpath creation or metal pours.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eng-q2" aria-expanded="false" aria-controls="eng-q2">
+                What CAD/CAM file formats does your engineering team support?
+              </button>
+            </h4>
+            <div id="eng-q2" class="accordion-collapse collapse" data-bs-parent="#accordionEngineering">
+              <div class="accordion-body">
+                We accept and support all major industry formats, including SolidWorks (.sldprt, .sldasm), Autodesk Inventor (.ipt, .iam), CATIA, and standard CAD exchange formats like STEP (.stp, .step), IGES (.igs), and AutoCAD DWG/DXF files for metallurgy layouts.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eng-q3" aria-expanded="false" aria-controls="eng-q3">
+                Can your engineers modify my existing sketches for better manufacturing efficiency?
+              </button>
+            </h4>
+            <div id="eng-q3" class="accordion-collapse collapse" data-bs-parent="#accordionEngineering">
+              <div class="accordion-body">
+                Absolutely. Design for Manufacturability (DFM) is a core part of our client onboarding process. Our engineers analyze wall thicknesses, draft angles, complex curves, and alloy selections to suggest optimizations that reduce machine cycle-times, lower fabrication waste, and decrease overall costs.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eng-q4" aria-expanded="false" aria-controls="eng-q4">
+                Are Vanguard's engineering specialists formally certified?
+              </button>
+            </h4>
+            <div id="eng-q4" class="accordion-collapse collapse" data-bs-parent="#accordionEngineering">
+              <div class="accordion-body">
+                Yes. Our staff is comprised of certified Professional Engineers (PE) registered in multiple jurisdictions, with post-graduate qualifications in metallurgical science, automated systems mechanics, and structural materials engineering. We design strict compliance strictly matching ASME, API, and ISO codes.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 4. AUTOMATION -->
+      <div class="faq-category-section mb-5" data-section-category="automation" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">4. Robotics & Smart Factory Automation</h3>
+        <div class="accordion faq-accordion" id="accordionAutomation">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aut-q1" aria-expanded="false" aria-controls="aut-q1">
+                What industrial robotic automation solutions do you implement?
+              </button>
+            </h4>
+            <div id="aut-q1" class="accordion-collapse collapse" data-bs-parent="#accordionAutomation">
+              <div class="accordion-body">
+                We design and integrate bespoke multi-axis articulated robotic arm stations, automated guided vehicle (AGV) routing systems, high-speed automated pick-and-place packaging, automated smart welding structures, and AI-driven machine-vision sorting cells.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aut-q2" aria-expanded="false" aria-controls="aut-q2">
+                Can Vanguard retrofit existing legacy machinery with smart IoT capabilities?
+              </button>
+            </h4>
+            <div id="aut-q2" class="accordion-collapse collapse" data-bs-parent="#accordionAutomation">
+              <div class="accordion-body">
+                Yes, our specialized Industry 4.0 teams offer robust retrofitting solutions. We integrate state-of-the-art vibrational sensors, thermal logging couples, current monitoring clamps, and telemetry edge-computing boxes to convert legacy analog lines into connected, predictive systems.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aut-q3" aria-expanded="false" aria-controls="aut-q3">
+                Which industrial PLC and SCADA frameworks do your engineers support?
+              </button>
+            </h4>
+            <div id="aut-q3" class="accordion-collapse collapse" data-bs-parent="#accordionAutomation">
+              <div class="accordion-body">
+                We support and configure Siemens TIA Portal (S7-1200/1500), Rockwell Automation Studio 5000 (Allen-Bradley ControlLogix), Schneider Electric EcoStruxure, Beckhoff TwinCAT, and industry-standard SCADA systems like Ignition by Inductive Automation and Wonderware.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#aut-q4" aria-expanded="false" aria-controls="aut-q4">
+                How does automated diagnostic telemetry prevent factory downtime?
+              </button>
+            </h4>
+            <div id="aut-q4" class="accordion-collapse collapse" data-bs-parent="#accordionAutomation">
+              <div class="accordion-body">
+                Our smart algorithms monitor machinery parameters in real-time. By continuously analyzing harmonics vibrations, high-frequency acoustic patterns, and operational heat signatures, we predict mechanical wear or bearings friction up to 14 days before a failure, allowing scheduled maintenance.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 5. PROJECTS -->
+      <div class="faq-category-section mb-5" data-section-category="projects" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">5. Enterprise Projects & Scope</h3>
+        <div class="accordion faq-accordion" id="accordionProjects">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prj-q1" aria-expanded="false" aria-controls="prj-q1">
+                Which specific industries does Vanguard primarily serve?
+              </button>
+            </h4>
+            <div id="prj-q1" class="accordion-collapse collapse" data-bs-parent="#accordionProjects">
+              <div class="accordion-body">
+                Vanguard serves complex, high-risk sectors including Aerospace and Spaceflight components, Automotive production tooling, Offshore Ocean Energy rigs, Defense mechanical hardware, Clean Hydropower structures, Heavy Chemical refineries, and High-Throughput Medical Manufacturing lines.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prj-q2" aria-expanded="false" aria-controls="prj-q2">
+                Can I track the real-time manufacturing progress of my custom project?
+              </button>
+            </h4>
+            <div id="prj-q2" class="accordion-collapse collapse" data-bs-parent="#accordionProjects">
+              <div class="accordion-body">
+                Yes. Upon onboarding, each client receives secure corporate access to our Vanguard Project Portal. The portal displays live CNC scheduling charts, webcam feeds of heavy fabrication bays, metallurgical laboratory testing documents, and Quality Control reports updated every shift.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prj-q3" aria-expanded="false" aria-controls="prj-q3">
+                What is the largest physical project Vanguard has successfully delivered?
+              </button>
+            </h4>
+            <div id="prj-q3" class="accordion-collapse collapse" data-bs-parent="#accordionProjects">
+              <div class="accordion-body">
+                In 2025, Vanguard successfully completed the design, fabrication, and metallurgy certification of a 140-meter offshore heavy pipe-laying robotic arm assembly for deep-sea renewable thermal energy grids. The single system weighed 840 metric tons and was executed within strict safety tolerances.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prj-q4" aria-expanded="false" aria-controls="prj-q4">
+                Do you provide physical site installation for large structural fabrications?
+              </button>
+            </h4>
+            <div id="prj-q4" class="accordion-collapse collapse" data-bs-parent="#accordionProjects">
+              <div class="accordion-body">
+                Yes, we offer complete global turn-key installation support. Our field engineering teams supervise on-site heavy rigging operations, oversee alignment validation using laser tracking tools, execute field welding, and configure final system integration with local telemetry networks.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 6. PRICING -->
+      <div class="faq-category-section mb-5" data-section-category="pricing" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">6. Pricing Structure & Financial Terms</h3>
+        <div class="accordion faq-accordion" id="accordionPricing">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prc-q1" aria-expanded="false" aria-controls="prc-q1">
+                How do I request a formal quote for a custom manufactured order?
+              </button>
+            </h4>
+            <div id="prc-q1" class="accordion-collapse collapse" data-bs-parent="#accordionPricing">
+              <div class="accordion-body">
+                You can easily request a quote via our secure portal by navigating to the <a href="contact.html">Contact page</a>, or by emailing your specifications, 3D STEP files, and metallurgy tolerance requirements directly to <strong>sales@vanguard-industry.com</strong>.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prc-q2" aria-expanded="false" aria-controls="prc-q2">
+                What are Vanguard's standard payment terms for enterprise clients?
+              </button>
+            </h4>
+            <div id="prc-q2" class="accordion-collapse collapse" data-bs-parent="#accordionPricing">
+              <div class="accordion-body">
+                Our typical enterprise commercial terms are structured as 50% deposit upon order confirmation to lock raw materials procurement, with the remaining 50% balance due upon successful Factory Acceptance Testing (FAT) before shipment, net 30 days. Alternate terms are available for government entities.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prc-q3" aria-expanded="false" aria-controls="prc-q3">
+                Do you offer corporate volume discounts for continuous production runs?
+              </button>
+            </h4>
+            <div id="prc-q3" class="accordion-collapse collapse" data-bs-parent="#accordionPricing">
+              <div class="accordion-body">
+                Yes, we actively structure Master Service Agreements (MSAs) for ongoing production. Establishing a multi-year manufacturing contract allows us to pre-purchase raw metals in bulk, stabilize pricing cycles, and pass volume savings directly to clients through tier-based unit pricing.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#prc-q4" aria-expanded="false" aria-controls="prc-q4">
+                Are shipping logistics and import customs duties included in the quoted price?
+              </button>
+            </h4>
+            <div id="prc-q4" class="accordion-collapse collapse" data-bs-parent="#accordionPricing">
+              <div class="accordion-body">
+                Unless explicitly requested otherwise, standard quotes are calculated EXW (Ex Works) or FOB (Free on Board) Houston. However, our specialized international logistics team can provide complete DDP (Delivered Duty Paid) quotes, handling custom brokerage clearances and direct facility transport.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 7. MAINTENANCE -->
+      <div class="faq-category-section mb-5" data-section-category="maintenance" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">7. Post-Installation Maintenance</h3>
+        <div class="accordion faq-accordion" id="accordionMaintenance">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mnt-q1" aria-expanded="false" aria-controls="mnt-q1">
+                What post-installation maintenance plans (SLAs) do you offer?
+              </button>
+            </h4>
+            <div id="mnt-q1" class="accordion-collapse collapse" data-bs-parent="#accordionMaintenance">
+              <div class="accordion-body">
+                We offer three levels of custom Service Level Agreements (SLAs): Bronze, Silver, and Gold. The plans cover regular bi-annual physical calibration audits, emergency hardware priority, 24/7 technical hotlines, software SCADA updates, and pre-scheduled preventative mechanical checks.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mnt-q2" aria-expanded="false" aria-controls="mnt-q2">
+                How quickly can a Vanguard field engineer respond to an on-site mechanical emergency?
+              </button>
+            </h4>
+            <div id="mnt-q2" class="accordion-collapse collapse" data-bs-parent="#accordionMaintenance">
+              <div class="accordion-body">
+                For registered Gold SLA clients, we guarantee an active field response team on-site within 4 hours in the Gulf Coast region, and 24 to 48 hours for global facility installations, deploying priority technicians from our regional spare parts depots.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mnt-q3" aria-expanded="false" aria-controls="mnt-q3">
+                Do you guarantee the long-term availability of certified OEM replacement parts?
+              </button>
+            </h4>
+            <div id="mnt-q3" class="accordion-collapse collapse" data-bs-parent="#accordionMaintenance">
+              <div class="accordion-body">
+                Yes, Vanguard guarantees the manufacturing and supply of certified OEM replacement parts for a minimum of 15 years from the date of final machinery commissioning. We store exact CAD blueprints and custom material tooling specs for every bespoke system built.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mnt-q4" aria-expanded="false" aria-controls="mnt-q4">
+                Can Vanguard perform maintenance or safety audits on third-party machinery?
+              </button>
+            </h4>
+            <div id="mnt-q4" class="accordion-collapse collapse" data-bs-parent="#accordionMaintenance">
+              <div class="accordion-body">
+                Yes. Our multi-disciplinary industrial maintenance group is fully trained and certified to perform safety checks, stress calibrations, structural alignments, and PLC optimization audits on most standard heavy industrial machinery from third-party manufacturers.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 8. QUALITY CONTROL -->
+      <div class="faq-category-section mb-5" data-section-category="quality-control" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">8. Quality Control & Certifications</h3>
+        <div class="accordion faq-accordion" id="accordionQuality">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qas-q1" aria-expanded="false" aria-controls="qas-q1">
+                What international quality certifications does Vanguard actively hold?
+              </button>
+            </h4>
+            <div id="qas-q1" class="accordion-collapse collapse" data-bs-parent="#accordionQuality">
+              <div class="accordion-body">
+                Our Houston plant and engineering systems are fully certified to <strong>ISO 9001:2015</strong> (Quality Management Systems), <strong>AS9100D</strong> (Aerospace & Space Quality), <strong>ISO 14001:2015</strong> (Environmental), and <strong>ISO 45001:2018</strong> (Occupational Health & Safety).
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qas-q2" aria-expanded="false" aria-controls="qas-q2">
+                What non-destructive testing (NDT) capabilities do you perform in-house?
+              </button>
+            </h4>
+            <div id="qas-q2" class="accordion-collapse collapse" data-bs-parent="#accordionQuality">
+              <div class="accordion-body">
+                We operate a state-of-the-art NDT laboratory. Our certified Level II and III technicians perform Ultrasonic Testing (UT), Industrial Radiography (X-ray), Magnetic Particle Inspection (MPI), Dye Penetrant Inspection (DPI), Positive Material Identification (PMI via XRF spectrometers), and coordinate full helium leak detection.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qas-q3" aria-expanded="false" aria-controls="qas-q3">
+                Do you provide standard Material Test Reports (MTR) with components?
+              </button>
+            </h4>
+            <div id="qas-q3" class="accordion-collapse collapse" data-bs-parent="#accordionQuality">
+              <div class="accordion-body">
+                Yes, every component we ship is accompanied by a comprehensive traceability binder. This package includes EN 10204 3.1 Material Test Reports (MTR) tracing the heat numbers directly to the steel mills, coordinate measuring machine (CMM) dimensional logs, heat-treatment records, and all NDT certificates.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#qas-q4" aria-expanded="false" aria-controls="qas-q4">
+                What is your standard protocol for Factory Acceptance Testing (FAT)?
+              </button>
+            </h4>
+            <div id="qas-q4" class="accordion-collapse collapse" data-bs-parent="#accordionQuality">
+              <div class="accordion-body">
+                Factory Acceptance Testing (FAT) is conducted on our Houston assembly floor under strict load conditions mimicking client site environment. Client engineering teams can witness testing in person or securely via multi-camera real-time streams with high-definition digital telemetry readout dashboard overlay.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 9. SAFETY -->
+      <div class="faq-category-section mb-5" data-section-category="safety" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">9. Safety Performance & Compliance</h3>
+        <div class="accordion faq-accordion" id="accordionSafety">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#saf-q1" aria-expanded="false" aria-controls="saf-q1">
+                What is Vanguard's recent safety performance record?
+              </button>
+            </h4>
+            <div id="saf-q1" class="accordion-collapse collapse" data-bs-parent="#accordionSafety">
+              <div class="accordion-body">
+                Vanguard maintains a gold-standard safety culture. Our plant operates with a Total Recordable Incident Rate (TRIR) of under 0.15, calculated over 5 million consecutive man-hours. This performance ranks in the top 1% of heavy engineering firms globally, where the sector average remains 1.8.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#saf-q2" aria-expanded="false" aria-controls="saf-q2">
+                How are Vanguard's plant operators trained in risk and safety compliance?
+              </button>
+            </h4>
+            <div id="saf-q2" class="accordion-collapse collapse" data-bs-parent="#accordionSafety">
+              <div class="accordion-body">
+                Every member of our floor operations team undergoes mandatory OSHA 30-hour safety training, specialized rig lift licensing, bi-weekly hazard safety audits, and continuous training in heavy manufacturing safety systems. Daily tool-box safety checks are held on every shift.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#saf-q3" aria-expanded="false" aria-controls="saf-q3">
+                Do your engineered products comply with global green covenants?
+              </button>
+            </h4>
+            <div id="saf-q3" class="accordion-collapse collapse" data-bs-parent="#accordionSafety">
+              <div class="accordion-body">
+                Yes. We engineer products to optimize thermodynamic efficiency and minimize carbon footprint. Our metals and alloys comply with EU REACH and RoHS regulations where required. We focus on zero-waste packaging and design our machinery using structural alloys that are 100% recyclable.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#saf-q4" aria-expanded="false" aria-controls="saf-q4">
+                What active measures does Vanguard take in risk engineering during design?
+              </button>
+            </h4>
+            <div id="saf-q4" class="accordion-collapse collapse" data-bs-parent="#accordionSafety">
+              <div class="accordion-body">
+                We conduct comprehensive HAZOP (Hazard and Operability) studies on every custom design project. Our engineers map out structural stresses, electrical load faults, hydraulic pressures, and software fail-safes to implement hardware-level emergency halts (E-stop loops) matching SIL 3 safety standards.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 10. SUPPORT -->
+      <div class="faq-category-section mb-5" data-section-category="support" data-aos="fade-up">
+        <h3 class="h4 border-start border-primary border-4 ps-3 mb-4 fw-bold">10. Help Desk & Client Support</h3>
+        <div class="accordion faq-accordion" id="accordionSupport">
+          
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sup-q1" aria-expanded="false" aria-controls="sup-q1">
+                How do I contact the Vanguard 24/7 technical support hotline?
+              </button>
+            </h4>
+            <div id="sup-q1" class="accordion-collapse collapse" data-bs-parent="#accordionSupport">
+              <div class="accordion-body">
+                Registered SLA clients can reach our dedicated, priority help desk 24 hours a day at <strong>+1 (800) 555-0199 (Ext 9)</strong>, or raise high-severity engineering tickets via <strong>support@vanguard-industry.com</strong> for swift technical resolutions.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sup-q2" aria-expanded="false" aria-controls="sup-q2">
+                Can I schedule a physical tour of the Houston heavy manufacturing plant?
+              </button>
+            </h4>
+            <div id="sup-q2" class="accordion-collapse collapse" data-bs-parent="#accordionSupport">
+              <div class="accordion-body">
+                Yes. We welcome site audits and physical tours by client engineering and executive delegations. Plant tours can be scheduled with a minimum of 10 days advanced notice through our <a href="contact.html">Contact page</a>, ensuring proper safety clearance and PPE availability.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sup-q3" aria-expanded="false" aria-controls="sup-q3">
+                Do you provide remote augmented reality (AR) troubleshooting assistance?
+              </button>
+            </h4>
+            <div id="sup-q3" class="accordion-collapse collapse" data-bs-parent="#accordionSupport">
+              <div class="accordion-body">
+                Yes, our tech support group provides remote AR assistance. Local factory maintenance crews can wear integrated smart-glasses, transmitting their field of view to our Houston engineering team, who can draw instructions and place technical schematics on their screen in real-time.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h4 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sup-q4" aria-expanded="false" aria-controls="sup-q4">
+                How do I access technical manuals or firmwares for my machinery?
+              </button>
+            </h4>
+            <div id="sup-q4" class="accordion-collapse collapse" data-bs-parent="#accordionSupport">
+              <div class="accordion-body">
+                All historical blueprints, mechanical manuals, electrical schematics, and PLC firmware updates are safely cataloged within the Vanguard Customer Portal, accessible under strict authentication. Please contact your account manager if you require portal access codes.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. QUICK SUPPORT CARDS
+       ======================================================== -->
+  <section class="section-padding" id="quickSupport">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-subtitle">Direct Channels</span>
+        <h2 class="section-title">Emergency & Standard Contacts</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">Connect instantly with our engineering, commercial, and emergency support divisions. We maintain continuous active monitoring across all operational nodes.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1: Phone -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="support-card">
+            <div class="support-icon"><i class="fa-solid fa-phone-volume"></i></div>
+            <h3 class="support-title">Phone Support</h3>
+            <p class="support-desc">Talk directly with our help center desk operators for immediate assistance during business hours.</p>
+            <a href="tel:+18005550199" class="btn-custom btn-custom-outline border border-secondary text-main w-100 py-2">Call +1 (800) 555-0199</a>
+          </div>
+        </div>
+        <!-- Card 2: Email -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="support-card">
+            <div class="support-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+            <h3 class="support-title">Email Support</h3>
+            <p class="support-desc">Submit comprehensive questions, blueprint diagrams, or technical RFQs straight to our desk.</p>
+            <a href="mailto:contact@vanguard-industry.com" class="btn-custom btn-custom-outline border border-secondary text-main w-100 py-2">Email Inquiries</a>
+          </div>
+        </div>
+        <!-- Card 3: Technical -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="support-card">
+            <div class="support-icon"><i class="fa-solid fa-gears"></i></div>
+            <h3 class="support-title">Technical Support</h3>
+            <p class="support-desc">Connect directly with our multi-axis CNC or automated systems specialists for active debugging.</p>
+            <a href="contact.html" class="btn-custom btn-custom-outline border border-secondary text-main w-100 py-2">Open Tech Ticket</a>
+          </div>
+        </div>
+        <!-- Card 4: Sales Inquiry -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="support-card">
+            <div class="support-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <h3 class="support-title">Sales Inquiry</h3>
+            <p class="support-desc">Request volume discount structures, custom MSA drafts, or clarify ongoing billing milestones.</p>
+            <a href="pricing.html" class="btn-custom btn-custom-outline border border-secondary text-main w-100 py-2">Request Catalog rates</a>
+          </div>
+        </div>
+        <!-- Card 5: Emergency Support -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="support-card border-danger-subtle bg-danger-subtle" style="background-color: rgba(220, 53, 69, 0.03) !important;">
+            <div class="support-icon text-danger"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <h3 class="support-title text-danger">Emergency Support</h3>
+            <p class="support-desc">Active 24/7 hotline exclusively for gold-standard plant emergency shutdowns or immediate parts dispatch.</p>
+            <a href="tel:+18005550199" class="btn-custom btn-custom-primary bg-danger border-danger text-white w-100 py-2">Urgent Hotline (24/7)</a>
+          </div>
+        </div>
+        <!-- Card 6: Factory Visit -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+          <div class="support-card">
+            <div class="support-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3 class="support-title">Factory Visit</h3>
+            <p class="support-desc">Request visual site verification or schedule structural quality inspection with 10 days notice.</p>
+            <a href="contact.html#mapSection" class="btn-custom btn-custom-outline border border-secondary text-main w-100 py-2">Schedule Site Audit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. DOWNLOAD CENTER (Premium download placeholder system)
+       ======================================================== -->
+  <section class="section-padding bg-sub border-top border-bottom" id="downloadCenter">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="section-subtitle">Documentation Hub</span>
+        <h2 class="section-title">Industrial Download Center</h2>
+        <p class="text-muted mx-auto" style="max-width: 600px;">Access digital brochures, ASME capability certificates, ISO quality statements, and technical catalogs in active PDF layout format.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Doc 1 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="download-card">
+            <div class="download-icon"><i class="fa-solid fa-file-pdf"></i></div>
+            <div class="download-details">
+              <h3 class="download-title text-main">Company Profile</h3>
+              <span class="download-meta">PDF • 4.2 MB • Updated 2026</span>
+            </div>
+            <button onclick="downloadMockFile('vanguard-company-profile.pdf', 'Vanguard Heavy Industrial Engineering Company Profile. Standard corporate overview & factory capabilities sheet 2026.')" class="download-action-btn" aria-label="Download Company Profile"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+        <!-- Doc 2 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="download-card">
+            <div class="download-icon"><i class="fa-solid fa-file-pdf"></i></div>
+            <div class="download-details">
+              <h3 class="download-title text-main">Capability Statement</h3>
+              <span class="download-meta">PDF • 3.8 MB • Technical Specifications</span>
+            </div>
+            <button onclick="downloadMockFile('vanguard-capability-statement.pdf', 'Vanguard Heavy Industrial Engineering Capability Statement. Detail list of multi-axis CNC machines and maximum heavy lift specs.')" class="download-action-btn" aria-label="Download Capability Statement"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+        <!-- Doc 3 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="download-card">
+            <div class="download-icon"><i class="fa-solid fa-file-shield"></i></div>
+            <div class="download-details">
+              <h3 class="download-title text-main">Quality Certificate</h3>
+              <span class="download-meta">PDF • 2.1 MB • ISO 9001, AS9100D</span>
+            </div>
+            <button onclick="downloadMockFile('vanguard-iso-quality-certificate.pdf', 'Vanguard Quality Certifications EN ISO 9001:2015, AS9100D for aerospace structures, and ISO 14001 compliance sheets.')" class="download-action-btn" aria-label="Download Quality Certificate"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+        <!-- Doc 4 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="download-card">
+            <div class="download-icon"><i class="fa-solid fa-book-open"></i></div>
+            <div class="download-details">
+              <h3 class="download-title text-main">Product Catalog</h3>
+              <span class="download-meta">PDF • 8.5 MB • Smart Automation Parts</span>
+            </div>
+            <button onclick="downloadMockFile('vanguard-product-catalog.pdf', 'Vanguard Industrial Automation Parts & Robotics Tooling Catalog. Full diagrammatic specification lines.')" class="download-action-btn" aria-label="Download Product Catalog"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+        <!-- Doc 5 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="download-card">
+            <div class="download-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="download-details">
+              <h3 class="download-title text-main">Safety Guidelines</h3>
+              <span class="download-meta">PDF • 1.9 MB • HSE OSHA Covenants</span>
+            </div>
+            <button onclick="downloadMockFile('vanguard-safety-guidelines.pdf', 'Vanguard Occupational Health and Environmental Safety Guidelines. General factory hazard controls & TRIR benchmarks.')" class="download-action-btn" aria-label="Download Safety Guidelines"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+        <!-- Doc 6 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+          <div class="download-card">
+            <div class="download-icon"><i class="fa-solid fa-file-pdf"></i></div>
+            <div class="download-details">
+              <h3 class="download-title text-main">Corporate Brochure</h3>
+              <span class="download-meta">PDF • 5.4 MB • Global Operations Map</span>
+            </div>
+            <button onclick="downloadMockFile('vanguard-corporate-brochure.pdf', 'Vanguard Heavy Industrial Engineering Corporate Brochure. Overview of world metallurgy plants and customer solutions.')" class="download-action-btn" aria-label="Download Corporate Brochure"><i class="fa-solid fa-download"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. STILL NEED HELP? (Large CTA Section)
+       ======================================================== -->
+  <section class="section-padding position-relative overflow-hidden" id="stillNeedHelp">
+    <!-- Subtle Background Pattern -->
+    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background-image: radial-gradient(rgba(var(--color-primary-rgb), 0.05) 1px, transparent 1px); background-size: 24px 24px; pointer-events: none; opacity: 0.6;"></div>
+    
+    <div class="container text-center py-4 position-relative">
+      <span class="section-subtitle">Unresolved Queries?</span>
+      <h2 class="section-title mb-3">Our Operations Desk is Fully Standby</h2>
+      <p class="text-muted mx-auto mb-5" style="max-width: 650px;">If your metallurgical requirement, automated system challenge, or pricing query is not answered within our portal, connect directly with our global headquarters team.</p>
+      
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="contact.html" class="btn-custom btn-custom-primary">
+          <span>Contact Us Directly</span>
+          <i class="fa-solid fa-envelope-open-text ms-2"></i>
+        </a>
+        <a href="contact.html#rfqSection" class="btn-custom btn-custom-secondary border border-secondary text-main bg-transparent">
+          <span>Request Detailed Quote</span>
+          <i class="fa-solid fa-calculator ms-2 text-primary"></i>
+        </a>
+        <a href="tel:+18005550199" class="btn-custom btn-custom-outline border border-secondary text-main bg-transparent d-flex align-items-center gap-2">
+          <i class="fa-solid fa-phone text-primary"></i>
+          <span>Call Desk Now</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       11. EXTRA PREMIUM FEATURE: DESKTOP STICKY SUPPORT WIDGET
+       ======================================================== -->
+  <div class="sticky-support-widget d-none d-lg-flex" id="stickySupportWidget">
+    <!-- Call Desk -->
+    <a href="tel:+18005550199" class="widget-item" aria-label="Call Headquarters">
+      <i class="fa-solid fa-phone"></i>
+      <span class="widget-tooltip">Call Support</span>
+    </a>
+    <!-- Email support -->
+    <a href="mailto:contact@vanguard-industry.com" class="widget-item" aria-label="Email Support">
+      <i class="fa-solid fa-envelope"></i>
+      <span class="widget-tooltip">Email Help Desk</span>
+    </a>
+    <!-- Request Quote -->
+    <a href="contact.html" class="widget-item" aria-label="Request Quote">
+      <i class="fa-solid fa-file-invoice"></i>
+      <span class="widget-tooltip">Request A Quote</span>
+    </a>
+  </div>
+
+  <!-- ========================================================
+       12. CORPORATE FOOTER
+       ======================================================== -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="row g-5">
+        
+        <!-- Column 1: Brand Info & Company Links -->
+        <div class="col-lg-3 col-md-6">
+          <a class="footer-brand" href="index.html">
+            <i class="fa-solid fa-gears text-primary"></i>
+            VANGUARD<span>.</span>
+          </a>
+          <p class="footer-desc mt-3 text-muted">Globally certified heavy manufacturing, metallurgy fabrication, and automated robotics systems engineering group. Operating gold-standard plants with zero compromised metrics.</p>
+          <h4 class="footer-widget-title mt-4">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">News</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Services -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html?service=manufacturing">Manufacturing</a></li>
+            <li><a href="service-details.html?service=automation">Automation</a></li>
+            <li><a href="service-details.html?service=engineering">Engineering</a></li>
+            <li><a href="service-details.html?service=maintenance">Maintenance</a></li>
+            <li><a href="service-details.html?service=quality-control">Quality Control</a></li>
+            <li><a href="service-details.html?service=custom-solutions">Custom Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html" class="active text-primary fw-semibold">FAQ</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="about.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('Privacy Policy Portal Coming Soon!');">Privacy Policy (Coming Soon)</a></li>
+            <li><a href="contact.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('Terms Portal Coming Soon!');">Terms & Conditions (Coming Soon)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-widget-title">Contact</h4>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-location-dot footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Main Facility HQ</span>
+              7850 Industrial Blvd, Suite 240, Houston, TX 77001
+            </div>
+          </div>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-phone footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Call Headquarters</span>
+              <a href="tel:+18005550199" class="text-white-50">+1 (800) 555-0199</a>
+            </div>
+          </div>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-envelope footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Direct Inquiries</span>
+              <a href="mailto:contact@vanguard-industry.com" class="text-white-50">contact@vanguard-industry.com</a>
+            </div>
+          </div>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-clock footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Working Hours</span>
+              Mon - Fri: 08:00 AM - 06:00 PM
+            </div>
+          </div>
+          <a href="contact.html#mapSection" class="btn-custom btn-custom-outline border-secondary text-white btn-sm mt-2 w-100 py-2 d-inline-flex justify-content-center align-items-center gap-2">
+            <i class="fa-solid fa-map-location-dot text-primary"></i>
+            <span>Google Map</span>
+          </a>
+        </div>
+
+        <!-- Column 5: Newsletter -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-widget-title">Newsletter</h4>
+          <p class="footer-desc mb-3 text-muted">Subscribe to receive Vanguard heavy industrial research papers & product bulletins.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Vanguard Bulletins!');">
+            <input type="email" class="footer-newsletter-input w-100 mb-2 py-2 px-3 border border-secondary bg-dark text-white rounded" placeholder="Corporate email..." required aria-label="Newsletter email">
+            <button class="btn-custom btn-custom-primary w-100 py-2 text-center d-flex justify-content-center align-items-center" type="submit" aria-label="Subscribe">
+              <span>Subscribe</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            &copy; 2026 Vanguard Group Inc. All rights reserved. Managed under global standard compliance operations.
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end align-items-center gap-3 flex-wrap">
+              <ul class="footer-bottom-links mb-0 d-flex gap-3 list-unstyled">
+                <li><a href="about.html">Privacy</a></li>
+                <li><a href="contact.html">Terms</a></li>
+                <li><a href="faq.html" class="text-muted" onclick="event.preventDefault(); alert('Sitemap Coming Soon!');">Sitemap (Coming Soon)</a></li>
+              </ul>
+              <div class="footer-socials d-flex gap-2 mb-0">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       13. BACK TO TOP BUTTON
+       ======================================================== -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </button>
+
+  <!-- ========================================================
+       14. THIRD PARTY LIBRARIES & INTEGRATED JS
+       ======================================================== -->
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- AOS Scroll Animations JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom JS Operations -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Initialize Animations -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 50
+    });
+  </script>
+
+  <!-- ========================================================
+       15. FAQ EXTRAS & INTERACTIVE LOGIC (VANILLA JS)
+       ======================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      initFaqSearch();
+      initFaqCategories();
+      initHeroIllustrationParallax();
+      initStickySupportWidget();
+    });
+
+    /* ========================================================
+       LIVE REAL-TIME FAQ SEARCH (Vanilla JS)
+       ======================================================== */
+    function initFaqSearch() {
+      const searchInput = document.getElementById('faqSearchInput');
+      const searchClear = document.getElementById('faqSearchClear');
+      const accordionItems = document.querySelectorAll('.faq-accordion .accordion-item');
+      const categorySections = document.querySelectorAll('.faq-category-section');
+      const noResults = document.getElementById('noResultsMessage');
+
+      if (!searchInput) return;
+
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase().trim();
+
+        // Toggle clear button visibility
+        if (query.length > 0) {
+          searchClear.style.display = 'block';
+        } else {
+          searchClear.style.display = 'none';
+        }
+
+        performSearch(query);
+      });
+
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClear.style.display = 'none';
+        performSearch('');
+        searchInput.focus();
+      });
+    }
+
+    function performSearch(query) {
+      const accordionItems = document.querySelectorAll('.faq-accordion .accordion-item');
+      const categorySections = document.querySelectorAll('.faq-category-section');
+      const noResults = document.getElementById('noResultsMessage');
+      
+      let totalVisible = 0;
+
+      // Reset any active category button highlights if they are active to prevent search clashes
+      if (query !== '') {
+        const categoryCards = document.querySelectorAll('.category-card');
+        categoryCards.forEach(c => {
+          if (c.getAttribute('data-category') === 'all') {
+            c.classList.add('active');
+          } else {
+            c.classList.remove('active');
+          }
+        });
+      }
+
+      // Loop through each accordion item
+      accordionItems.forEach(item => {
+        const button = item.querySelector('.accordion-button');
+        const body = item.querySelector('.accordion-body');
+        const qText = button.textContent;
+        const aText = body.textContent;
+
+        const qTextLower = qText.toLowerCase();
+        const aTextLower = aText.toLowerCase();
+
+        // Clear existing highlights
+        button.innerHTML = button.innerHTML.replace(/<span class="faq-highlight">|<\/span>/g, '');
+        body.innerHTML = body.innerHTML.replace(/<span class="faq-highlight">|<\/span>/g, '');
+
+        if (query === '') {
+          // Reset view state
+          item.style.display = 'block';
+          button.classList.add('collapsed');
+          button.setAttribute('aria-expanded', 'false');
+          const collapseDiv = item.querySelector('.accordion-collapse');
+          if (collapseDiv) {
+            collapseDiv.classList.remove('show');
+          }
+          totalVisible++;
+        } else if (qTextLower.includes(query) || aTextLower.includes(query)) {
+          // Show item
+          item.style.display = 'block';
+          totalVisible++;
+
+          // Open matching accordions instantly
+          button.classList.remove('collapsed');
+          button.setAttribute('aria-expanded', 'true');
+          const collapseDiv = item.querySelector('.accordion-collapse');
+          if (collapseDiv) {
+            collapseDiv.classList.add('show');
+          }
+
+          // Apply beautiful keyword highlighting
+          if (query.length >= 2) {
+            const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+            highlightTextInElement(button, regex);
+            highlightTextInElement(body, regex);
+          }
+        } else {
+          // Hide item
+          item.style.display = 'none';
+        }
+      });
+
+      // Show/hide category sections based on if they contain any visible accordion items
+      categorySections.forEach(section => {
+        const sectionItems = section.querySelectorAll('.faq-accordion .accordion-item');
+        let sectionHasMatches = false;
+
+        sectionItems.forEach(item => {
+          if (item.style.display !== 'none') {
+            sectionHasMatches = true;
+          }
+        });
+
+        if (sectionHasMatches) {
+          section.classList.remove('filtered-out');
+        } else {
+          section.classList.add('filtered-out');
+        }
+      });
+
+      // Show no results placeholder
+      if (totalVisible === 0) {
+        noResults.classList.remove('d-none');
+      } else {
+        noResults.classList.add('d-none');
+      }
+    }
+
+    // Escape special regex characters
+    function escapeRegExp(string) {
+      return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    // Safely highlight text inside elements without breaking internal HTML elements
+    function highlightTextInElement(element, regex) {
+      // Loop through direct children of text nodes
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+      let textNode;
+      const nodesToReplace = [];
+
+      while (textNode = walker.nextNode()) {
+        if (textNode.nodeValue.toLowerCase().includes(searchInput.value.toLowerCase().trim())) {
+          nodesToReplace.push(textNode);
+        }
+      }
+
+      nodesToReplace.forEach(node => {
+        const parent = node.parentNode;
+        if (parent && parent.className !== 'faq-highlight') {
+          const frag = document.createDocumentFragment();
+          const parts = node.nodeValue.split(regex);
+          
+          parts.forEach(part => {
+            if (part.toLowerCase() === searchInput.value.toLowerCase().trim()) {
+              const highlightSpan = document.createElement('span');
+              highlightSpan.className = 'faq-highlight';
+              highlightSpan.textContent = part;
+              frag.appendChild(highlightSpan);
+            } else {
+              frag.appendChild(document.createTextNode(part));
+            }
+          });
+          
+          parent.replaceChild(frag, node);
+        }
+      });
+    }
+
+    function resetSearch() {
+      const searchInput = document.getElementById('faqSearchInput');
+      if (searchInput) {
+        searchInput.value = '';
+        performSearch('');
+        searchInput.focus();
+      }
+    }
+
+
+    /* ========================================================
+       FAQ CATEGORY FILTER CARDS (Vanilla JS Jump & Filter)
+       ======================================================== */
+    function initFaqCategories() {
+      const categoryCards = document.querySelectorAll('.category-card');
+      const categorySections = document.querySelectorAll('.faq-category-section');
+      const searchInput = document.getElementById('faqSearchInput');
+      const searchClear = document.getElementById('faqSearchClear');
+
+      if (categoryCards.length === 0) return;
+
+      categoryCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const category = card.getAttribute('data-category');
+
+          // Set active state on button clicked
+          categoryCards.forEach(c => c.classList.remove('active'));
+          card.classList.add('active');
+
+          // Reset text search when category card is clicked
+          if (searchInput) {
+            searchInput.value = '';
+            if (searchClear) searchClear.style.display = 'none';
+          }
+
+          // Perform category filtration
+          if (category === 'all') {
+            categorySections.forEach(section => {
+              section.classList.remove('filtered-out');
+              const items = section.querySelectorAll('.accordion-item');
+              items.forEach(item => {
+                item.style.display = 'block';
+                const btn = item.querySelector('.accordion-button');
+                btn.classList.add('collapsed');
+                btn.setAttribute('aria-expanded', 'false');
+                const col = item.querySelector('.accordion-collapse');
+                if (col) col.classList.remove('show');
+              });
+            });
+            document.getElementById('noResultsMessage').classList.add('d-none');
+          } else {
+            categorySections.forEach(section => {
+              const secCategory = section.getAttribute('data-section-category');
+              if (secCategory === category) {
+                section.classList.remove('filtered-out');
+                // Open first item of selected category for rich usability
+                const items = section.querySelectorAll('.accordion-item');
+                items.forEach((item, index) => {
+                  item.style.display = 'block';
+                  const btn = item.querySelector('.accordion-button');
+                  const col = item.querySelector('.accordion-collapse');
+                  if (index === 0) {
+                    btn.classList.remove('collapsed');
+                    btn.setAttribute('aria-expanded', 'true');
+                    if (col) col.classList.add('show');
+                  } else {
+                    btn.classList.add('collapsed');
+                    btn.setAttribute('aria-expanded', 'false');
+                    if (col) col.classList.remove('show');
+                  }
+                });
+              } else {
+                section.classList.add('filtered-out');
+              }
+            });
+            
+            // Smoothly scroll down to accordion on mobile / small devices to improve UX
+            const accordionSectionEl = document.getElementById('faqAccordionSection');
+            if (accordionSectionEl) {
+              accordionSectionEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }
+        });
+      });
+    }
+
+
+    /* ========================================================
+       MOUSE-MOVEMENT TILT/PARALLAX ON HERO ILLUSTRATION
+       ======================================================== */
+    function initHeroIllustrationParallax() {
+      const container = document.querySelector('.interactive-illustration-container');
+      const target = document.getElementById('heroIllustration');
+
+      if (!container || !target || window.innerWidth < 992) return;
+
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Interactive tilt angles
+        const rotateX = ((centerY - y) / centerY) * 12; // Max 12 deg tilt
+        const rotateY = ((x - centerX) / centerX) * 12;
+
+        target.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        target.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+      });
+    }
+
+
+    /* ========================================================
+       DESKTOP STICKY SUPPORT WIDGET (Vanilla JS Scroll)
+       ======================================================== */
+    function initStickySupportWidget() {
+      const widget = document.getElementById('stickySupportWidget');
+      if (!widget) return;
+
+      const handleScrollWidget = () => {
+        if (window.scrollY > 300) {
+          widget.classList.add('visible');
+        } else {
+          widget.classList.remove('visible');
+        }
+      };
+
+      window.addEventListener('scroll', handleScrollWidget);
+      // Run once on load
+      handleScrollWidget();
+    }
+
+
+    /* ========================================================
+       DYNAMIC MOCK DOWNLOAD FILE GENERATOR
+       ======================================================== */
+    function downloadMockFile(filename, textContent) {
+      try {
+        const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (err) {
+        alert('Downloading file: ' + filename);
+      }
+    }
+  </script>
+</body>
+</html>

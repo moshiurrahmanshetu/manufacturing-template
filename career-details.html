@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details - Vanguard Manufacturing Group</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Explore job openings, detailed responsibilities, and application requirements at Vanguard Manufacturing Group. Apply online now.">
+  <meta name="keywords" content="vanguard careers, industrial manufacturing vacancies, join our crew, engineering jobs, CNC milling operator, Houston Texas">
+  <meta name="author" content="Vanguard Group">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+  <!-- AOS Scroll Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom Style CSS -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Career details specific styling */
+    :root {
+      --primary-glow: rgba(255, 94, 0, 0.15);
+    }
+
+    /* Summary Card Sidebar */
+    .sticky-job-summary {
+      position: sticky;
+      top: 100px;
+      z-index: 10;
+    }
+    .job-summary-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: var(--shadow-md);
+    }
+    .job-summary-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+    }
+    .job-summary-list li {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .job-summary-list li:last-child {
+      border-bottom: none;
+    }
+    .job-summary-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background-color: var(--color-bg-sub);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    .job-summary-label {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      display: block;
+      line-height: 1.2;
+    }
+    .job-summary-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+      display: block;
+      line-height: 1.3;
+    }
+
+    /* Main Content Styling */
+    .details-section-box {
+      margin-bottom: 40px;
+    }
+    .details-section-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .details-section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 2px;
+    }
+    .details-bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .details-bullet-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      color: var(--color-text-muted);
+    }
+    .details-bullet-list li::before {
+      content: '\f058';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--color-primary);
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 1.1rem;
+    }
+
+    /* Benefits inline cards */
+    .details-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .details-benefit-card {
+      background: var(--color-bg-sub);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transition: var(--transition-smooth);
+    }
+    .details-benefit-card:hover {
+      background-color: var(--color-bg-card);
+      border-color: var(--color-primary);
+      transform: translateX(5px);
+    }
+    .details-benefit-card i {
+      color: var(--color-primary);
+      font-size: 1.25rem;
+    }
+
+    /* Drag and Drop resume field */
+    .resume-upload-zone {
+      border: 2px dashed var(--color-border);
+      background: var(--color-bg-sub);
+      border-radius: 8px;
+      padding: 30px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+    .resume-upload-zone:hover,
+    .resume-upload-zone.dragover {
+      border-color: var(--color-primary);
+      background: rgba(255, 94, 0, 0.03);
+    }
+    .resume-upload-icon {
+      font-size: 2.25rem;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+      transition: var(--transition-smooth);
+    }
+    .resume-upload-zone:hover .resume-upload-icon {
+      color: var(--color-primary);
+      transform: translateY(-3px);
+    }
+    .file-input-hidden {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .uploaded-file-details {
+      display: none;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-primary);
+      border-radius: 6px;
+      padding: 10px 15px;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    /* Application Form Wrapper */
+    .application-form-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Previous Next Navigation Bar */
+    .prev-next-nav-bar {
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 30px 0;
+      margin: 60px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .prev-next-btn-link {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--color-text-main);
+      max-width: 45%;
+      transition: var(--transition-smooth);
+    }
+    .prev-next-btn-link:hover {
+      color: var(--color-primary);
+    }
+    .prev-next-btn-link.prev-link {
+      text-align: left;
+    }
+    .prev-next-btn-link.next-link {
+      text-align: right;
+      flex-direction: row-reverse;
+    }
+    .prev-next-btn-link i {
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      transition: var(--transition-smooth);
+    }
+    .prev-next-btn-link.prev-link:hover i {
+      transform: translateX(-5px);
+    }
+    .prev-next-btn-link.next-link:hover i {
+      transform: translateX(5px);
+    }
+    .prev-next-lbl {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .prev-next-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Related Jobs Cards */
+    .related-job-item {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: var(--transition-smooth);
+    }
+    .related-job-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+      border-color: var(--color-primary);
+    }
+    .related-job-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 5px;
+      display: block;
+    }
+    .related-job-title:hover {
+      color: var(--color-primary);
+    }
+    .related-job-meta {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Success Overlay */
+    .application-success-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 17, 19, 0.8);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-modal-content {
+      background: var(--color-bg-card);
+      border: 2px solid var(--color-primary);
+      border-radius: 12px;
+      padding: 50px 40px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--shadow-xl);
+      animation: modalZoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    @keyframes modalZoomIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .success-modal-icon {
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 94, 0, 0.1);
+      color: var(--color-primary);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP INFO BAR
+       ======================================================== -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info d-flex gap-4">
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+18005550199">+1 (800) 555-0199</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:info@vanguard-industry.com">info@vanguard-industry.com</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-clock"></i>
+          Mon - Fri: 08:00 AM - 06:00 PM
+        </span>
+      </div>
+      <div class="topbar-socials d-flex gap-3 align-items-center">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <span class="ms-3 border-start ps-3 border-secondary d-inline-flex align-items-center gap-2 text-white-50">
+          <i class="fa-solid fa-earth-americas text-primary"></i>
+          HQ: Houston, TX
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. STICKY HEADER & NAVBAR
+       ======================================================== -->
+  <header class="header-wrap" id="mainHeader">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <!-- Logo -->
+        <a class="brand-logo" id="headerLogo" href="index.html">
+          <i class="fa-solid fa-gears text-primary"></i>
+          VANGUARD<span>.</span>
+        </a>
+        
+        <!-- Controls (Toggle + Night Mode on Mobile / Tablet) -->
+        <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+          <button class="theme-toggle-btn" id="themeToggleMobile" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <!-- Navbar Menu links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Mobile Secondary CTA -->
+          <div class="d-md-none mt-2 mb-3 px-3">
+            <a class="btn-custom btn-custom-outline border-secondary w-100 justify-content-center" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          
+          <!-- Actions -->
+          <div class="d-flex align-items-center gap-3">
+            <button class="theme-toggle-btn d-none d-xl-flex" id="themeToggle" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <a class="btn-custom btn-custom-outline border-secondary d-none d-md-inline-flex" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+            <a class="btn-custom btn-custom-primary" href="request-quote.html">
+              <span>Get A Quote</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       3. HERO BANNER
+       ======================================================== -->
+  <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop');">
+    <div class="page-banner-overlay"></div>
+    <div class="container text-center text-md-start">
+      <div class="row align-items-center">
+        <div class="col-md-9 col-lg-8">
+          <span class="text-primary text-uppercase fw-bold letter-spacing-1 d-block mb-2" id="heroDeptTag" data-aos="fade-up">Production Division</span>
+          <h1 class="page-banner-title mb-3" id="heroJobTitle" data-aos="fade-up" data-aos-delay="50">Job Opening Details</h1>
+          <ul class="page-breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="fa-solid fa-chevron-right text-white-50 small"></i></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><i class="fa-solid fa-chevron-right text-white-50 small"></i></li>
+            <li class="active" id="breadcrumbJobTitle">Details</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. JOB CONTENT & SUMMARY SIDEBAR
+       ======================================================== -->
+  <section class="section-padding bg-main">
+    <div class="container">
+      <div class="row g-5">
+        
+        <!-- Left Column: Details -->
+        <div class="col-lg-8" data-aos="fade-right">
+          
+          <!-- Job Overview -->
+          <div class="details-section-box">
+            <h2 class="details-section-title">Position Overview</h2>
+            <p id="jobDescriptionText" class="text-muted fs-6 leading-relaxed mb-4">
+              Detailed descriptions of the opening, its background, scope of operation and direct context within our high-tech manufacturing complexes.
+            </p>
+          </div>
+
+          <!-- Key Responsibilities -->
+          <div class="details-section-box">
+            <h2 class="details-section-title">Key Responsibilities</h2>
+            <ul id="responsibilitiesList" class="details-bullet-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Required Qualifications -->
+          <div class="details-section-box">
+            <h2 class="details-section-title">Required Qualifications</h2>
+            <ul id="qualificationsList" class="details-bullet-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Preferred Skills -->
+          <div class="details-section-box">
+            <h2 class="details-section-title">Preferred Skills & Expertise</h2>
+            <ul id="skillsList" class="details-bullet-list">
+              <!-- Dynamically populated -->
+            </ul>
+          </div>
+
+          <!-- Benefits included -->
+          <div class="details-section-box">
+            <h2 class="details-section-title">Position-Specific Benefits</h2>
+            <div id="benefitsGrid" class="details-benefits-grid">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Workplace guidelines -->
+          <div class="details-section-box">
+            <h2 class="details-section-title">Company Overview & Safety Standards</h2>
+            <p class="text-muted small">
+              Vanguard Group operates standard-setting heavy engineering complexes. All employees undergo safety certification on hiring, and are expected to follow our Zero-Accident guidelines rigorously. We provide continuous technical coaching, high-quality PPE, on-floor cooling buffers, and regular shift break allocations.
+            </p>
+          </div>
+
+          <!-- Application Process section -->
+          <div class="details-section-box bg-sub p-4 rounded-3 border">
+            <h3 class="h5 fw-bold text-main mb-3"><i class="fa-solid fa-circle-nodes text-primary me-2"></i>Recruitment Process</h3>
+            <p class="small text-muted mb-0">
+              Applications are reviewed within 3-5 business days. Shortlisted candidates undergo standard phone vetting followed by on-floor simulator testing and face-to-face team reviews. For remote candidates, initial loops can be coordinated via secure telepresence.
+            </p>
+          </div>
+
+          <!-- ========================================================
+               5. JOB APPLICATION FORM CARD
+               ======================================================== -->
+          <div class="application-form-card mt-5" id="applicationFormSection" data-aos="fade-up">
+            <h3 class="h4 fw-bold text-main mb-2">Submit Your Application</h3>
+            <p class="small text-muted mb-4">Submit your resume and details directly. Our talent acquisition team will review your application within 72 hours.</p>
+            
+            <form id="vanguardJobForm">
+              <div class="row g-3">
+                <!-- Name -->
+                <div class="col-sm-6">
+                  <label class="form-label text-muted small fw-bold">Full Name *</label>
+                  <input type="text" class="form-control bg-sub" style="border: 1px solid var(--color-border); border-radius: 6px; padding: 10px;" required placeholder="Enter your full name">
+                </div>
+
+                <!-- Email -->
+                <div class="col-sm-6">
+                  <label class="form-label text-muted small fw-bold">Email Address *</label>
+                  <input type="email" class="form-control bg-sub" style="border: 1px solid var(--color-border); border-radius: 6px; padding: 10px;" required placeholder="name@corporate.com">
+                </div>
+
+                <!-- Phone -->
+                <div class="col-sm-6">
+                  <label class="form-label text-muted small fw-bold">Phone Number *</label>
+                  <input type="tel" class="form-control bg-sub" style="border: 1px solid var(--color-border); border-radius: 6px; padding: 10px;" required placeholder="+1 (555) 000-0000">
+                </div>
+
+                <!-- Department / Title autofill -->
+                <div class="col-sm-6">
+                  <label class="form-label text-muted small fw-bold">Applying For Position *</label>
+                  <input type="text" class="form-control bg-sub" id="formJobAutofill" readonly style="border: 1px solid var(--color-border); border-radius: 6px; padding: 10px; font-weight: 600;">
+                </div>
+
+                <!-- Cover letter -->
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Short Professional Summary / Cover Letter *</label>
+                  <textarea class="form-control bg-sub" rows="5" required style="border: 1px solid var(--color-border); border-radius: 6px; padding: 10px;" placeholder="Briefly introduce your qualifications, key tools you specialize in, and why you wish to join Vanguard..."></textarea>
+                </div>
+
+                <!-- Drag and drop resume upload zone -->
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-bold">Upload CV / Resume (PDF, DOCX) *</label>
+                  <div class="resume-upload-zone" id="resumeUploadZone">
+                    <div class="resume-upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    <p class="mb-1 fw-bold text-main">Drag & Drop Resume File Here</p>
+                    <p class="text-muted small mb-0">or click to browse your local computer files</p>
+                    <input type="file" class="file-input-hidden" id="resumeFileInput" required accept=".pdf,.doc,.docx">
+                  </div>
+                  <!-- File loaded details info bar -->
+                  <div class="uploaded-file-details" id="fileDetailsBar">
+                    <span class="d-flex align-items-center gap-2 small text-main font-semibold">
+                      <i class="fa-solid fa-file-pdf text-danger"></i>
+                      <span id="uploadedFileName">my_resume_vanguard.pdf</span>
+                    </span>
+                    <button type="button" class="btn btn-sm btn-outline-danger" id="removeFileBtn" aria-label="Remove File"><i class="fa-solid fa-trash-can"></i></button>
+                  </div>
+                </div>
+
+                <!-- Terms and safety statement -->
+                <div class="col-12 mt-2">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                    <label class="form-check-label small text-muted" for="termsCheck">
+                      I certify that all statements made in this resume are true, and I agree to Vanguard's standard security check guidelines on hiring.
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 mt-4 text-end">
+                  <button type="submit" class="btn-custom btn-custom-primary">
+                    <span>Submit Job Application</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <div class="col-lg-4">
+          <div class="sticky-job-summary" data-aos="fade-left">
+            
+            <!-- Summary card -->
+            <div class="job-summary-card mb-4">
+              <h3 class="h5 fw-bold text-main mb-4"><i class="fa-solid fa-briefcase text-primary me-2"></i>Job Summary</h3>
+              
+              <ul class="job-summary-list">
+                <!-- Department -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-building"></i></div>
+                  <div>
+                    <span class="job-summary-label">Department</span>
+                    <span class="job-summary-value" id="summaryDept">Production</span>
+                  </div>
+                </li>
+
+                <!-- Employment Type -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-clock"></i></div>
+                  <div>
+                    <span class="job-summary-label">Employment Type</span>
+                    <span class="job-summary-value" id="summaryType">Full-time</span>
+                  </div>
+                </li>
+
+                <!-- Experience -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-briefcase"></i></div>
+                  <div>
+                    <span class="job-summary-label">Experience Required</span>
+                    <span class="job-summary-value" id="summaryExperience">2+ Years</span>
+                  </div>
+                </li>
+
+                <!-- Location -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div>
+                    <span class="job-summary-label">Job Location</span>
+                    <span class="job-summary-value" id="summaryLocation">Houston, TX (HQ)</span>
+                  </div>
+                </li>
+
+                <!-- Salary -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-coins"></i></div>
+                  <div>
+                    <span class="job-summary-label">Salary Range</span>
+                    <span class="job-summary-value" id="summarySalary">$55k - $75k</span>
+                  </div>
+                </li>
+
+                <!-- Vacancies -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-users"></i></div>
+                  <div>
+                    <span class="job-summary-label">Open Vacancies</span>
+                    <span class="job-summary-value" id="summaryVacancy">3 Openings</span>
+                  </div>
+                </li>
+
+                <!-- Deadline -->
+                <li>
+                  <div class="job-summary-icon"><i class="fa-solid fa-calendar-xmark"></i></div>
+                  <div>
+                    <span class="job-summary-label">Application Deadline</span>
+                    <span class="job-summary-value" id="summaryDeadline" class="text-danger">September 15, 2026</span>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- Direct Scroll to Apply CTA -->
+              <a href="#applicationFormSection" class="btn-custom btn-custom-primary w-100 text-center justify-content-center py-3">
+                <span>Apply For This Job</span>
+                <i class="fa-solid fa-arrow-right-long"></i>
+              </a>
+            </div>
+
+            <!-- Related Jobs Column -->
+            <div class="job-summary-card">
+              <h3 class="h5 fw-bold text-main mb-3"><i class="fa-solid fa-rectangle-list text-primary me-2"></i>Related Openings</h3>
+              <div id="relatedJobsContainer">
+                <!-- Dynamically Populated with 2 other jobs -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================================
+           6. PREVIOUS / NEXT JOB NAVIGATION
+           ======================================================== -->
+      <div class="prev-next-nav-bar" data-aos="fade-up">
+        <!-- Prev link -->
+        <a href="career-details.html?id=12" class="prev-next-btn-link prev-link" id="prevJobBtn">
+          <i class="fa-solid fa-circle-arrow-left"></i>
+          <div>
+            <span class="prev-next-lbl">Previous Job</span>
+            <span class="prev-next-title" id="prevJobTitle">Automation System Engineer</span>
+          </div>
+        </a>
+
+        <!-- Middle separator -->
+        <div class="d-none d-md-block border-end" style="height: 40px; border-color: var(--color-border);"></div>
+
+        <!-- Next link -->
+        <a href="career-details.html?id=2" class="prev-next-btn-link next-link" id="nextJobBtn">
+          <i class="fa-solid fa-circle-arrow-right"></i>
+          <div>
+            <span class="prev-next-lbl">Next Job</span>
+            <span class="prev-next-title" id="nextJobTitle">CNC Machine Operator</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================
+       7. GLOBAL FOOTER
+       ======================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4 justify-content-between">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="col-lg-4">
+          <a class="brand-logo mb-3 d-inline-block" href="index.html">
+            <i class="fa-solid fa-gears text-primary"></i>
+            VANGUARD<span>.</span>
+          </a>
+          <p class="footer-desc">
+            Vanguard Group is a premier international manufacturing and engineering heavy-machinery provider. We configure multi-axis robotic systems, metallurgy components, and infrastructure assemblies.
+          </p>
+          <div class="footer-social-icons d-flex gap-3 mt-4">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="blog.html">News</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Main Solutions -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Solutions</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html">Multi-Axis CNC Milling</a></li>
+            <li><a href="service-details.html">Robotic Assembly Design</a></li>
+            <li><a href="service-details.html">Aerospace Alloys Metallurgy</a></li>
+            <li><a href="service-details.html">Structural Fabrications</a></li>
+            <li><a href="service-details.html">High-throughput Diagnostics</a></li>
+            <li><a href="service-details.html">Custom Mold Prototyping</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact & Newsletter -->
+        <div class="col-lg-4">
+          <h4 class="footer-widget-title">Corporate Office</h4>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-location-dot footer-contact-icon"></i>
+            <div class="footer-contact-text">
+              <span>Main Facility HQ</span>
+              7850 Industrial Blvd, Suite 240, Houston, TX 77001
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fa-solid fa-envelope footer-contact-icon"></i>
+            <div class="footer-contact-text">
+              <span>Direct Inquiries</span>
+              contact@vanguard-industry.com
+            </div>
+          </div>
+
+          <h4 class="footer-widget-title mt-4">Industry Bulletin</h4>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Vanguard Bulletins!');">
+            <input type="email" class="footer-newsletter-input" placeholder="Your corporate email..." required aria-label="Newsletter email">
+            <button class="footer-newsletter-btn" type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            &copy; 2026 Vanguard Group Inc. All rights reserved. Managed under global standard compliance operations.
+          </div>
+          <div class="col-md-6">
+            <ul class="footer-bottom-links">
+              <li><a href="about.html">FAQ</a></li>
+              <li><a href="about.html">Corporate Rates</a></li>
+              <li><a href="about.html">Privacy Covenant</a></li>
+              <li><a href="contact.html">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       8. BACK TO TOP BUTTON
+       ======================================================== -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </button>
+
+  <!-- ========================================================
+       9. APPLICATION SUCCESS MODAL OVERLAY
+       ======================================================== -->
+  <div class="application-success-modal" id="applicationSuccessModal">
+    <div class="success-modal-content">
+      <div class="success-modal-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h3 class="h4 fw-bold text-main mb-3">Application Submitted Successfully</h3>
+      <p class="text-muted small mb-4 leading-relaxed">
+        Your engineering and background portfolio has been registered in Vanguard's Talent system. A recruiting specialist from our Houston headquarters will review your files and contact you shortly.
+      </p>
+      <button type="button" class="btn-custom btn-custom-primary" id="closeSuccessModalBtn">
+        <span>Close Window</span>
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       10. THIRD PARTY LIBRARIES & INTEGRATED JS
+       ======================================================== -->
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- AOS Scroll Animations JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom JS Operations -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Initialize Page State Engine & Dynamic Elements -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 50
+    });
+
+    // Detailed 12 jobs database
+    const jobsDatabase = [
+      {
+        id: 1,
+        title: "Automation System Engineer",
+        dept: "Automation",
+        deptSlug: "automation",
+        type: "Full-time",
+        experience: "5+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$95,000 - $125,000",
+        vacancy: 2,
+        deadline: "August 30, 2026",
+        description: "Vanguard Group is seeking a Senior Automation System Engineer to design, implement, and maintain advanced PLC networks and automated production systems. You will lead the integration of Industry 4.0 IoT telemetry sensors with our high-throughput metallurgy line.",
+        responsibilities: [
+          "Design and program PLC/SCADA systems for high-pressure hydraulic presses and multi-axis CNC machines.",
+          "Collaborate with the cloud integration team to stream vibration and temperature data to the predictive analytics platform.",
+          "Conduct functional safety audits on robotic arms in accordance with ISO 13849 standards.",
+          "Troubleshoot fieldbus communications (Profinet, EtherCAT) to minimize unexpected downtime."
+        ],
+        qualifications: [
+          "Bachelor's degree in Electrical Engineering, Robotics, or Mechatronics.",
+          "5+ years of practical experience in heavy manufacturing automation.",
+          "Proven experience with Siemens TIA Portal or Rockwell Automation Studio 5000."
+        ],
+        skills: [
+          "Python or structured text programming for IoT gateways.",
+          "Familiarity with Fanuc or Kuka robotic programming configurations.",
+          "Strong diagnostic mindset with high-voltage electrical safety understanding."
+        ],
+        benefits: [
+          { icon: "fa-user-doctor", name: "Premium Health Care" },
+          { icon: "fa-coins", name: "Quarterly Profit Sharing" },
+          { icon: "fa-calendar-check", name: "25 Days PTO" },
+          { icon: "fa-gears", name: "CAD Training Allowances" }
+        ],
+        hours: "Mon - Fri, 08:00 AM - 05:00 PM (Flexible core hours)"
+      },
+      {
+        id: 2,
+        title: "CNC Machine Operator & Programmer",
+        dept: "Production",
+        deptSlug: "production",
+        type: "Full-time",
+        experience: "2+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$55,000 - $75,000",
+        vacancy: 4,
+        deadline: "September 15, 2026",
+        description: "We are seeking a skilled CNC Machine Operator and Programmer to configure and run multi-axis milling machines. You will translate CAD/CAM designs into clean G-code, verify steel and aluminum tolerances, and ensure maximum material throughput.",
+        responsibilities: [
+          "Set up and align raw metal billets on 3-axis and 5-axis milling centers.",
+          "Read blueprints and adjust tool offsets using Fanuc controllers.",
+          "Conduct regular dimensional quality checks using calipers, micrometers, and CMM equipment.",
+          "Perform basic preventative maintenance on coolants and spindle lubrication."
+        ],
+        qualifications: [
+          "Technical diploma or certified apprenticeship in Machining Operations.",
+          "2+ years of operating multi-axis CNC lathes or mills in a metal shop.",
+          "Basic G-code and M-code understanding."
+        ],
+        skills: [
+          "Experience with Mastercam or Autodesk Fusion 360 CAM software.",
+          "Familiarity with heavy steel and aerospace alloy machining parameters.",
+          "Strict commitment to personal safety wear guidelines."
+        ],
+        benefits: [
+          { icon: "fa-building-circle-check", name: "Air-Filtered Floor" },
+          { icon: "fa-coins", name: "Efficiency Cash Bonuses" },
+          { icon: "fa-calendar-check", name: "Paid Personal PTO" },
+          { icon: "fa-utensils", name: "Subsidized Cafeteria" }
+        ],
+        hours: "Rotating Shifts: Day (6:00 AM - 2:30 PM) / Evening (2:00 PM - 10:30 PM)"
+      },
+      {
+        id: 3,
+        title: "Quality Control Inspector",
+        dept: "Quality",
+        deptSlug: "quality",
+        type: "Full-time",
+        experience: "3+ Years",
+        location: "Pasadena, TX",
+        salary: "$60,000 - $80,000",
+        vacancy: 1,
+        deadline: "August 25, 2026",
+        description: "Vanguard's Pasadena facility is looking for a Quality Control Inspector to lead structural testing and metallurgy certifications. You will oversee NDT (Non-Destructive Testing) procedures on high-pressure valves and heavy welded fittings.",
+        responsibilities: [
+          "Perform ultrasonic and dye penetrant testing on metallurgical joint welds.",
+          "Verify compliance of finished components against ASME and ISO 9001 standards.",
+          "Document non-conformance reports and collaborate with production teams on corrective actions.",
+          "Calibrate micro-measuring tools and coordinate external calibration logs."
+        ],
+        qualifications: [
+          "Associate degree in Materials Science, Mechanical Technology, or Quality Assurance.",
+          "3+ years of inspection experience in a heavy steel or manufacturing shop.",
+          "ASNT Level II certification in Ultrasonic or Dye Penetrant testing is highly preferred."
+        ],
+        skills: [
+          "In-depth reading of manufacturing structural blueprints.",
+          "Proficiency with ERP tracking softwares (SAP/Oracle).",
+          "High attention to microscopic flaws or structural deformities."
+        ],
+        benefits: [
+          { icon: "fa-user-doctor", name: "Top Dental & Vision" },
+          { icon: "fa-coins", name: "Quality Accuracy Bonus" },
+          { icon: "fa-file-shield", name: "Short Term Disability" },
+          { icon: "fa-bus-simple", name: "Pasadena Transit Subsidy" }
+        ],
+        hours: "Mon - Fri, 07:00 AM - 04:00 PM"
+      },
+      {
+        id: 4,
+        title: "Mechanical Maintenance Technician",
+        dept: "Maintenance",
+        deptSlug: "maintenance",
+        type: "Full-time",
+        experience: "4+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$65,000 - $85,000",
+        vacancy: 3,
+        deadline: "September 01, 2026",
+        description: "Join our critical Maintenance team to ensure 24/7 uptime of high-power casting furnaces, hydraulic stamping lines, and mechanical crane assemblies. You will perform predictive rebuilds and respond to line interruptions with urgency.",
+        responsibilities: [
+          "Rebuild heavy pump seals, hydraulic valves, and gearboxes on stamping presses.",
+          "Execute preventative maintenance logs using our mobile CMMS portal.",
+          "Diagnose mechanical vibration metrics and replace bearings before failures occur.",
+          "Operate overhead cranes and forklifts to move heavy machinery segments safely."
+        ],
+        qualifications: [
+          "High school diploma or technical certificate in Industrial Maintenance.",
+          "4+ years of hands-on troubleshooting experience in heavy manufacturing.",
+          "Excellent hydraulic schematics reading."
+        ],
+        skills: [
+          "Basic MIG/TIG welding for minor structural repair.",
+          "Rigging and hoisting safety certification.",
+          "Strong electrical cross-over diagnostic skills."
+        ],
+        benefits: [
+          { icon: "fa-gears", name: "Tool Allowances" },
+          { icon: "fa-user-doctor", name: "Comprehensive Health" },
+          { icon: "fa-coins", name: "Uptime Maintenance Bonus" },
+          { icon: "fa-bus-simple", name: "Fuel & Transit Subsidies" }
+        ],
+        hours: "Shift Pattern: 4 days on, 3 days off (10-hour days)"
+      },
+      {
+        id: 5,
+        title: "Electrical Systems Designer",
+        dept: "Electrical",
+        deptSlug: "electrical",
+        type: "Full-time",
+        experience: "3+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$85,000 - $110,000",
+        vacancy: 2,
+        deadline: "September 10, 2026",
+        description: "We are seeking an Electrical Systems Designer to develop high-voltage power distribution plans, control cabinet schematics, and sensor wiring layouts for our automated assembly machinery.",
+        responsibilities: [
+          "Create detailed electrical wiring schematics using AutoCAD Electrical or EPLAN.",
+          "Specify circuit breakers, relays, variable frequency drives (VFDs), and safety switches.",
+          "Collaborate with mechanical engineers to design consolidated control cabinets.",
+          "Ensure designs comply with National Electrical Code (NEC) and NFPA 79 standards."
+        ],
+        qualifications: [
+          "Bachelor's degree in Electrical Engineering or Electrical Technology.",
+          "3+ years of experience in panel design or electrical system layouts.",
+          "Strong understanding of high-voltage safety and grounding rules."
+        ],
+        skills: [
+          "AutoCAD Electrical expert proficiency.",
+          "VFD configuration and parameter mapping.",
+          "Excellent team communication and technical drawing layout skills."
+        ],
+        benefits: [
+          { icon: "fa-building-user", name: "Hybrid Work Eligible" },
+          { icon: "fa-user-doctor", name: "Health, Dental & Vision" },
+          { icon: "fa-coins", name: "Semi-annual Bonus Pools" },
+          { icon: "fa-gears", name: "Certified AutoCAD Seminars" }
+        ],
+        hours: "Mon - Fri, 08:30 AM - 05:30 PM"
+      },
+      {
+        id: 6,
+        title: "Logistics & Warehouse Coordinator",
+        dept: "Warehouse",
+        deptSlug: "warehouse",
+        type: "Full-time",
+        experience: "2+ Years",
+        location: "Pasadena, TX",
+        salary: "$48,000 - $62,000",
+        vacancy: 2,
+        deadline: "August 28, 2026",
+        description: "Vanguard is seeking a Logistics & Warehouse Coordinator to manage high-volume inbound steel billets and outbound precision components. You will oversee shipping manifests, digital warehouse inventory trackers, and forklift teams.",
+        responsibilities: [
+          "Organize inbound shipments of raw metals and verify certificates of analysis.",
+          "Coordinate container load planning and schedule freight carriers for on-time delivery.",
+          "Utilize warehouse management software (WMS) to scan, catalog, and track parts.",
+          "Enforce strict shipping dock speed limits and OSHA lifting rules."
+        ],
+        qualifications: [
+          "Associate degree in Logistics, Supply Chain, or Business Administration.",
+          "2+ years of warehouse coordination or shipping clerk experience.",
+          "Forklift operation certification is required."
+        ],
+        skills: [
+          "Proficiency with RFID scanners and inventory control databases.",
+          "Familiarity with international export documents (customs forms, BOL).",
+          "High physical stamina and safety mindset."
+        ],
+        benefits: [
+          { icon: "fa-building-circle-check", name: "Smart AC Warehouse" },
+          { icon: "fa-bus-simple", name: "Free Parking & Shuttle" },
+          { icon: "fa-utensils", name: "Subsidized Daily Meals" },
+          { icon: "fa-file-shield", name: "Life & Term Disability" }
+        ],
+        hours: "Mon - Fri, 07:00 AM - 04:00 PM"
+      },
+      {
+        id: 7,
+        title: "Senior HR Operations Specialist",
+        dept: "HR",
+        deptSlug: "hr",
+        type: "Full-time",
+        experience: "5+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$75,000 - $95,000",
+        vacancy: 1,
+        deadline: "September 05, 2026",
+        description: "Vanguard is looking for a Senior HR Operations Specialist to oversee employee relations, onboarding frameworks, and benefits administration across our 1,400+ person workforce.",
+        responsibilities: [
+          "Lead full-cycle recruiting and technical onboarding programs for engineering staff.",
+          "Manage employee compensation cycles, health plans, and retirement accounts.",
+          "Conduct periodic audits on safety compliance, certifications logs, and HR files.",
+          "Sponsor employee forum boards and coordinate the Vanguard Annual Gala."
+        ],
+        qualifications: [
+          "Bachelor's degree in Human Resources, Business, or Psychology.",
+          "5+ years of HR Generalist or Operations experience in a industrial setting.",
+          "SHRM-CP or PHR certification is preferred."
+        ],
+        skills: [
+          "Proficiency with HRIS portals like Workday or BambooHR.",
+          "In-depth understanding of Texas labor codes and OSHA guidelines.",
+          "Exceptional conflict-resolution and empathetic listening skills."
+        ],
+        benefits: [
+          { icon: "fa-building-user", name: "Hybrid Schedule" },
+          { icon: "fa-calendar-check", name: "25 Days Paid PTO" },
+          { icon: "fa-user-doctor", name: "Complete Medical Bundle" },
+          { icon: "fa-utensils", name: "Subsidized Organic Cafe" }
+        ],
+        hours: "Mon - Fri, 09:00 AM - 05:00 PM (Hybrid: 2 days remote)"
+      },
+      {
+        id: 8,
+        title: "Corporate Financial Analyst",
+        dept: "Finance",
+        deptSlug: "finance",
+        type: "Full-time",
+        experience: "3+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$80,000 - $105,000",
+        vacancy: 1,
+        deadline: "September 20, 2026",
+        description: "Vanguard is seeking a Corporate Financial Analyst to drive budget forecasts, capital expenditure planning for machinery procurement, and division profitability tracking.",
+        responsibilities: [
+          "Construct complex financial models tracking production yield margins.",
+          "Forecast metal market fluctuations to hedge procurement costs for steel & aluminum.",
+          "Prepare monthly financial reviews for the Chief Financial Officer and Board.",
+          "Evaluate ROI on multi-million dollar machinery additions (5-axis CNC rigs)."
+        ],
+        qualifications: [
+          "Bachelor's degree in Finance, Accounting, or Economics.",
+          "3+ years of financial analysis experience in a manufacturing or energy sector.",
+          "Advanced Excel modeling expertise is required."
+        ],
+        skills: [
+          "Data visualization tools (PowerBI, Tableau).",
+          "Familiarity with cost accounting standards (GAAP).",
+          "Highly detailed mathematical reasoning and report-writing."
+        ],
+        benefits: [
+          { icon: "fa-building-user", name: "Flexible Hybrid Setup" },
+          { icon: "fa-file-shield", name: "Comprehensive Insurance" },
+          { icon: "fa-coins", name: "Annual Performance Pool" },
+          { icon: "fa-utensils", name: "Subsidized Salad & Hot Bar" }
+        ],
+        hours: "Mon - Fri, 08:30 AM - 05:30 PM (Hybrid)"
+      },
+      {
+        id: 9,
+        title: "Senior Mechanical Design Engineer",
+        dept: "Mechanical",
+        deptSlug: "mechanical",
+        type: "Full-time",
+        experience: "6+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$100,000 - $135,000",
+        vacancy: 2,
+        deadline: "August 31, 2026",
+        description: "We are seeking a Senior Mechanical Design Engineer to lead CAD drafting, materials selection, and FEA stress modeling for high-load structural components used in power turbines and aerospace joints.",
+        responsibilities: [
+          "Draft 3D structural modules in SolidWorks or Autodesk Inventor.",
+          "Execute Finite Element Analysis (FEA) to verify structural integrity and stress lines.",
+          "Specify metallurgical casting parameters, hardness targets, and surface coatings.",
+          "Collaborate with CNC programmers on CAD-to-CAM design handoffs."
+        ],
+        qualifications: [
+          "Bachelor's or Master's degree in Mechanical Engineering.",
+          "6+ years of heavy equipment mechanical modeling experience.",
+          "Licensed Professional Engineer (PE) is highly valued."
+        ],
+        skills: [
+          "SolidWorks Premium expert certification.",
+          "Advanced understanding of metallurgy heat-treatment parameters.",
+          "Great mechanical drawing and tolerance (GD&T) understanding."
+        ],
+        benefits: [
+          { icon: "fa-graduation-cap", name: "Master's Tuition Funding" },
+          { icon: "fa-building-user", name: "Flexible Work Hours" },
+          { icon: "fa-calendar-check", name: "25 Days Base PTO" },
+          { icon: "fa-coins", name: "Design Patent Cash Rewards" }
+        ],
+        hours: "Mon - Fri, 08:00 AM - 05:00 PM (Flexible)"
+      },
+      {
+        id: 10,
+        title: "Industrial Account Sales Manager",
+        dept: "Sales",
+        deptSlug: "sales",
+        type: "Full-time",
+        experience: "5+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$85,000 - $115,000",
+        vacancy: 1,
+        deadline: "September 12, 2026",
+        description: "We are looking for an experienced Sales Manager to manage client relations, bid tenders for infrastructure projects, and acquire new partnerships in the metallurgy and power sector.",
+        responsibilities: [
+          "Prepare technical sales proposals and respond to government/corporate tenders.",
+          "Present Vanguard's custom machining capabilities to aerospace and energy clients.",
+          "Negotiate long-term component supply agreements with buyers.",
+          "Maintain high client satisfaction metrics and coordinate delivery schedules."
+        ],
+        qualifications: [
+          "Bachelor's degree in Business, Marketing, or Mechanical Engineering.",
+          "5+ years of B2B industrial technical sales experience.",
+          "Track record of closing $1M+ annual sales volumes."
+        ],
+        skills: [
+          "Proficiency in CRM databases (Salesforce).",
+          "Excellent negotiation and commercial contract knowledge.",
+          "Confident public speaking and technical presenting."
+        ],
+        benefits: [
+          { icon: "fa-coins", name: "Uncapped Commission" },
+          { icon: "fa-bus-simple", name: "Corporate Car Allowance" },
+          { icon: "fa-user-doctor", name: "Full Medical Package" },
+          { icon: "fa-calendar-check", name: "Annual Sales Trips" }
+        ],
+        hours: "Mon - Fri, 08:30 AM - 05:30 PM (Up to 30% local travel)"
+      },
+      {
+        id: 11,
+        title: "Lead Enterprise Systems Admin",
+        dept: "IT",
+        deptSlug: "it",
+        type: "Full-time",
+        experience: "6+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$110,000 - $140,000",
+        vacancy: 1,
+        deadline: "September 18, 2026",
+        description: "Vanguard is seeking a Lead Enterprise Systems Admin to oversee server architectures, Active Directory setups, and factory floor OT-IT bridge firewalls.",
+        responsibilities: [
+          "Maintain high-availability servers hosting Vanguard's CAD servers and ERP systems.",
+          "Audit system security, perform regular backup operations, and deploy server clusters.",
+          "Configure secure industrial firewall switches to safeguard OT robotics from outer nets.",
+          "Lead a small team of 3 desktop support technicians."
+        ],
+        qualifications: [
+          "Bachelor's degree in Computer Science, IT, or Networking.",
+          "6+ years of Windows Server and Active Directory administration.",
+          "MCSE, CCNA, or Security+ certifications are highly preferred."
+        ],
+        skills: [
+          "Industrial cyber security protocols (IEC 62443).",
+          "Virtualization tools (VMware, Hyper-V).",
+          "Scripting automations using PowerShell or Bash."
+        ],
+        benefits: [
+          { icon: "fa-building-user", name: "Hybrid Schedule Ready" },
+          { icon: "fa-user-doctor", name: "Top Health Benefits" },
+          { icon: "fa-gears", name: "Enterprise Laptop Provided" },
+          { icon: "fa-coins", name: "IT Project Cash Bonuses" }
+        ],
+        hours: "Mon - Fri, 09:00 AM - 06:00 PM (On-call rotations)"
+      },
+      {
+        id: 12,
+        title: "B2B Digital Marketing Specialist",
+        dept: "Marketing",
+        deptSlug: "marketing",
+        type: "Full-time",
+        experience: "3+ Years",
+        location: "Houston, TX (HQ)",
+        salary: "$65,000 - $85,000",
+        vacancy: 1,
+        deadline: "September 08, 2026",
+        description: "We are seeking a B2B Digital Marketing Specialist to manage our online channels, coordinate industrial newsletters, and run lead-gen campaigns targeting heavy machinery procurement directors.",
+        responsibilities: [
+          "Manage Vanguard's corporate LinkedIn and technical publications channels.",
+          "Design, write, and launch the monthly industrial newsletter using Mailchimp.",
+          "Analyze SEO performance on search engines and design optimized target landings.",
+          "Coordinate photography assets for trade-shows and digital campaigns."
+        ],
+        qualifications: [
+          "Bachelor's degree in Marketing, Communications, or Journalism.",
+          "3+ years of B2B marketing experience in manufacturing or engineering.",
+          "Strong portfolio of technical copywriting and design assets."
+        ],
+        skills: [
+          "Graphic editing suite (Adobe Photoshop/Illustrator).",
+          "SEO metrics management (Google Analytics, SEMrush).",
+          "Exceptional written English and proof-reading abilities."
+        ],
+        benefits: [
+          { icon: "fa-building-user", name: "Hybrid Schedule" },
+          { icon: "fa-user-doctor", name: "Health, Dental, & Vision" },
+          { icon: "fa-utensils", name: "Subsidized Daily Cafeteria" },
+          { icon: "fa-calendar-check", name: "Paid Marketing Seminars" }
+        ],
+        hours: "Mon - Fri, 09:00 AM - 05:30 PM (Hybrid)"
+      }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadJobDetails();
+      initDragAndDropUploader();
+      initApplicationFormSubmission();
+    });
+
+    // Main page loading controller
+    function loadJobDetails() {
+      // Get job ID from query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      let jobId = parseInt(urlParams.get('id')) || 1;
+      
+      // Limit to valid array ranges
+      if (jobId < 1 || jobId > 12) {
+        jobId = 1;
+      }
+
+      // Find selected job and set indices
+      const selectedJob = jobsDatabase.find(j => j.id === jobId) || jobsDatabase[0];
+      const prevJobIndex = jobId === 1 ? 11 : jobId - 2;
+      const nextJobIndex = jobId === 12 ? 0 : jobId;
+      const prevJob = jobsDatabase[prevJobIndex];
+      const nextJob = jobsDatabase[nextJobIndex];
+
+      // 1. Populate Hero Content
+      document.getElementById('heroDeptTag').textContent = selectedJob.dept + " Division";
+      document.getElementById('heroJobTitle').textContent = selectedJob.title;
+      document.getElementById('breadcrumbJobTitle').textContent = selectedJob.title;
+
+      // 2. Populate Main Layout details
+      document.getElementById('jobDescriptionText').textContent = selectedJob.description;
+      document.getElementById('formJobAutofill').value = selectedJob.title + " (" + selectedJob.dept + ")";
+
+      // 3. Populate Lists (Responsibilities, Qualifications, Skills)
+      populateBulletedList('responsibilitiesList', selectedJob.responsibilities);
+      populateBulletedList('qualificationsList', selectedJob.qualifications);
+      populateBulletedList('skillsList', selectedJob.skills);
+
+      // 4. Populate Benefits Grid
+      const benefitsGrid = document.getElementById('benefitsGrid');
+      benefitsGrid.innerHTML = '';
+      selectedJob.benefits.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'details-benefit-card';
+        div.innerHTML = `<i class="fa-solid ${b.icon}"></i><span class="small fw-bold text-main">${b.name}</span>`;
+        benefitsGrid.appendChild(div);
+      });
+
+      // 5. Populate Summary Card Sidebar
+      document.getElementById('summaryDept').textContent = selectedJob.dept;
+      document.getElementById('summaryType').textContent = selectedJob.type;
+      document.getElementById('summaryExperience').textContent = selectedJob.experience;
+      document.getElementById('summaryLocation').textContent = selectedJob.location;
+      document.getElementById('summarySalary').textContent = selectedJob.salary;
+      document.getElementById('summaryVacancy').textContent = selectedJob.vacancy + " Opening" + (selectedJob.vacancy > 1 ? "s" : "");
+      document.getElementById('summaryDeadline').textContent = selectedJob.deadline;
+
+      // 6. Populate Related Jobs (Get 2 jobs from other departments)
+      const relatedJobsContainer = document.getElementById('relatedJobsContainer');
+      relatedJobsContainer.innerHTML = '';
+      
+      // Filter out current job and select 2 jobs
+      const otherJobs = jobsDatabase.filter(j => j.id !== selectedJob.id);
+      const related1 = otherJobs[jobId % otherJobs.length];
+      const related2 = otherJobs[(jobId + 2) % otherJobs.length];
+      
+      [related1, related2].forEach(rj => {
+        const div = document.createElement('div');
+        div.className = 'related-job-item';
+        div.innerHTML = `
+          <a href="career-details.html?id=${rj.id}" class="related-job-title">${rj.title}</a>
+          <div class="related-job-meta">
+            <span><i class="fa-solid fa-building text-primary small me-1"></i>${rj.dept}</span> | 
+            <span><i class="fa-solid fa-location-dot text-primary small me-1"></i>${rj.location}</span>
+          </div>
+        `;
+        relatedJobsContainer.appendChild(div);
+      });
+
+      // 7. Populate Next & Prev buttons details
+      document.getElementById('prevJobBtn').setAttribute('href', `career-details.html?id=${prevJob.id}`);
+      document.getElementById('prevJobTitle').textContent = prevJob.title;
+      document.getElementById('nextJobBtn').setAttribute('href', `career-details.html?id=${nextJob.id}`);
+      document.getElementById('nextJobTitle').textContent = nextJob.title;
+
+      // If URL has ?apply=true parameter, scroll directly to application form
+      if (urlParams.get('apply') === 'true') {
+        setTimeout(() => {
+          document.getElementById('applicationFormSection').scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+    }
+
+    // Helper to clear and build bullet lists
+    function populateBulletedList(elementId, itemsArray) {
+      const ul = document.getElementById(elementId);
+      ul.innerHTML = '';
+      itemsArray.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        ul.appendChild(li);
+      });
+    }
+
+    // Drag & Drop Resume Uploader implementation
+    function initDragAndDropUploader() {
+      const dropZone = document.getElementById('resumeUploadZone');
+      const fileInput = document.getElementById('resumeFileInput');
+      const detailsBar = document.getElementById('fileDetailsBar');
+      const fileNameSpan = document.getElementById('uploadedFileName');
+      const removeBtn = document.getElementById('removeFileBtn');
+
+      if (!dropZone || !fileInput) return;
+
+      ['dragenter', 'dragover'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          dropZone.classList.add('dragover');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          dropZone.classList.remove('dragover');
+        }, false);
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files.length > 0) {
+          fileInput.files = files;
+          handleFileSelect(files[0].name);
+        }
+      });
+
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+          handleFileSelect(fileInput.files[0].name);
+        }
+      });
+
+      removeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        fileInput.value = '';
+        dropZone.style.display = 'block';
+        detailsBar.style.display = 'none';
+        fileInput.required = true;
+      });
+
+      function handleFileSelect(fileName) {
+        fileNameSpan.textContent = fileName;
+        dropZone.style.display = 'none';
+        detailsBar.style.display = 'flex';
+        fileInput.required = false; // Bypass default validation as file is buffered
+      }
+    }
+
+    // Application Form Submission simulation
+    function initApplicationFormSubmission() {
+      const form = document.getElementById('vanguardJobForm');
+      const successModal = document.getElementById('applicationSuccessModal');
+      const closeModalBtn = document.getElementById('closeSuccessModalBtn');
+
+      if (!form || !successModal) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Open Success overlay
+        successModal.style.display = 'flex';
+      });
+
+      closeModalBtn.addEventListener('click', () => {
+        successModal.style.display = 'none';
+        form.reset();
+        // Reset file uploader
+        document.getElementById('resumeUploadZone').style.display = 'block';
+        document.getElementById('fileDetailsBar').style.display = 'none';
+        document.getElementById('resumeFileInput').required = true;
+      });
+
+      // Close modal on escape or background click
+      successModal.addEventListener('click', (e) => {
+        if (e.target === successModal) {
+          successModal.style.display = 'none';
+          form.reset();
+        }
+      });
+    }
+  </script>
+</body>
+</html>

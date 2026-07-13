@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers & Opportunities - Vanguard Manufacturing Group</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Build your manufacturing career with Vanguard. Explore our open positions across automation, engineering, maintenance, and corporate roles in Pasadena and Houston.">
+  <meta name="keywords" content="manufacturing careers, industrial engineering jobs, CNC operator vacancies, mechanical automation jobs, Houston tech careers">
+  <meta name="author" content="Vanguard Group">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  
+  <!-- AOS Scroll Animation CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  
+  <!-- Custom Style CSS -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
+  <style>
+    /* Careers specific custom styling */
+    :root {
+      --primary-glow: rgba(255, 94, 0, 0.15);
+    }
+    
+    /* Why Work With Us Lists */
+    .feature-item-box {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 20px;
+      transition: var(--transition-smooth);
+      height: 100%;
+    }
+    .feature-item-box:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+    .feature-item-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 8px;
+      background-color: var(--color-bg-sub);
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      transition: var(--transition-smooth);
+    }
+    .feature-item-box:hover .feature-item-icon {
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+    }
+
+    /* Benefits section custom cards */
+    .benefit-grid-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 30px 24px;
+      text-align: center;
+      transition: var(--transition-smooth);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-grid-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition-smooth);
+    }
+    .benefit-grid-card:hover::before {
+      transform: scaleX(1);
+    }
+    .benefit-grid-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255, 94, 0, 0.25);
+    }
+    .benefit-icon-container {
+      width: 65px;
+      height: 65px;
+      background: var(--color-bg-sub);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-primary);
+      font-size: 1.75rem;
+      transition: var(--transition-smooth);
+    }
+    .benefit-grid-card:hover .benefit-icon-container {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      transform: rotateY(180deg);
+    }
+
+    /* Culture Section */
+    .culture-card-media {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 20px;
+    }
+    .culture-card-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    .culture-card-media:hover img {
+      transform: scale(1.08);
+    }
+    .culture-card-content {
+      padding: 10px;
+    }
+
+    /* Filters Section */
+    .filter-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 45px;
+    }
+    .filter-btn-pill {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-main);
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .filter-btn-pill:hover,
+    .filter-btn-pill.active {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    /* Job Card Styling */
+    .job-card-col {
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .job-card-premium {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 30px;
+      transition: var(--transition-smooth);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .job-card-premium:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(255, 94, 0, 0.3);
+    }
+    .job-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: var(--color-bg-sub);
+      color: var(--color-primary);
+      padding: 4px 12px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+    .job-title-link {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 10px;
+      display: block;
+      transition: var(--transition-fast);
+    }
+    .job-title-link:hover {
+      color: var(--color-primary);
+    }
+    .job-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 15px;
+    }
+    .job-meta-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .job-details-list {
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      flex-grow: 1;
+    }
+    .job-details-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--color-border);
+    }
+    .job-details-list li span.val {
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+    .job-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Horizontal Hiring Process Timeline */
+    .hiring-timeline-container {
+      position: relative;
+      padding: 60px 0;
+    }
+    .hiring-timeline-line {
+      position: absolute;
+      top: 105px;
+      left: 5%;
+      right: 5%;
+      height: 4px;
+      background: var(--color-border);
+      z-index: 1;
+    }
+    .hiring-timeline-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--color-primary);
+      transition: width 2s ease-in-out;
+    }
+    .hiring-timeline-wrapper {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+    .hiring-timeline-step {
+      width: 12%;
+      text-align: center;
+    }
+    .hiring-timeline-circle {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: var(--color-bg-card);
+      border: 3px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      margin: 0 auto 20px auto;
+      transition: var(--transition-smooth);
+      position: relative;
+      box-shadow: var(--shadow-sm);
+    }
+    .hiring-timeline-step:hover .hiring-timeline-circle,
+    .hiring-timeline-step.active .hiring-timeline-circle {
+      border-color: var(--color-primary);
+      color: #FFFFFF;
+      background: var(--color-primary);
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--primary-glow);
+    }
+    .hiring-timeline-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 6px;
+    }
+    .hiring-timeline-desc {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+
+    /* Fallback for responsive timeline on small screens */
+    @media (max-width: 991px) {
+      .hiring-timeline-line {
+        display: none;
+      }
+      .hiring-timeline-wrapper {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+        padding-left: 30px;
+        border-left: 3px solid var(--color-border);
+      }
+      .hiring-timeline-step {
+        width: 100%;
+        text-align: left;
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .hiring-timeline-circle {
+        margin: 0;
+        flex-shrink: 0;
+      }
+      .hiring-timeline-step-content {
+        padding-top: 5px;
+      }
+    }
+
+    /* Testimonials Carousel custom layouts */
+    .testimonial-slide-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 50px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+    .testimonial-slide-card::after {
+      content: '\f10d';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      font-size: 5rem;
+      color: var(--color-bg-sub);
+      opacity: 0.8;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .testimonial-avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--color-primary);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Life At Our Company Collage Layout */
+    .life-collage-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 240px;
+      gap: 20px;
+    }
+    .life-collage-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .life-collage-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition-slow);
+    }
+    .life-collage-item:hover img {
+      transform: scale(1.06);
+    }
+    .life-collage-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+      color: #FFFFFF;
+      opacity: 0;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .life-collage-item:hover .life-collage-overlay {
+      opacity: 1;
+    }
+    .life-collage-overlay h4 {
+      color: #FFFFFF;
+      margin-bottom: 5px;
+      font-size: 1.15rem;
+    }
+    .life-collage-overlay span {
+      font-size: 0.8rem;
+      color: var(--color-primary);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    
+    .life-span-2-col {
+      grid-column: span 2;
+    }
+    .life-span-2-row {
+      grid-row: span 2;
+    }
+
+    @media (max-width: 991px) {
+      .life-collage-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 200px;
+      }
+    }
+    @media (max-width: 575px) {
+      .life-collage-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 220px;
+      }
+      .life-span-2-col {
+        grid-column: span 1;
+      }
+    }
+
+    /* FAQ accordion styling overrides */
+    .faq-accordion .accordion-item {
+      background-color: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+    .faq-accordion .accordion-button {
+      background-color: var(--color-bg-card);
+      color: var(--color-text-main);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 20px 25px;
+      box-shadow: none;
+    }
+    .faq-accordion .accordion-button:not(.collapsed) {
+      color: var(--color-primary);
+      background-color: var(--color-bg-sub);
+    }
+    .faq-accordion .accordion-button::after {
+      background-image: none;
+      content: "\f078";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      transform: none;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .faq-accordion .accordion-button:not(.collapsed)::after {
+      transform: rotate(180deg);
+      color: var(--color-primary);
+    }
+    .faq-accordion .accordion-body {
+      padding: 20px 25px 25px;
+      color: var(--color-text-muted);
+      border-top: 1px solid var(--color-border);
+      background-color: var(--color-bg-card);
+    }
+
+    /* CTA Banner styling */
+    .cta-banner-careers {
+      position: relative;
+      background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      text-align: center;
+      color: #FFFFFF;
+    }
+    .cta-banner-careers-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(31, 36, 41, 0.85);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       1. TOP INFO BAR
+       ======================================================== -->
+  <div class="topbar d-none d-lg-block">
+    <div class="container d-flex justify-content-between align-items-center">
+      <div class="topbar-info d-flex gap-4">
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-phone"></i>
+          <a href="tel:+18005550199">+1 (800) 555-0199</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-envelope"></i>
+          <a href="mailto:info@vanguard-industry.com">info@vanguard-industry.com</a>
+        </span>
+        <span class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-clock"></i>
+          Mon - Fri: 08:00 AM - 06:00 PM
+        </span>
+      </div>
+      <div class="topbar-socials d-flex gap-3 align-items-center">
+        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <span class="ms-3 border-start ps-3 border-secondary d-inline-flex align-items-center gap-2 text-white-50">
+          <i class="fa-solid fa-earth-americas text-primary"></i>
+          HQ: Houston, TX
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       2. STICKY HEADER & NAVBAR
+       ======================================================== -->
+  <header class="header-wrap" id="mainHeader">
+    <nav class="navbar navbar-expand-xl">
+      <div class="container">
+        <!-- Logo -->
+        <a class="brand-logo" id="headerLogo" href="index.html">
+          <i class="fa-solid fa-gears text-primary"></i>
+          VANGUARD<span>.</span>
+        </a>
+        
+        <!-- Controls (Toggle + Night Mode on Mobile / Tablet) -->
+        <div class="d-flex align-items-center gap-2 d-xl-none ms-auto me-2">
+          <button class="theme-toggle-btn" id="themeToggleMobile" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+
+        <!-- Navbar Menu links -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-xl-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="projects.html">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="pricing.html">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+
+          <!-- Mobile Secondary CTA -->
+          <div class="d-md-none mt-2 mb-3 px-3">
+            <a class="btn-custom btn-custom-outline border-secondary w-100 justify-content-center" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          
+          <!-- Actions -->
+          <div class="d-flex align-items-center gap-3">
+            <button class="theme-toggle-btn d-none d-xl-flex" id="themeToggle" aria-label="Toggle Theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
+            <a class="btn-custom btn-custom-outline border-secondary d-none d-md-inline-flex" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+            <a class="btn-custom btn-custom-primary" href="request-quote.html">
+              <span>Get A Quote</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================
+       3. HERO BANNER
+       ======================================================== -->
+  <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop');">
+    <div class="page-banner-overlay"></div>
+    <div class="container text-center text-md-start">
+      <div class="row align-items-center">
+        <div class="col-md-8 col-lg-7">
+          <h1 class="page-banner-title" data-aos="fade-up">Global Industrial Careers</h1>
+          <ul class="page-breadcrumb" data-aos="fade-up" data-aos-delay="100">
+            <li><a href="index.html">Home</a></li>
+            <li><i class="fa-solid fa-chevron-right text-white-50 small"></i></li>
+            <li class="active">Careers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       4. WHY WORK WITH US
+       ======================================================== -->
+  <section class="section-padding bg-main" id="whyWorkWithUs">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        
+        <!-- Image Left Side (4:3) -->
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="position-relative">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop" 
+                 alt="Engineers working together in high-precision laboratory" 
+                 class="img-fluid rounded-3 shadow-lg" 
+                 style="aspect-ratio: 4/3; object-fit: cover;">
+            <div class="position-absolute bottom-0 end-0 bg-primary text-white p-4 rounded-3 m-4 shadow d-none d-sm-block" style="max-width: 200px;">
+              <h5 class="fw-bold mb-1">Global Standard</h5>
+              <p class="small mb-0 opacity-90">Industry 4.0 production standards & career pathways.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topics Right Side -->
+        <div class="col-lg-6" data-aos="fade-left">
+          <span class="section-subtitle">Vanguard Ecosystem</span>
+          <h2 class="section-title">Where Heavy Engineering Meets Modern Technology</h2>
+          <p class="mb-4 text-muted">
+            At Vanguard Manufacturing Group, we don't just assemble machinery; we architect the physical backbone of global infrastructure. Over nearly four decades, we've integrated metallurgy heritage with adaptive industrial automation. Joining us means stepping into a workspace optimized for professional trajectory and absolute physical safety.
+          </p>
+
+          <div class="row g-4">
+            <!-- 1. Innovation -->
+            <div class="col-sm-6">
+              <div class="feature-item-box">
+                <div class="feature-item-icon">
+                  <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h4 class="h6 fw-bold">Pioneering Innovation</h4>
+                <p class="small text-muted mb-0">Operate 5-axis CNC rigs, automated robot assemblies, and digital twins systems.</p>
+              </div>
+            </div>
+            
+            <!-- 2. Career Growth -->
+            <div class="col-sm-6">
+              <div class="feature-item-box">
+                <div class="feature-item-icon">
+                  <i class="fa-solid fa-stairs"></i>
+                </div>
+                <h4 class="h6 fw-bold">Transparent Career Growth</h4>
+                <p class="small text-muted mb-0">Structured tier progression with clear promotion criteria and leadership programs.</p>
+              </div>
+            </div>
+
+            <!-- 3. Safety -->
+            <div class="col-sm-6">
+              <div class="feature-item-box">
+                <div class="feature-item-icon">
+                  <i class="fa-solid fa-helmet-safety"></i>
+                </div>
+                <h4 class="h6 fw-bold">Uncompromising Safety</h4>
+                <p class="small text-muted mb-0">OSHA-compliant, zero-incident culture with smart wear sensors on heavy equipment.</p>
+              </div>
+            </div>
+
+            <!-- 4. Modern Workplace -->
+            <div class="col-sm-6">
+              <div class="feature-item-box">
+                <div class="feature-item-icon">
+                  <i class="fa-solid fa-building-user"></i>
+                </div>
+                <h4 class="h6 fw-bold">Modern Workplace</h4>
+                <p class="small text-muted mb-0">Air-conditioned shop floors, cleanroom diagnostic labs, and smart tool-sheds.</p>
+              </div>
+            </div>
+
+            <!-- 5. Continuous Learning -->
+            <div class="col-sm-6">
+              <div class="feature-item-box">
+                <div class="feature-item-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h4 class="h6 fw-bold">Continuous Learning</h4>
+                <p class="small text-muted mb-0">Fully sponsored technical certifications, higher education subsidies, and CAD training.</p>
+              </div>
+            </div>
+
+            <!-- 6. Global Opportunities -->
+            <div class="col-sm-6">
+              <div class="feature-item-box">
+                <div class="feature-item-icon">
+                  <i class="fa-solid fa-earth-americas"></i>
+                </div>
+                <h4 class="h6 fw-bold">Global Opportunities</h4>
+                <p class="small text-muted mb-0">Cross-border operations, collaborative tech sprints with Munich & Tokyo factories.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       5. COMPANY CULTURE
+       ======================================================== -->
+  <section class="section-padding" style="background-color: var(--color-bg-sub);" id="companyCulture">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-subtitle">Vanguard Ethics</span>
+        <h2 class="section-title">Cultivating Industrial Mastery</h2>
+        <p class="mx-auto text-muted max-width-600 mb-0" style="max-width: 600px;">
+          Our culture is defined by engineering precision, professional empathy, and a collective drive to build standard-setting infrastructure products.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Innovation Culture -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="card border-0 bg-card h-100 p-4 rounded-3 shadow-sm text-center">
+            <div class="culture-card-media">
+              <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop" alt="Smart Manufacturing Innovation Team">
+            </div>
+            <div class="culture-card-content">
+              <h3 class="h5 fw-bold mb-3"><i class="fa-solid fa-lightbulb text-primary me-2"></i>Innovation & Growth</h3>
+              <p class="small text-muted mb-0">
+                We reward calculated risks and new workflow patterns. Our technicians are empowered to suggest program alterations directly to engineers, reducing cycle times.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Collaboration Culture -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card border-0 bg-card h-100 p-4 rounded-3 shadow-sm text-center">
+            <div class="culture-card-media">
+              <img src="https://images.unsplash.com/photo-1581091221850-89a4b3f5a2f5?q=80&w=600&auto=format&fit=crop" alt="Collaboration on the heavy casting floor">
+            </div>
+            <div class="culture-card-content">
+              <h3 class="h5 fw-bold mb-3"><i class="fa-solid fa-hands-holding-circle text-primary me-2"></i>Respect & Collaboration</h3>
+              <p class="small text-muted mb-0">
+                Heavy machinery demands massive collaboration. We maintain transparent communication lanes, peer evaluations, and absolute professional respect on and off the floor.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Training and Balance Culture -->
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card border-0 bg-card h-100 p-4 rounded-3 shadow-sm text-center">
+            <div class="culture-card-media">
+              <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=600&auto=format&fit=crop" alt="Technical simulated operator training">
+            </div>
+            <div class="culture-card-content">
+              <h3 class="h5 fw-bold mb-3"><i class="fa-solid fa-heart-pulse text-primary me-2"></i>Training & Balance</h3>
+              <p class="small text-muted mb-0">
+                Our active break schedules, hybrid corporate setups, and simulator labs keep teams sharp. We combine work-life flexibility with monthly excellence recognition.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       6. LIFE AT OUR COMPANY (EXTRA PREMIUM FEATURE)
+       ======================================================== -->
+  <section class="section-padding bg-main" id="lifeAtCompany">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-subtitle">Life At Vanguard</span>
+        <h2 class="section-title">Workplace, Community, & Celebrations</h2>
+        <p class="mx-auto text-muted max-width-600 mb-0" style="max-width: 600px;">
+          Behind the heavy cast iron structures, we are a thriving team of professional innovators. Explore our high-contrast community events, training modules, and achievements.
+        </p>
+      </div>
+
+      <!-- Collage Grid -->
+      <div class="life-collage-grid mb-5" data-aos="fade-up">
+        <!-- Collage Item 1 (Double size) -->
+        <div class="life-collage-item life-span-2-col life-span-2-row">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop" alt="Large scale factory operations">
+          <div class="life-collage-overlay">
+            <span>Heavy Machinery Complexes</span>
+            <h4>Continuous 24/7 Operations</h4>
+          </div>
+        </div>
+
+        <!-- Collage Item 2 -->
+        <div class="life-collage-item">
+          <img src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=600&auto=format&fit=crop" alt="Engineering planning session">
+          <div class="life-collage-overlay">
+            <span>Engineering Hub</span>
+            <h4>Daily Collaborative Scrums</h4>
+          </div>
+        </div>
+
+        <!-- Collage Item 3 -->
+        <div class="life-collage-item">
+          <img src="https://images.unsplash.com/photo-1531545514256-b1400bc00f31?q=80&w=600&auto=format&fit=crop" alt="Young intern on safety training">
+          <div class="life-collage-overlay">
+            <span>Training & Development</span>
+            <h4>Annual Safety Training Seminars</h4>
+          </div>
+        </div>
+
+        <!-- Collage Item 4 (Double Width) -->
+        <div class="life-collage-item life-span-2-col">
+          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop" alt="Annual Gala Achievement celebration">
+          <div class="life-collage-overlay">
+            <span>Annual Events</span>
+            <h4>Vanguard Excellence Awards Night</h4>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements & Safety cards -->
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3" data-aos="fade-up">
+          <div class="card border-0 bg-sub p-4 rounded-3 text-center h-100">
+            <div class="fs-1 text-primary mb-3"><i class="fa-solid fa-shield-halved"></i></div>
+            <h4 class="h5 fw-bold mb-2">Safety-First Culture</h4>
+            <p class="small text-muted mb-0">Over 1,200 consecutive work days without a lost-time workplace incident across Houston complexes.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="card border-0 bg-sub p-4 rounded-3 text-center h-100">
+            <div class="fs-1 text-primary mb-3"><i class="fa-solid fa-microchip"></i></div>
+            <h4 class="h5 fw-bold mb-2">Modern Toolchains</h4>
+            <p class="small text-muted mb-0">Every technician is equipped with AR assistance glasses and personal smart telemetry badges.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="card border-0 bg-sub p-4 rounded-3 text-center h-100">
+            <div class="fs-1 text-primary mb-3"><i class="fa-solid fa-trophy"></i></div>
+            <h4 class="h5 fw-bold mb-2">Employee Spotlights</h4>
+            <p class="small text-muted mb-0">Our "Vanguardian of the Month" program includes instant performance cash bonuses and special parking.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="card border-0 bg-sub p-4 rounded-3 text-center h-100">
+            <div class="fs-1 text-primary mb-3"><i class="fa-solid fa-seedling"></i></div>
+            <h4 class="h5 fw-bold mb-2">Sustainable Workspace</h4>
+            <p class="small text-muted mb-0">Active workspace emissions filtering systems & LEED certified factory building additions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       7. EMPLOYEE BENEFITS
+       ======================================================== -->
+  <section class="section-padding" style="background-color: var(--color-bg-sub);" id="employeeBenefits">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-subtitle">Vanguard Care Package</span>
+        <h2 class="section-title">Industry-Leading Employee Benefits</h2>
+        <p class="mx-auto text-muted max-width-600 mb-0" style="max-width: 600px;">
+          We invest in our physical and administrative teams. Enjoy premium care structures designed for you and your family's prosperity.
+        </p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+        <!-- 1. Health Benefits -->
+        <div class="col" data-aos="zoom-in">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Health Benefits</h4>
+            <p class="small text-muted mb-0">Zero-deductible healthcare, full dental & vision coverage.</p>
+          </div>
+        </div>
+
+        <!-- 2. Performance Bonus -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="50">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-coins"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Performance Bonus</h4>
+            <p class="small text-muted mb-0">Quarterly corporate & factory-wide profit sharing.</p>
+          </div>
+        </div>
+
+        <!-- 3. Paid Leave -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="100">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Paid Leave</h4>
+            <p class="small text-muted mb-0">25 days PTO plus additional family emergency days.</p>
+          </div>
+        </div>
+
+        <!-- 4. Training Programs -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="150">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Training Programs</h4>
+            <p class="small text-muted mb-0">Advanced simulator access & professional trainer certification.</p>
+          </div>
+        </div>
+
+        <!-- 5. Career Development -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="200">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-arrow-up-right-dots"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Career Development</h4>
+            <p class="small text-muted mb-0">Dedicated annual tuition budgets & internal leadership tracks.</p>
+          </div>
+        </div>
+
+        <!-- 6. Flexible Schedule -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="250">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Flexible Schedule</h4>
+            <p class="small text-muted mb-0">Adaptive shift rotations & core hours option for corporate.</p>
+          </div>
+        </div>
+
+        <!-- 7. Modern Workplace -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="300">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-building-circle-check"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Modern Workplace</h4>
+            <p class="small text-muted mb-0">Air-filtered facilities, quiet zones, and rest pods.</p>
+          </div>
+        </div>
+
+        <!-- 8. Insurance -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="350">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-file-shield"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Insurance</h4>
+            <p class="small text-muted mb-0">Comprehensive term life & disability protection.</p>
+          </div>
+        </div>
+
+        <!-- 9. Transport -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="400">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-bus-simple"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Transport Support</h4>
+            <p class="small text-muted mb-0">Free company shuttles, EV charging credits & transit passes.</p>
+          </div>
+        </div>
+
+        <!-- 10. Meals -->
+        <div class="col" data-aos="zoom-in" data-aos-delay="450">
+          <div class="benefit-grid-card">
+            <div class="benefit-icon-container">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <h4 class="h6 fw-bold text-main mb-2">Meals & Cafeteria</h4>
+            <p class="small text-muted mb-0">Subsidized organic hot food bar & premium daily coffee snacks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       8. CURRENT JOB OPENINGS & DEPARTMENT FILTER
+       ======================================================== -->
+  <section class="section-padding bg-main" id="jobOpeningsSection">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-subtitle">Vanguard Openings</span>
+        <h2 class="section-title">Become Part of the Vanguard Crew</h2>
+        <p class="mx-auto text-muted max-width-600 mb-0" style="max-width: 600px;">
+          Select your expertise division below. We operate advanced, modern teams across engineering, manufacturing, logistics, and executive operations.
+        </p>
+      </div>
+
+      <!-- Department Filter Pills -->
+      <div class="filter-pills-wrap" data-aos="fade-up">
+        <button class="filter-btn-pill active" data-filter="all">All Departments</button>
+        <button class="filter-btn-pill" data-filter="production">Production</button>
+        <button class="filter-btn-pill" data-filter="mechanical">Mechanical</button>
+        <button class="filter-btn-pill" data-filter="electrical">Electrical</button>
+        <button class="filter-btn-pill" data-filter="automation">Automation</button>
+        <button class="filter-btn-pill" data-filter="quality">Quality</button>
+        <button class="filter-btn-pill" data-filter="maintenance">Maintenance</button>
+        <button class="filter-btn-pill" data-filter="warehouse">Warehouse</button>
+        <button class="filter-btn-pill" data-filter="hr">HR</button>
+        <button class="filter-btn-pill" data-filter="finance">Finance</button>
+        <button class="filter-btn-pill" data-filter="sales">Sales</button>
+        <button class="filter-btn-pill" data-filter="marketing">Marketing</button>
+        <button class="filter-btn-pill" data-filter="it">IT</button>
+      </div>
+
+      <!-- Job Cards Grid (12 realistic cards) -->
+      <div class="row g-4" id="jobCardsGrid">
+        
+        <!-- Job 1 (Automation) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="automation" data-aos="fade-up">
+          <div class="job-card-premium">
+            <span class="job-badge">Automation</span>
+            <a href="career-details.html?id=1" class="job-title-link">Automation System Engineer</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">5+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$95,000 - $125,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Aug 30, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=1&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=1" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 2 (Production) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="production" data-aos="fade-up" data-aos-delay="100">
+          <div class="job-card-premium">
+            <span class="job-badge">Production</span>
+            <a href="career-details.html?id=2" class="job-title-link">CNC Machine Operator & Programmer</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">2+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$55,000 - $75,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 15, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=2&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=2" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 3 (Quality) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="quality" data-aos="fade-up" data-aos-delay="200">
+          <div class="job-card-premium">
+            <span class="job-badge">Quality</span>
+            <a href="career-details.html?id=3" class="job-title-link">Quality Control Inspector</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Pasadena, TX</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">3+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$60,000 - $80,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Aug 25, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=3&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=3" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 4 (Maintenance) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="maintenance" data-aos="fade-up">
+          <div class="job-card-premium">
+            <span class="job-badge">Maintenance</span>
+            <a href="career-details.html?id=4" class="job-title-link">Mechanical Maintenance Technician</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">4+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$65,000 - $85,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 01, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=4&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=4" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 5 (Electrical) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="electrical" data-aos="fade-up" data-aos-delay="100">
+          <div class="job-card-premium">
+            <span class="job-badge">Electrical</span>
+            <a href="career-details.html?id=5" class="job-title-link">Electrical Systems Designer</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">3+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$85,000 - $110,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 10, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=5&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=5" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 6 (Warehouse) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="warehouse" data-aos="fade-up" data-aos-delay="200">
+          <div class="job-card-premium">
+            <span class="job-badge">Warehouse</span>
+            <a href="career-details.html?id=6" class="job-title-link">Logistics & Warehouse Coordinator</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Pasadena, TX</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">2+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$48,000 - $62,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Aug 28, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=6&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=6" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 7 (HR) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="hr" data-aos="fade-up">
+          <div class="job-card-premium">
+            <span class="job-badge">HR</span>
+            <a href="career-details.html?id=7" class="job-title-link">Senior HR Operations Specialist</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">5+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$75,000 - $95,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 05, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=7&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=7" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 8 (Finance) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="finance" data-aos="fade-up" data-aos-delay="100">
+          <div class="job-card-premium">
+            <span class="job-badge">Finance</span>
+            <a href="career-details.html?id=8" class="job-title-link">Corporate Financial Analyst</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">3+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$80,000 - $105,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 20, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=8&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=8" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 9 (Mechanical) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="mechanical" data-aos="fade-up" data-aos-delay="200">
+          <div class="job-card-premium">
+            <span class="job-badge">Mechanical</span>
+            <a href="career-details.html?id=9" class="job-title-link">Senior Mechanical Design Engineer</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">6+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$100,000 - $135,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Aug 31, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=9&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=9" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 10 (Sales) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="sales" data-aos="fade-up">
+          <div class="job-card-premium">
+            <span class="job-badge">Sales</span>
+            <a href="career-details.html?id=10" class="job-title-link">Industrial Account Sales Manager</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">5+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$85,000 - $115,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 12, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=10&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=10" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 11 (IT) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="it" data-aos="fade-up" data-aos-delay="100">
+          <div class="job-card-premium">
+            <span class="job-badge">IT</span>
+            <a href="career-details.html?id=11" class="job-title-link">Lead Enterprise Systems Admin</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">6+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$110,000 - $140,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 18, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=11&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=11" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Job 12 (Marketing) -->
+        <div class="col-lg-4 col-md-6 job-card-col" data-dept="marketing" data-aos="fade-up" data-aos-delay="200">
+          <div class="job-card-premium">
+            <span class="job-badge">Marketing</span>
+            <a href="career-details.html?id=12" class="job-title-link">B2B Digital Marketing Specialist</a>
+            
+            <div class="job-meta-row">
+              <span><i class="fa-solid fa-location-dot"></i>Houston, TX (HQ)</span>
+              <span><i class="fa-solid fa-briefcase"></i>Full-time</span>
+            </div>
+            
+            <ul class="job-details-list">
+              <li><span>Experience Required:</span><span class="val">3+ Years</span></li>
+              <li><span>Salary Range:</span><span class="val">$65,000 - $85,000</span></li>
+              <li><span>Closing Date:</span><span class="val">Sep 08, 2026</span></li>
+            </ul>
+            
+            <div class="job-actions">
+              <a href="career-details.html?id=12&apply=true" class="btn-custom btn-custom-outline text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>Apply Now</span></a>
+              <a href="career-details.html?id=12" class="btn-custom btn-custom-primary text-center py-2 px-1 text-xs d-flex align-items-center justify-content-center"><span>View Details</span></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       9. HIRING PROCESS (BEAUTIFUL HORIZONTAL TIMELINE)
+       ======================================================== -->
+  <section class="section-padding" style="background-color: var(--color-bg-sub);" id="hiringProcessSection">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-subtitle">Candidate Experience</span>
+        <h2 class="section-title">Our 7-Step Hiring Process</h2>
+        <p class="mx-auto text-muted max-width-600 mb-0" style="max-width: 600px;">
+          We operate a transparent, standard-aligned candidate vetting process to ensure optimal technical and cultural alignment.
+        </p>
+      </div>
+
+      <div class="hiring-timeline-container" data-aos="fade-up">
+        <!-- Progress bar line -->
+        <div class="hiring-timeline-line">
+          <div class="hiring-timeline-progress" id="timelineProgressBar"></div>
+        </div>
+        
+        <!-- Timeline Steps -->
+        <div class="hiring-timeline-wrapper">
+          <!-- Step 1 -->
+          <div class="hiring-timeline-step active" data-step="1">
+            <div class="hiring-timeline-circle">1</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Application</h4>
+              <p class="hiring-timeline-desc">Submit your digital CV & credentials portfolio.</p>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="hiring-timeline-step" data-step="2">
+            <div class="hiring-timeline-circle">2</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Review</h4>
+              <p class="hiring-timeline-desc">HR & Technical Leads review your background.</p>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="hiring-timeline-step" data-step="3">
+            <div class="hiring-timeline-circle">3</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Interview</h4>
+              <p class="hiring-timeline-desc">Introductory call on culture & expectations.</p>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="hiring-timeline-step" data-step="4">
+            <div class="hiring-timeline-circle">4</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Technical Assessment</h4>
+              <p class="hiring-timeline-desc">Practical evaluation or tool-shed simulation.</p>
+            </div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="hiring-timeline-step" data-step="5">
+            <div class="hiring-timeline-circle">5</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Final Interview</h4>
+              <p class="hiring-timeline-desc">Meet division managers & project sponsors.</p>
+            </div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="hiring-timeline-step" data-step="6">
+            <div class="hiring-timeline-circle">6</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Offer</h4>
+              <p class="hiring-timeline-desc">Detailed compensation contract & benefits guide.</p>
+            </div>
+          </div>
+
+          <!-- Step 7 -->
+          <div class="hiring-timeline-step" data-step="7">
+            <div class="hiring-timeline-circle">7</div>
+            <div class="hiring-timeline-step-content">
+              <h4 class="hiring-timeline-title">Onboarding</h4>
+              <p class="hiring-timeline-desc">Safety protocols briefing & site integration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       10. EMPLOYEE TESTIMONIALS SLIDER
+       ======================================================== -->
+  <section class="section-padding bg-main" id="employeeTestimonials">
+    <div class="container">
+      <div class="section-title-wrap text-center">
+        <span class="section-subtitle">Vanguard Testimonials</span>
+        <h2 class="section-title">What Our Team Says</h2>
+        <p class="mx-auto text-muted max-width-600 mb-0" style="max-width: 600px;">
+          Hear directly from our specialists working across automated systems, heavy metallurgy forging, and strategic executive groups.
+        </p>
+      </div>
+
+      <!-- Testimonial Bootstrap Carousel -->
+      <div id="testimonialsCarousel" class="carousel slide testimonial-carousel-wrap" data-bs-ride="carousel" data-aos="fade-up">
+        <div class="carousel-inner" style="max-width: 900px; margin: 0 auto;">
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="testimonial-slide-card text-center">
+              <p class="fs-5 text-muted mb-4 position-relative z-1 italic" style="font-style: italic;">
+                "Starting as a Junior CNC Operator in Pasadena, Vanguard provided me with paid training on multi-axis automated mills. Today, 4 years later, I manage a team of 6 operators. The safety commitment is real, and the quarterly bonuses make you feel like a true partner."
+              </p>
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=200&auto=format&fit=crop" alt="Marcus Thompson" class="testimonial-avatar mb-3">
+              <h4 class="h5 fw-bold mb-1">Marcus Thompson</h4>
+              <span class="small text-primary text-uppercase fw-bold letter-spacing-1">Senior CNC Milling Supervisor</span>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item">
+            <div class="testimonial-slide-card text-center">
+              <p class="fs-5 text-muted mb-4 position-relative z-1 italic" style="font-style: italic;">
+                "The technical rigor at Vanguard is unmatched. We are integrating IoT sensors into high-temperature forging hammers, which allows us to predict maintenance intervals before errors arise. The continuous learning budget covered my AWS Cloud Practitioner certification."
+              </p>
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Sarah Lin" class="testimonial-avatar mb-3">
+              <h4 class="h5 fw-bold mb-1">Dr. Sarah Lin</h4>
+              <span class="small text-primary text-uppercase fw-bold letter-spacing-1">Lead Automation IoT Architect</span>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item">
+            <div class="testimonial-slide-card text-center">
+              <p class="fs-5 text-muted mb-4 position-relative z-1 italic" style="font-style: italic;">
+                "I joined Vanguard's logistics division because of the modern warehouse environments. It is highly organized, fully air-conditioned, and utilizing smart loaders. The healthcare package is outstanding, covering my entire family with zero deductible."
+              </p>
+              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop" alt="David Miller" class="testimonial-avatar mb-3">
+              <h4 class="h5 fw-bold mb-1">David Miller</h4>
+              <span class="small text-primary text-uppercase fw-bold letter-spacing-1">Logistics & Supply Lead</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Indicators / Controls -->
+        <div class="text-center mt-4">
+          <button class="btn btn-outline-secondary btn-sm me-2 rounded-circle" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="prev" aria-label="Previous">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="btn btn-outline-secondary btn-sm rounded-circle" type="button" data-bs-target="#testimonialsCarousel" data-bs-slide="next" aria-label="Next">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       11. FREQUENTLY ASKED QUESTIONS
+       ======================================================== -->
+  <section class="section-padding" style="background-color: var(--color-bg-sub);" id="careersFaq">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <!-- Text Left Side -->
+        <div class="col-lg-5" data-aos="fade-right">
+          <span class="section-subtitle">Hiring FAQ</span>
+          <h2 class="section-title">Answers to Common Recruiting Queries</h2>
+          <p class="text-muted mb-4">
+            Have questions about physical safety, scheduling shifts, relocations, or compensation cycles? Here are standard answers from our human resources team.
+          </p>
+          <a href="contact.html" class="btn-custom btn-custom-primary">
+            <span>Ask HR Directly</span>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </div>
+
+        <!-- Accordion Right Side -->
+        <div class="col-lg-7" data-aos="fade-left">
+          <div class="accordion faq-accordion" id="recruitingAccordion">
+            
+            <!-- Accordion 1 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqHead1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                  How long does the typical recruiting process take?
+                </button>
+              </h3>
+              <div id="faqCollapse1" class="accordion-collapse collapse show" aria-labelledby="faqHead1" data-bs-parent="#recruitingAccordion">
+                <div class="accordion-body">
+                  Our recruiting loop usually spans 2 to 3 weeks. After submitting your application, our HR staff reviews it within 3 business days. If aligned, we schedule an introductory phone screening, followed by technical assessment and team manager interviews.
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 2 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqHead2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                  Do you support hybrid or remote schedules?
+                </button>
+              </h3>
+              <div id="faqCollapse2" class="accordion-collapse collapse" aria-labelledby="faqHead2" data-bs-parent="#recruitingAccordion">
+                <div class="accordion-body">
+                  For engineering, design, HR, IT, and financial roles, we offer hybrid structures (typically 2 days remote, 3 days on-site at HQ). For our precision assembly operators, metallurgy technicians, and warehouse specialists, roles are fully on-site to ensure optimal machinery management.
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 3 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqHead3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                  What training and safety certs do you provide on hiring?
+                </button>
+              </h3>
+              <div id="faqCollapse3" class="accordion-collapse collapse" aria-labelledby="faqHead3" data-bs-parent="#recruitingAccordion">
+                <div class="accordion-body">
+                  Every on-floor worker undergoes a fully paid 2-week safety training program covering heavy hardware management, fire safeguards, hazard communication, and PPE. We also sponsor certifications like OSHA-10, OSHA-30, AWS, and Fanuc robotics programming.
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 4 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqHead4">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                  Do you cover relocation costs?
+                </button>
+              </h3>
+              <div id="faqCollapse4" class="accordion-collapse collapse" aria-labelledby="faqHead4" data-bs-parent="#recruitingAccordion">
+                <div class="accordion-body">
+                  Yes. For senior engineering, management, and highly specialized technical roles (such as CNC Programmers or Metallurgy Leads) requiring relocation to our Houston/Pasadena facilities, we offer comprehensive relocation packages.
+                </div>
+              </div>
+            </div>
+
+            <!-- Accordion 5 -->
+            <div class="accordion-item">
+              <h3 class="accordion-header" id="faqHead5">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
+                  Are there pathways for international transfers?
+                </button>
+              </h3>
+              <div id="faqCollapse5" class="accordion-collapse collapse" aria-labelledby="faqHead5" data-bs-parent="#recruitingAccordion">
+                <div class="accordion-body">
+                  As a global manufacturing firm with operational plants in Germany, Japan, and the United States, we support internal cross-facility transfer requests after 12 months of high-performance ratings, subject to business needs.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       12. CTA BANNER (JOIN OUR TEAM)
+       ======================================================= -->
+  <section class="cta-banner-careers">
+    <div class="cta-banner-careers-overlay"></div>
+    <div class="container position-relative z-1" data-aos="zoom-in">
+      <span class="text-primary text-uppercase fw-bold tracking-widest d-block mb-3" style="letter-spacing: 2px;">Your Next Chapter</span>
+      <h2 class="display-5 fw-bold text-white mb-4">Ready to Build the Future of Heavy Industry?</h2>
+      <p class="fs-5 text-white-50 mx-auto mb-5" style="max-width: 650px;">
+        Join 1,400+ engineers, technicians, and operations experts working across Vanguard's modern global complexes. Take the first step now.
+      </p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+        <a href="#jobOpeningsSection" class="btn-custom btn-custom-primary">
+          <span>Browse Open Roles</span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </a>
+        <a href="contact.html" class="btn-custom btn-custom-outline border-white text-white">
+          <span>Contact Recruiting Team</span>
+          <i class="fa-solid fa-phone"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       13. GLOBAL FOOTER
+       ======================================================== -->
+  <footer class="footer">
+    <div class="container footer-top">
+      <div class="row g-5">
+        
+        <!-- Column 1: Brand Info & Company Links -->
+        <div class="col-lg-3 col-md-6">
+          <a class="footer-brand" href="index.html">
+            <i class="fa-solid fa-gears text-primary"></i>
+            VANGUARD<span>.</span>
+          </a>
+          <p class="footer-desc mt-3 text-muted">Globally certified heavy manufacturing, metallurgy fabrication, and automated robotics systems engineering group. Operating gold-standard plants with zero compromised metrics.</p>
+          <h4 class="footer-widget-title mt-4">Company</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">News</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Services -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Services</h4>
+          <ul class="footer-links">
+            <li><a href="service-details.html?service=manufacturing">Manufacturing</a></li>
+            <li><a href="service-details.html?service=automation">Automation</a></li>
+            <li><a href="service-details.html?service=engineering">Engineering</a></li>
+            <li><a href="service-details.html?service=maintenance">Maintenance</a></li>
+            <li><a href="service-details.html?service=quality-control">Quality Control</a></li>
+            <li><a href="service-details.html?service=custom-solutions">Custom Solutions</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Support -->
+        <div class="col-sm-6 col-lg-2">
+          <h4 class="footer-widget-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('FAQ Portal Coming Soon!');">FAQ (Coming Soon)</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="team.html">Our Team</a></li>
+            <li><a href="about.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('Privacy Policy Portal Coming Soon!');">Privacy Policy (Coming Soon)</a></li>
+            <li><a href="contact.html" class="disabled-link text-muted" onclick="event.preventDefault(); alert('Terms Portal Coming Soon!');">Terms & Conditions (Coming Soon)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-widget-title">Contact</h4>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-location-dot footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Main Facility HQ</span>
+              7850 Industrial Blvd, Suite 240, Houston, TX 77001
+            </div>
+          </div>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-phone footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Call Headquarters</span>
+              <a href="tel:+18005550199" class="text-white-50">+1 (800) 555-0199</a>
+            </div>
+          </div>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-envelope footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Direct Inquiries</span>
+              <a href="mailto:contact@vanguard-industry.com" class="text-white-50">contact@vanguard-industry.com</a>
+            </div>
+          </div>
+          <div class="footer-contact-item mb-3">
+            <i class="fa-solid fa-clock footer-contact-icon"></i>
+            <div class="footer-contact-text text-muted">
+              <span>Working Hours</span>
+              Mon - Fri: 08:00 AM - 06:00 PM
+            </div>
+          </div>
+          <a href="contact.html#mapSection" class="btn-custom btn-custom-outline border-secondary text-white btn-sm mt-2 w-100 py-2 d-inline-flex justify-content-center align-items-center gap-2">
+            <i class="fa-solid fa-map-location-dot text-primary"></i>
+            <span>Google Map</span>
+          </a>
+        </div>
+
+        <!-- Column 5: Newsletter -->
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-widget-title">Newsletter</h4>
+          <p class="footer-desc mb-3 text-muted">Subscribe to receive Vanguard heavy industrial research papers & product bulletins.</p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Vanguard Bulletins!');">
+            <input type="email" class="footer-newsletter-input w-100 mb-2 py-2 px-3 border border-secondary bg-dark text-white rounded" placeholder="Corporate email..." required aria-label="Newsletter email">
+            <button class="btn-custom btn-custom-primary w-100 py-2 text-center d-flex justify-content-center align-items-center" type="submit" aria-label="Subscribe">
+              <span>Subscribe</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 text-center text-md-start">
+            &copy; 2026 Vanguard Group Inc. All rights reserved. Managed under global standard compliance operations.
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-center justify-content-md-end align-items-center gap-3 flex-wrap">
+              <ul class="footer-bottom-links mb-0 d-flex gap-3 list-unstyled">
+                <li><a href="about.html">Privacy</a></li>
+                <li><a href="contact.html">Terms</a></li>
+                <li><a href="faq.html" class="text-muted" onclick="event.preventDefault(); alert('Sitemap Coming Soon!');">Sitemap (Coming Soon)</a></li>
+              </ul>
+              <div class="footer-socials d-flex gap-2 mb-0">
+                <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://youtube.com" target="_blank" rel="noopener" class="social-icon" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       14. BACK TO TOP BUTTON
+       ======================================================== -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
+    <i class="fa-solid fa-arrow-up-long"></i>
+  </button>
+
+  <!-- ========================================================
+       15. THIRD PARTY LIBRARIES & INTEGRATED JS
+       ======================================================== -->
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- AOS Scroll Animations JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  
+  <!-- Custom JS Operations -->
+  <script src="/assets/js/main.js"></script>
+  
+  <!-- Initialize Animations & Custom Interactive JS effects -->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-in-out',
+      offset: 50
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCareersFilter();
+      initHiringTimelineAnimation();
+    });
+
+    // Department filtering implementation
+    function initCareersFilter() {
+      const filterBtns = document.querySelectorAll('.filter-btn-pill');
+      const jobCards = document.querySelectorAll('.job-card-col');
+      if (filterBtns.length === 0 || jobCards.length === 0) return;
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Manage button active classes
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filterVal = btn.getAttribute('data-filter');
+
+          jobCards.forEach(card => {
+            const cardDept = card.getAttribute('data-dept');
+            
+            if (filterVal === 'all' || cardDept === filterVal) {
+              // Show card
+              card.style.display = 'block';
+              setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
+              }, 50);
+            } else {
+              // Hide card
+              card.style.opacity = '0';
+              card.style.transform = 'scale(0.9)';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 300);
+            }
+          });
+        });
+      });
+    }
+
+    // Animated Hiring Timeline trigger on scroll
+    function initHiringTimelineAnimation() {
+      const timelineSection = document.getElementById('hiringProcessSection');
+      const progressBar = document.getElementById('timelineProgressBar');
+      const timelineSteps = document.querySelectorAll('.hiring-timeline-step');
+      if (!timelineSection || !progressBar) return;
+
+      let animated = false;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !animated) {
+            animateProgressBar();
+            animated = true;
+            observer.unobserve(timelineSection);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      observer.observe(timelineSection);
+
+      function animateProgressBar() {
+        let step = 1;
+        const totalSteps = timelineSteps.length;
+        
+        const interval = setInterval(() => {
+          if (step > totalSteps) {
+            clearInterval(interval);
+            return;
+          }
+
+          // Calculate percentage width
+          const percent = ((step - 1) / (totalSteps - 1)) * 100;
+          progressBar.style.width = percent + '%';
+
+          // Activate steps up to current
+          timelineSteps.forEach(s => {
+            const stepNum = parseInt(s.getAttribute('data-step'));
+            if (stepNum <= step) {
+              s.classList.add('active');
+            }
+          });
+
+          step++;
+        }, 400);
+      }
+    }
+  </script>
+</body>
+</html>
