@@ -24,587 +24,701 @@
 
   <style>
     /* ========================================================
-       PRICING PAGE CUSTOM STYLING
+       VANGUARD PREMIUM PRICING REDESIGN CUSTOM STYLING
        ======================================================== */
     :root {
       --primary-glow: rgba(255, 94, 0, 0.15);
       --blueprint-grid: rgba(255, 94, 0, 0.03);
+      --card-hover-border: rgba(255, 94, 0, 0.4);
+      --gradient-overlay: linear-gradient(135deg, rgba(31, 36, 41, 0.95), rgba(31, 36, 41, 0.8));
     }
 
     [data-theme="dark"] {
-      --blueprint-grid: rgba(255, 94, 0, 0.05);
+      --blueprint-grid: rgba(255, 94, 0, 0.06);
+      --card-hover-border: rgba(255, 94, 0, 0.6);
+      --gradient-overlay: linear-gradient(135deg, rgba(11, 12, 14, 0.98), rgba(15, 17, 19, 0.85));
     }
 
-    /* Steel blueprint aesthetic backgrounds */
-    .blueprint-bg {
+    /* Outer layout limits */
+    body {
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+    .main-pricing-wrap {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    @media (max-width: 991px) {
+      .main-pricing-wrap {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    @media (max-width: 576px) {
+      .main-pricing-wrap {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    /* Blueprint Decorative Background */
+    .blueprint-pattern-bg {
       background-image: linear-gradient(var(--blueprint-grid) 1px, transparent 1px),
                         linear-gradient(90deg, var(--blueprint-grid) 1px, transparent 1px);
-      background-size: 20px 20px;
-    }
-
-    /* Technical blueprint accents */
-    .blueprint-border-box {
-      border: 1px dashed var(--color-border);
+      background-size: 24px 24px;
       position: relative;
     }
-    .blueprint-border-box::before, .blueprint-border-box::after {
+
+    /* Brackets / Blueprint border aesthetics */
+    .blueprint-brackets-box {
+      border: 1px dashed var(--color-border);
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+    .blueprint-brackets-box::before, .blueprint-brackets-box::after {
       content: '';
       position: absolute;
-      width: 8px;
-      height: 8px;
-      border: 1px solid var(--color-primary);
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--color-primary);
     }
-    .blueprint-border-box::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-    .blueprint-border-box::after { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+    .blueprint-brackets-box::before { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+    .blueprint-brackets-box::after { bottom: -6px; right: -6px; border-left: none; border-top: none; }
 
-    /* Divider with center gear indicator */
-    .section-divider-gear {
+    /* Technical status tags */
+    .tech-tag {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--color-primary);
+      background: rgba(255, 94, 0, 0.08);
+      padding: 6px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 94, 0, 0.15);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Section divider with subtle center spinner gear */
+    .divider-gear-wrap {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 40px 0;
-      position: relative;
+      margin: 50px 0;
     }
-    .section-divider-gear::before, .section-divider-gear::after {
+    .divider-gear-wrap::before, .divider-gear-wrap::after {
       content: '';
       flex: 1;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--color-border), transparent);
     }
-    .section-divider-gear i {
+    .divider-gear-wrap i {
       color: var(--color-primary);
-      margin: 0 15px;
-      animation: spinGear 8s linear infinite;
+      margin: 0 20px;
+      animation: gearSpinAnim 10s linear infinite;
     }
-    @keyframes spinGear {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes gearSpinAnim {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    /* Interactive illustration container */
-    .illustration-parallax-container {
+    /* Section Header Details */
+    .premium-header-subtitle {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-primary);
+      display: inline-block;
+      margin-bottom: 12px;
+      padding-left: 24px;
+      position: relative;
+    }
+    .premium-header-subtitle::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 2px;
+      background-color: var(--color-primary);
+    }
+
+    /* 1. HERO BANNER */
+    .hero-premium-section {
+      background-size: cover;
+      background-position: center;
+      padding: 160px 0 110px 0;
       position: relative;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: var(--shadow-lg);
-      aspect-ratio: 4/3;
-      cursor: crosshair;
     }
-    .illustration-parallax-img {
+    .hero-premium-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(31, 36, 41, 0.85) 0%, rgba(15, 17, 19, 0.95) 100%);
+      z-index: 1;
+    }
+    .hero-premium-content {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-premium-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      color: #FFFFFF !important;
+    }
+    @media (max-width: 768px) {
+      .hero-premium-title {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* 2. PRICING PHILOSOPHY */
+    .philosophy-card-item {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      padding: 24px;
+      border-radius: 12px;
+      transition: var(--transition-smooth);
+      height: 100%;
+      position: relative;
+    }
+    .philosophy-card-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-md);
+    }
+    .philosophy-card-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 94, 0, 0.08);
+      color: var(--color-primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      transition: var(--transition-smooth);
+    }
+    .philosophy-card-item:hover .philosophy-card-icon {
+      background: var(--color-primary);
+      color: #FFFFFF;
+    }
+    .philosophy-badge-float {
+      position: absolute;
+      background: rgba(31, 36, 41, 0.95);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 22px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      z-index: 5;
+    }
+    .philosophy-badge-1 {
+      top: 10%;
+      left: -10%;
+    }
+    .philosophy-badge-2 {
+      bottom: 12%;
+      right: -8%;
+    }
+    @media (max-width: 991px) {
+      .philosophy-badge-float {
+        display: none !important;
+      }
+    }
+
+    /* Image zoom container */
+    .premium-zoom-wrap {
+      overflow: hidden;
+      border-radius: 16px;
+      position: relative;
+      box-shadow: var(--shadow-lg);
+    }
+    .premium-zoom-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.15s ease-out;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .illustration-overlay-badge {
-      position: absolute;
-      bottom: 25px;
-      left: 25px;
-      background: rgba(31, 36, 41, 0.9);
-      backdrop-filter: blur(5px);
-      border-left: 4px solid var(--color-primary);
-      padding: 15px 20px;
-      border-radius: 4px;
-      z-index: 10;
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .illustration-parallax-container:hover .illustration-overlay-badge {
-      transform: translateY(-5px);
+    .premium-zoom-wrap:hover .premium-zoom-img {
+      transform: scale(1.08);
     }
 
-    /* Working Switcher Toggle styling */
-    .pricing-toggle-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 50px;
-    }
-    .pricing-toggle-label {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-text-muted);
-      transition: var(--transition-smooth);
-    }
-    .pricing-toggle-label.active {
-      color: var(--color-text-main);
-    }
-    .pricing-toggle-switch {
-      position: relative;
-      width: 250px;
-      height: 48px;
-      background: var(--color-bg-sub);
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
-      padding: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      user-select: none;
-    }
-    .pricing-toggle-bg {
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      width: 118px;
-      height: 40px;
-      background: var(--color-primary);
-      border-radius: 20px;
-      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1;
-      box-shadow: 0 4px 10px rgba(255, 94, 0, 0.2);
-    }
-    .pricing-toggle-switch.premium-active .pricing-toggle-bg {
-      transform: translateX(124px);
-    }
-    .pricing-toggle-btn-label {
-      width: 118px;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--color-text-muted);
-      z-index: 2;
-      transition: var(--transition-smooth);
-    }
-    .pricing-toggle-switch:not(.premium-active) .label-standard {
-      color: #FFFFFF !important;
-    }
-    .pricing-toggle-switch.premium-active .label-premium {
-      color: #FFFFFF !important;
-    }
-
-    /* Card Lift / Hover Layout Elements */
-    .pricing-card-col {
-      transition: var(--transition-smooth);
-    }
-    .pricing-card {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 40px 30px;
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
+    /* 3. MANUFACTURING SOLUTIONS CARDS */
+    .solution-card-wrapper {
+      height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
       box-shadow: var(--shadow-sm);
+      transition: var(--transition-smooth);
+      position: relative;
     }
-    .pricing-card:hover {
+    .solution-card-wrapper:hover {
       transform: translateY(-8px);
+      border-color: var(--card-hover-border);
       box-shadow: var(--shadow-lg);
-      border-color: var(--color-primary);
     }
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: var(--color-primary);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: var(--transition-smooth);
-    }
-    .pricing-card:hover::before {
-      transform: scaleX(1);
-    }
-    .pricing-badge {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      background: var(--color-primary);
-      color: #FFFFFF;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 1px;
-      box-shadow: 0 3px 6px rgba(255, 94, 0, 0.15);
-    }
-    .pricing-card-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 8px;
-      background: var(--color-bg-sub);
-      color: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin-bottom: 25px;
-      transition: var(--transition-smooth);
-    }
-    .pricing-card:hover .pricing-card-icon {
-      background-color: var(--color-primary);
-      color: #FFFFFF;
-      transform: scale(1.08) rotate(5deg);
-    }
-    .pricing-card-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--color-text-main);
-    }
-    .pricing-card-desc {
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-      margin-bottom: 20px;
-    }
-    .pricing-card-price {
-      font-size: 2.25rem;
-      font-weight: 700;
-      color: var(--color-text-main);
-      margin-bottom: 25px;
-      display: flex;
-      align-items: baseline;
-      gap: 5px;
-    }
-    .pricing-card-price span {
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-    .pricing-card-features {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 30px 0;
-      flex-grow: 1;
-    }
-    .pricing-card-features li {
-      padding: 8px 0;
-      font-size: 0.92rem;
-      color: var(--color-text-muted);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px dashed var(--color-border);
-    }
-    .pricing-card-features li:last-child {
-      border-bottom: none;
-    }
-    .pricing-card-features li i {
-      color: var(--color-primary);
-      font-size: 0.85rem;
-    }
-    .pricing-card-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    /* Comparison Table Styling */
-    .comparison-table-wrap {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
+    .solution-img-box {
+      height: 240px;
+      position: relative;
       overflow: hidden;
-      box-shadow: var(--shadow-md);
     }
-    .comparison-table {
-      margin-bottom: 0;
-      width: 100%;
-      border-collapse: collapse;
-    }
-    .comparison-table th, .comparison-table td {
-      padding: 16px 20px;
-      vertical-align: middle;
-      border-bottom: 1px solid var(--color-border);
-      text-align: center;
-    }
-    .comparison-table th:first-child, .comparison-table td:first-child {
-      text-align: left;
-      font-weight: 600;
-      color: var(--color-text-main);
-    }
-    .comparison-table thead th {
-      background: var(--color-bg-sub);
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 1px;
-      color: var(--color-text-main);
-      border-bottom: 2px solid var(--color-border);
-      text-transform: uppercase;
-    }
-    .comparison-table tbody tr:hover {
-      background: rgba(255, 94, 0, 0.02);
-    }
-    .comparison-table .feature-check {
-      color: var(--color-primary);
-      font-size: 1.15rem;
-    }
-    .comparison-table .feature-cross {
-      color: var(--color-text-muted);
-      opacity: 0.35;
-      font-size: 1.05rem;
-    }
-
-    /* Work Process Timeline Layout */
-    .timeline-container {
-      position: relative;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 30px 0;
-    }
-    .timeline-line {
+    .solution-float-icon {
       position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 100%;
-      background: var(--color-border);
-      z-index: 1;
-    }
-    .timeline-progress {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 2px;
-      height: 0;
-      background: var(--color-primary);
-      z-index: 2;
-      transition: height 1s ease-out;
-    }
-    .timeline-item {
-      position: relative;
-      width: 50%;
-      padding: 20px 40px;
-      z-index: 3;
-    }
-    .timeline-item:nth-child(even) {
-      left: 50%;
-      text-align: left;
-    }
-    .timeline-item:nth-child(odd) {
-      left: 0;
-      text-align: right;
-    }
-    .timeline-dot {
-      position: absolute;
-      top: 35px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: var(--color-bg-card);
-      border: 3px solid var(--color-border);
-      z-index: 4;
-      transition: var(--transition-smooth);
-    }
-    .timeline-item:nth-child(even) .timeline-dot {
-      left: -9px;
-    }
-    .timeline-item:nth-child(odd) .timeline-dot {
-      right: -9px;
-    }
-    .timeline-item.active .timeline-dot {
-      border-color: var(--color-primary);
-      background: var(--color-primary);
-      box-shadow: 0 0 0 6px rgba(255, 94, 0, 0.25);
-    }
-    .timeline-content-card {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 25px;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition-smooth);
-    }
-    .timeline-item:hover .timeline-content-card {
-      border-color: var(--color-primary);
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-    .timeline-step-num {
-      font-family: var(--font-display);
-      font-size: 2rem;
-      font-weight: 800;
-      color: rgba(255, 94, 0, 0.12);
-      line-height: 1;
-      margin-bottom: 10px;
-      transition: var(--transition-smooth);
-    }
-    .timeline-item:hover .timeline-step-num {
-      color: rgba(255, 94, 0, 0.25);
-    }
-
-    /* Why Invest Features Card */
-    .invest-card {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 10px;
-      padding: 30px;
-      transition: var(--transition-smooth);
-      height: 100%;
-      box-shadow: var(--shadow-sm);
-    }
-    .invest-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--color-primary);
-    }
-    .invest-icon-box {
+      bottom: -22px;
+      right: 24px;
       width: 55px;
       height: 55px;
-      border-radius: 8px;
-      background: var(--color-bg-sub);
-      color: var(--color-primary);
+      background: var(--color-primary);
+      color: #FFFFFF;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.4rem;
-      margin-bottom: 20px;
+      border: 4px solid var(--color-bg-card);
+      box-shadow: 0 4px 12px rgba(255, 94, 0, 0.25);
+      z-index: 4;
       transition: var(--transition-smooth);
     }
-    .invest-card:hover .invest-icon-box {
-      background: var(--color-primary);
-      color: #FFFFFF;
-      transform: rotateY(180deg);
+    .solution-card-wrapper:hover .solution-float-icon {
+      transform: scale(1.1) rotate(15deg);
     }
-
-    /* AMC Premium Cards */
-    .amc-card {
-      background: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 10px;
-      padding: 30px 25px;
-      transition: var(--transition-smooth);
-      height: 100%;
-      box-shadow: var(--shadow-sm);
+    .solution-card-content {
+      padding: 30px 24px 24px 24px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      flex-grow: 1;
     }
-    .amc-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--color-primary);
+    .solution-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-text-main);
     }
-    .amc-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
+    .solution-card-desc {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
       margin-bottom: 20px;
+      line-height: 1.5;
     }
-    .amc-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--color-bg-sub);
-      color: var(--color-primary);
-      border-radius: 6px;
+    .solution-features-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 25px 0;
+      flex-grow: 1;
+    }
+    .solution-features-list li {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      padding: 6px 0;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      flex-shrink: 0;
-      transition: var(--transition-smooth);
+      gap: 10px;
+      border-bottom: 1px dashed var(--color-border);
     }
-    .amc-card:hover .amc-icon {
-      background: var(--color-primary);
-      color: #FFFFFF;
+    .solution-features-list li:last-child {
+      border-bottom: none;
     }
-    .amc-title {
+    .solution-features-list i {
+      color: var(--color-primary);
+      font-size: 0.8rem;
+    }
+    .solution-price-box {
+      background: var(--color-bg-sub);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .solution-price-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
+    }
+    .solution-price-value {
+      font-family: var(--font-display);
       font-size: 1.15rem;
       font-weight: 700;
-      color: var(--color-text-main);
-      margin-bottom: 0;
+      color: var(--color-primary);
+    }
+    .solution-card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .btn-custom-sm {
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
     }
 
-    /* Custom counters styling */
-    .stats-block {
+    /* 4. WHY CLIENTS CHOOSE US */
+    .choose-card {
       background: var(--color-bg-card);
       border: 1px solid var(--color-border);
       border-radius: 12px;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 30px;
+      height: 100%;
       transition: var(--transition-smooth);
-      box-shadow: var(--shadow-sm);
     }
-    .stats-block:hover {
-      border-color: var(--color-primary);
+    .choose-card:hover {
       transform: translateY(-5px);
+      border-color: var(--color-primary);
       box-shadow: var(--shadow-md);
     }
-    .stat-icon {
-      font-size: 2.25rem;
+    .choose-icon-box {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 94, 0, 0.08);
       color: var(--color-primary);
-      margin-bottom: 15px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 20px;
+      transition: var(--transition-smooth);
     }
-    .stat-number {
+    .choose-card:hover .choose-icon-box {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      transform: scale(1.05);
+    }
+
+    /* 5. PROCESS TIMELINE */
+    .timeline-track-wrapper {
+      position: relative;
+      padding: 40px 0;
+    }
+    .timeline-horizontal-bar {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: 4px;
+      background: var(--color-border);
+      z-index: 1;
+    }
+    .timeline-active-progress {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 0;
+      height: 4px;
+      background: var(--color-primary);
+      z-index: 2;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .timeline-steps-grid {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      z-index: 3;
+    }
+    .timeline-step-point {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 12%;
+    }
+    .timeline-step-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--color-bg-card);
+      border: 3px solid var(--color-border);
+      color: var(--color-text-muted);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      transition: var(--transition-smooth);
+    }
+    .timeline-step-point.active .timeline-step-circle {
+      border-color: var(--color-primary);
+      background: var(--color-primary);
+      color: #FFFFFF;
+      box-shadow: 0 0 0 6px rgba(255, 94, 0, 0.18);
+    }
+    .timeline-step-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 4px;
+    }
+    .timeline-step-desc {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      line-height: 1.3;
+    }
+    @media (max-width: 991px) {
+      .timeline-horizontal-bar {
+        display: none;
+      }
+      .timeline-steps-grid {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
+        padding-left: 30px;
+        border-left: 3px solid var(--color-border);
+      }
+      .timeline-step-point {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        width: 100%;
+        gap: 20px;
+      }
+      .timeline-step-circle {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+      .timeline-steps-grid::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -3px;
+        width: 3px;
+        height: 100%;
+        background: var(--color-primary);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 2;
+      }
+      .timeline-track-wrapper.scrolled .timeline-steps-grid::before {
+        transform: scaleY(1);
+      }
+    }
+
+    /* 6. PACKAGE COMPARISON CARDS */
+    .compare-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 30px 24px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition-smooth);
+    }
+    .compare-card.featured-card {
+      border: 2px solid var(--color-primary);
+      box-shadow: var(--shadow-md);
+    }
+    .compare-card.featured-card::before {
+      content: 'Popular Selection';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary);
+      color: #FFFFFF;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 4px 14px;
+      border-radius: 20px;
+    }
+    .compare-header {
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .compare-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--color-text-main);
+      margin-bottom: 8px;
+    }
+    .compare-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0;
+    }
+    .compare-specs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      flex-grow: 1;
+      margin-bottom: 30px;
+    }
+    .compare-spec-row {
+      display: flex;
+      flex-direction: column;
+      font-size: 0.88rem;
+    }
+    .compare-spec-name {
+      font-weight: 600;
+      color: var(--color-text-main);
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .compare-spec-val {
+      color: var(--color-text-muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .compare-spec-val i.check {
+      color: var(--color-primary);
+      font-size: 0.9rem;
+    }
+    .compare-spec-val i.cross {
+      color: var(--color-text-muted);
+      opacity: 0.4;
+      font-size: 0.85rem;
+    }
+
+    /* 7. FEATURED ENTERPRISE PACKAGE */
+    .featured-enterprise-section {
+      background-size: cover;
+      background-position: center;
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 60px;
+    }
+    @media (max-width: 768px) {
+      .featured-enterprise-section {
+        padding: 50px 24px;
+      }
+    }
+    .featured-enterprise-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-overlay);
+      z-index: 1;
+    }
+    .featured-enterprise-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 8. SUCCESS METRICS */
+    .metric-count-box {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+    .metric-count-box:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-4px);
+    }
+    .metric-count-icon {
+      font-size: 2rem;
+      color: var(--color-primary);
+      margin-bottom: 12px;
+    }
+    .metric-count-num {
       font-family: var(--font-display);
       font-size: 2.5rem;
       font-weight: 700;
       color: var(--color-text-main);
       line-height: 1.2;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+    }
+    .metric-count-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-text-muted);
     }
 
-    /* FAQ accordion styling overrides */
-    .pricing-faq-accordion .accordion-item {
-      background-color: var(--color-bg-card);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      margin-bottom: 15px;
+    /* 9. FAQ ACCORDION OVERRIDES */
+    .faq-accordion-custom .accordion-item {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border) !important;
+      border-radius: 12px !important;
+      margin-bottom: 16px;
       overflow: hidden;
     }
-    .pricing-faq-accordion .accordion-button {
-      background-color: var(--color-bg-card);
+    .faq-accordion-custom .accordion-button {
+      background: var(--color-bg-card);
       color: var(--color-text-main);
       font-weight: 600;
-      font-size: 1.05rem;
-      padding: 20px 25px;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      padding: 22px 24px;
       box-shadow: none;
+      border: none;
     }
-    .pricing-faq-accordion .accordion-button:not(.collapsed) {
-      background-color: var(--color-bg-sub);
+    .faq-accordion-custom .accordion-button:not(.collapsed) {
+      background: var(--color-bg-sub);
       color: var(--color-primary);
     }
-    .pricing-faq-accordion .accordion-button::after {
+    .faq-accordion-custom .accordion-button::after {
       filter: invert(var(--theme-invert-value, 0));
     }
-    .pricing-faq-accordion .accordion-body {
-      background-color: var(--color-bg-card);
+    .faq-accordion-custom .accordion-body {
+      padding: 22px 24px 24px 24px;
       color: var(--color-text-muted);
-      padding: 20px 25px 25px 25px;
       border-top: 1px solid var(--color-border);
     }
 
-    /* Button Ripple Effect */
-    .btn-ripple {
+    /* Interactions / Animations */
+    .btn-ripple-effect {
       position: relative;
       overflow: hidden;
     }
-    .ripple-effect {
+    .button-ripple-span {
       position: absolute;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.45);
       transform: scale(0);
-      animation: rippleAnim 0.6s linear;
+      animation: clickRippleAnim 0.6s linear;
       pointer-events: none;
     }
-    @keyframes rippleAnim {
+    @keyframes clickRippleAnim {
       to {
         transform: scale(4);
         opacity: 0;
-      }
-    }
-
-    /* Responsive tables constraints */
-    @media (max-width: 991px) {
-      .comparison-table-wrap {
-        overflow-x: auto;
-      }
-      .comparison-table {
-        min-width: 850px;
       }
     }
   </style>
@@ -684,7 +798,7 @@
               <a class="nav-link" href="gallery.html">Gallery</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="news.html">News</a>
+              <a class="nav-link" href="blog.html">News</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active" href="pricing.html">Pricing</a>
@@ -694,12 +808,22 @@
             </li>
           </ul>
 
+          <!-- Mobile Secondary CTA -->
+          <div class="d-md-none mt-2 mb-3 px-3">
+            <a class="btn-custom btn-custom-outline border-secondary w-100 justify-content-center" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+          </div>
+          
           <!-- Actions -->
           <div class="d-flex align-items-center gap-3">
             <button class="theme-toggle-btn d-none d-xl-flex" id="themeToggle" aria-label="Toggle Theme">
               <i class="fa-solid fa-moon"></i>
             </button>
-            <a class="btn-custom btn-custom-primary btn-ripple" href="request-quote.html">
+            <a class="btn-custom btn-custom-outline border-secondary d-none d-md-inline-flex" href="contact.html">
+              <span>Contact Us</span>
+            </a>
+            <a class="btn-custom btn-custom-primary btn-ripple-effect" href="request-quote.html">
               <span>Get A Quote</span>
               <i class="fa-solid fa-arrow-right-long"></i>
             </a>
@@ -710,888 +834,899 @@
   </header>
 
   <!-- ========================================================
-       3. HERO BANNER
+       MAIN SCROLL WRAPPER (Applying constraints)
        ======================================================== -->
-  <section class="page-banner" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1600&auto=format&fit=crop');">
-    <div class="page-banner-overlay"></div>
-    <div class="container text-center text-md-start">
-      <div class="row align-items-center">
-        <div class="col-md-9 col-lg-8">
-          <span class="text-primary text-uppercase fw-bold letter-spacing-1 d-block mb-2" data-aos="fade-up">Industrial Investment</span>
-          <h1 class="page-banner-title mb-3" data-aos="fade-up" data-aos-delay="50">Service Packages & AMC</h1>
-          <ul class="page-breadcrumb" data-aos="fade-up" data-aos-delay="100">
-            <li><a href="index.html">Home</a></li>
-            <li><i class="fa-solid fa-chevron-right text-white-50 small"></i></li>
-            <li class="active">Pricing</li>
-          </ul>
+  <div class="main-pricing-wrap">
+
+    <!-- ========================================================
+         SECTION 1: PREMIUM HERO BANNER
+         ======================================================== -->
+    <section class="hero-premium-section rounded-4 my-3" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop');">
+      <div class="hero-premium-overlay rounded-4"></div>
+      <div class="container hero-premium-content">
+        <div class="row align-items-center">
+          <div class="col-lg-8 text-center text-lg-start">
+            <div class="tech-tag mb-3 bg-dark border-secondary text-white">
+              <i class="fa-solid fa-sliders text-primary"></i> Valuation SLA Blueprint
+            </div>
+            <h1 class="hero-premium-title mb-3" data-aos="fade-up">Precision Engineering & Solution Allocations</h1>
+            <p class="text-white-50 lead mb-4" data-aos="fade-up" data-aos-delay="100">
+              Explore dynamic pricing models, customized SLA arrangements, and transparent industrial contract designs configured to optimize throughput and guarantee 99.8% factory line availability.
+            </p>
+            <ul class="page-breadcrumb d-flex justify-content-center justify-content-lg-start list-unstyled gap-3 text-white-50 mb-0" data-aos="fade-up" data-aos-delay="150">
+              <li><a href="index.html" class="text-white-50 hover-text-primary">Home</a></li>
+              <li><i class="fa-solid fa-chevron-right text-primary small"></i></li>
+              <li class="text-white">Pricing Architecture</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ========================================================
-       4. PRICING INTRODUCTION WITH ILLUSTRATION
-       ======================================================== -->
-  <section class="section-padding bg-main overflow-hidden">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-6" data-aos="fade-right">
-          <div class="section-title-wrap mb-4">
-            <span class="section-subtitle">Flexible Operations</span>
-            <h2 class="h1 text-main fw-bold">Engineered For Growth: Transparent Service Plans</h2>
-          </div>
-          <p class="text-muted leading-relaxed mb-4">
-            At Vanguard Manufacturing Group, we configure strategic partnerships. We don't believe in rigid, opaque pricing schedules. Our tiered, specialized service plans provide standard and complex options tailored specifically to raw casting, rapid parts diagnostics, structural welding integration, and heavy automation deployment.
-          </p>
-          <p class="text-muted leading-relaxed mb-4">
-            Whether you operate a boutique workshop seeking occasional on-floor diagnostic testing or run a massive, multi-facility international conglomerate requiring structured, dedicated engineers and complete predictive analytics monitoring, Vanguard has a certified plan configured for your operational output goals.
-          </p>
-          <div class="row g-3 mt-3">
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center gap-3">
-                <div class="pricing-card-icon m-0" style="width:45px; height:45px; font-size:1.25rem;"><i class="fa-solid fa-shield-halved"></i></div>
+    <!-- ========================================================
+         SECTION 2: PRICING PHILOSOPHY
+         ======================================================== -->
+    <section class="section-padding bg-main">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6" style="position: relative; overflow: hidden;" data-aos="fade-right">
+            <div class="premium-zoom-wrap">
+              <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop" id="philosophyParallaxImg" alt="Vanguard Engineer calibrating automation panels" style="aspect-ratio: 4/3; object-fit: cover;">
+              <!-- Technical Badge 1 -->
+              <div class="philosophy-badge-float philosophy-badge-1 d-flex align-items-center gap-3">
+                <div class="fs-4 text-primary"><i class="fa-solid fa-medal"></i></div>
                 <div>
-                  <span class="d-block text-main fw-bold small">Zero Risk Guarantee</span>
-                  <span class="text-muted small">Full safety certification</span>
+                  <span class="d-block text-white font-display fw-bold small text-uppercase">ISO Certified</span>
+                  <span class="text-muted small">9001:2015 Standards</span>
+                </div>
+              </div>
+              <!-- Technical Badge 2 -->
+              <div class="philosophy-badge-float philosophy-badge-2 d-flex align-items-center gap-3">
+                <div class="fs-4 text-primary"><i class="fa-solid fa-network-wired"></i></div>
+                <div>
+                  <span class="d-block text-white font-display fw-bold small text-uppercase">SLA Guarantee</span>
+                  <span class="text-muted small">99.8% Peak Uptime</span>
                 </div>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div class="d-flex align-items-center gap-3">
-                <div class="pricing-card-icon m-0" style="width:45px; height:45px; font-size:1.25rem;"><i class="fa-solid fa-user-tie"></i></div>
-                <div>
-                  <span class="d-block text-main fw-bold small">Dedicated Field Engineers</span>
-                  <span class="text-muted small">On-call certified support</span>
-                </div>
-              </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="section-title-wrap mb-4">
+              <span class="premium-header-subtitle">Strategic Alliances</span>
+              <h2 class="text-main fw-bold">Our Engineering Value Philosophy</h2>
+              <p class="text-muted mt-3 mb-4">
+                At Vanguard, we abandon rigid SaaS-style models in favor of structured industrial scalability. We establish strategic partnerships grounded in absolute transparency, dynamic material parameters, and certified multi-discipline capabilities.
+              </p>
             </div>
-          </div>
-        </div>
-        <div class="col-lg-6" data-aos="fade-left">
-          <div class="illustration-parallax-container" id="illustrationParallax">
-            <img class="illustration-parallax-img" src="https://images.unsplash.com/photo-1565034946487-077786996e27?q=80&w=1200&auto=format&fit=crop" alt="Smart Factory Floor Assembly">
-            <div class="illustration-overlay-badge">
-              <span class="text-white small text-uppercase letter-spacing-1 d-block fw-bold">VANGUARD LABS</span>
-              <span class="text-primary fw-bold" style="font-size: 1.1rem;">Interactive Blueprint Simulation</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================
-       5. PACKAGE TOGGLE & SERVICE PACKAGE CARDS
-       ======================================================== -->
-  <section class="section-padding bg-sub blueprint-bg">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">Operational Tiers</span>
-        <h2 class="h2 text-main fw-bold">Structured Service Packages</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">Toggle between Standard and Premium packages. Select a plan to scale up your manufacturing output, maximize equipment lifetime, and eliminate unexpected downtime.</p>
-      </div>
-
-      <!-- Working toggle with Vanilla JS -->
-      <div class="pricing-toggle-container" data-aos="fade-up" data-aos-delay="100">
-        <span class="pricing-toggle-label label-lbl-std active" id="labelStdText">Standard Packages</span>
-        <div class="pricing-toggle-switch" id="pricingToggleSwitch" aria-label="Toggle standard or premium service packages">
-          <div class="pricing-toggle-bg" id="pricingToggleBg"></div>
-          <span class="pricing-toggle-btn-label label-standard">Standard</span>
-          <span class="pricing-toggle-btn-label label-premium">Premium</span>
-        </div>
-        <span class="pricing-toggle-label label-lbl-prem" id="labelPremText">Premium Packages</span>
-      </div>
-
-      <!-- Packages Cards Wrapper -->
-      <div class="row g-4" id="packagesGrid">
-        
-        <!-- ====================================================
-             STANDARD PACKAGE CARDS (Visible by Default)
-             ==================================================== -->
-        
-        <!-- CARD 1: Basic Manufacturing Support -->
-        <div class="col-lg-4 pricing-card-col standard-tier" data-aos="fade-up">
-          <div class="pricing-card">
-            <div>
-              <div class="pricing-card-icon"><i class="fa-solid fa-gears"></i></div>
-              <h3 class="pricing-card-title">Basic Support</h3>
-              <p class="pricing-card-desc">Ideal for small machine shops seeking reliable basic diagnostics, remote troubleshooting, and priority spare parts acquisition pipelines.</p>
-              <div class="pricing-card-price">
-                $4,500 <span>/ Setup</span>
-              </div>
-            </div>
-            <div>
-              <ul class="pricing-card-features">
-                <li><i class="fa-solid fa-circle-check"></i> 150-ton Production Capacity</li>
-                <li><i class="fa-solid fa-circle-check"></i> Business Hours Support (8/5)</li>
-                <li><i class="fa-solid fa-circle-check"></i> Standard Quality Inspection</li>
-                <li><i class="fa-solid fa-circle-xmark text-muted opacity-50"></i> <span class="text-muted opacity-50">Dedicated Engineer On-site</span></li>
-                <li><i class="fa-solid fa-circle-xmark text-muted opacity-50"></i> <span class="text-muted opacity-50">Custom Design blueprints</span></li>
-              </ul>
-              <div class="pricing-card-actions">
-                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
-                  <span>Request Quote</span>
-                </a>
-                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
-                  Compare Package
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 2: Industrial Production Package -->
-        <div class="col-lg-4 pricing-card-col standard-tier" data-aos="fade-up" data-aos-delay="100">
-          <div class="pricing-card">
-            <span class="pricing-badge">Most Popular</span>
-            <div>
-              <div class="pricing-card-icon"><i class="fa-solid fa-industry"></i></div>
-              <h3 class="pricing-card-title">Industrial Production</h3>
-              <p class="pricing-card-desc">Structured for scaling facilities requiring regular performance analysis, certified quality inspections, and on-site preventative tuning blocks.</p>
-              <div class="pricing-card-price">
-                $9,500 <span>/ Setup</span>
-              </div>
-            </div>
-            <div>
-              <ul class="pricing-card-features">
-                <li><i class="fa-solid fa-circle-check"></i> 500-ton Production Capacity</li>
-                <li><i class="fa-solid fa-circle-check"></i> Extended Support Hours (16/6)</li>
-                <li><i class="fa-solid fa-circle-check"></i> Double Quality Inspection Rounds</li>
-                <li><i class="fa-solid fa-circle-check"></i> Shared On-site Field Engineer</li>
-                <li><i class="fa-solid fa-circle-check"></i> CAD Custom Design Tweaks</li>
-              </ul>
-              <div class="pricing-card-actions">
-                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
-                  <span>Request Quote</span>
-                </a>
-                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
-                  Compare Package
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 3: Maintenance Package -->
-        <div class="col-lg-4 pricing-card-col standard-tier" data-aos="fade-up" data-aos-delay="200">
-          <div class="pricing-card">
-            <div>
-              <div class="pricing-card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-              <h3 class="pricing-card-title">Maintenance Package</h3>
-              <p class="pricing-card-desc">Dedicated preventive program for heavy CNC routers, mills, and hydraulic presses to ensure stable performance and minimized operational wear.</p>
-              <div class="pricing-card-price">
-                $6,800 <span>/ Setup</span>
-              </div>
-            </div>
-            <div>
-              <ul class="pricing-card-features">
-                <li><i class="fa-solid fa-circle-check"></i> 300-ton Production Capacity</li>
-                <li><i class="fa-solid fa-circle-check"></i> Business Hours Support (12/5)</li>
-                <li><i class="fa-solid fa-circle-check"></i> Quarterly Preventative Audits</li>
-                <li><i class="fa-solid fa-circle-check"></i> Spindle & Spool Alignment</li>
-                <li><i class="fa-solid fa-circle-xmark text-muted opacity-50"></i> <span class="text-muted opacity-50">Custom Design blueprints</span></li>
-              </ul>
-              <div class="pricing-card-actions">
-                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
-                  <span>Request Quote</span>
-                </a>
-                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
-                  Compare Package
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- ====================================================
-             PREMIUM PACKAGE CARDS (Hidden on Load, visible via toggle)
-             ==================================================== -->
-        
-        <!-- CARD 4: Automation Package -->
-        <div class="col-lg-4 pricing-card-col premium-tier d-none" data-aos="fade-up">
-          <div class="pricing-card">
-            <div>
-              <div class="pricing-card-icon"><i class="fa-solid fa-robot"></i></div>
-              <h3 class="pricing-card-title">Automation Package</h3>
-              <p class="pricing-card-desc">Advanced systems integration. Program robotic arms, deploy PLC networks, configure multi-axis feedback sensors, and establish central SCADA dashboards.</p>
-              <div class="pricing-card-price">
-                $18,000 <span>/ Setup</span>
-              </div>
-            </div>
-            <div>
-              <ul class="pricing-card-features">
-                <li><i class="fa-solid fa-circle-check"></i> 1000-ton Production Capacity</li>
-                <li><i class="fa-solid fa-circle-check"></i> 24/7 Priority Emergency Hotline</li>
-                <li><i class="fa-solid fa-circle-check"></i> Dedicated Automation Engineer</li>
-                <li><i class="fa-solid fa-circle-check"></i> IoT Vibration/Thermal Telemetry</li>
-                <li><i class="fa-solid fa-circle-check"></i> Full PLC Cabinet Design</li>
-              </ul>
-              <div class="pricing-card-actions">
-                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
-                  <span>Request Quote</span>
-                </a>
-                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
-                  Compare Package
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 5: Enterprise Manufacturing -->
-        <div class="col-lg-4 pricing-card-col premium-tier d-none" data-aos="fade-up">
-          <div class="pricing-card">
-            <span class="pricing-badge">Max Value</span>
-            <div>
-              <div class="pricing-card-icon"><i class="fa-solid fa-building-circle-check"></i></div>
-              <h3 class="pricing-card-title">Enterprise Manufacturing</h3>
-              <p class="pricing-card-desc">Vanguard's gold standard. Complete assembly operations management, deep metallurgical quality audits, dedicated on-site teams, and rapid tooling.</p>
-              <div class="pricing-card-price">
-                $29,000 <span>/ Setup</span>
-              </div>
-            </div>
-            <div>
-              <ul class="pricing-card-features">
-                <li><i class="fa-solid fa-circle-check"></i> Unlimited Production Capacity</li>
-                <li><i class="fa-solid fa-circle-check"></i> 24/7/365 On-site Support Staff</li>
-                <li><i class="fa-solid fa-circle-check"></i> 2 Dedicated Resident Engineers</li>
-                <li><i class="fa-solid fa-circle-check"></i> ISO 9001 Metallurgy Audits</li>
-                <li><i class="fa-solid fa-circle-check"></i> Turnkey Smart Factory Overhauls</li>
-              </ul>
-              <div class="pricing-card-actions">
-                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
-                  <span>Request Quote</span>
-                </a>
-                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
-                  Compare Package
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CARD 6: Custom Engineering Solution -->
-        <div class="col-lg-4 pricing-card-col premium-tier d-none" data-aos="fade-up">
-          <div class="pricing-card">
-            <div>
-              <div class="pricing-card-icon"><i class="fa-solid fa-microchip"></i></div>
-              <h3 class="pricing-card-title">Custom Engineering</h3>
-              <p class="pricing-card-desc">Fully bespoke project-based plans. Custom mold development, structural finite element calculations, unique alloy forging, and custom-designed conveyor lines.</p>
-              <div class="pricing-card-price">
-                Custom <span>/ Spec</span>
-              </div>
-            </div>
-            <div>
-              <ul class="pricing-card-features">
-                <li><i class="fa-solid fa-circle-check"></i> Custom-tailored Capacity specs</li>
-                <li><i class="fa-solid fa-circle-check"></i> Dedicated Project Manager</li>
-                <li><i class="fa-solid fa-circle-check"></i> R&D Custom Metallurgy Forging</li>
-                <li><i class="fa-solid fa-circle-check"></i> Finite Element Stress Analysis</li>
-                <li><i class="fa-solid fa-circle-check"></i> Rapid Prototype CNC Tooling</li>
-              </ul>
-              <div class="pricing-card-actions">
-                <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple w-100 text-center justify-content-center">
-                  <span>Request Quote</span>
-                </a>
-                <a href="#comparisonTable" class="btn btn-outline-secondary w-100 text-center justify-content-center py-2 border-secondary" style="border-radius: 6px; font-weight:600; font-size: 0.95rem;">
-                  Compare Package
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================
-       6. ANNUAL MAINTENANCE CONTRACTS (AMC)
-       ======================================================== -->
-  <section class="section-padding bg-main">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">Long-term Reliability</span>
-        <h2 class="h2 text-main fw-bold">Annual Maintenance Contracts (AMC)</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">Eliminate operational uncertainty. Our AMCs secure guaranteed response times, structured calibration blocks, safety cert audits, and on-floor cooling buffer checks.</p>
-      </div>
-
-      <div class="row g-4">
-        
-        <!-- AMC 1: Machine Maintenance -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="amc-card">
-            <div>
-              <div class="amc-header">
-                <div class="amc-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-                <h3 class="amc-title">Machine Maintenance</h3>
-              </div>
-              <p class="text-muted small mb-4">Focuses on mechanical spindle calibration, guide rails, tool loaders, and pneumatic vacuum seals. Includes 4 scheduled tune-ups yearly and spindle run-out diagnostics.</p>
-            </div>
-            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
-              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- AMC 2: Electrical Maintenance -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="amc-card">
-            <div>
-              <div class="amc-header">
-                <div class="amc-icon"><i class="fa-solid fa-bolt"></i></div>
-                <h3 class="amc-title">Electrical Maintenance</h3>
-              </div>
-              <p class="text-muted small mb-4">Inspecting high-voltage mainboards, breakers, safety interlocks, and servo motor controllers. Includes thermo-imaging audits to prevent core-cabinet overheating risks.</p>
-            </div>
-            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
-              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- AMC 3: Factory Equipment -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="amc-card">
-            <div>
-              <div class="amc-header">
-                <div class="amc-icon"><i class="fa-solid fa-dumpster-fire"></i></div>
-                <h3 class="amc-title">Factory Equipment</h3>
-              </div>
-              <p class="text-muted small mb-4">Covers heavy ventilation extraction stacks, pressurized hydraulic reservoirs, furnaces, cooling pools, and heavy hoisting rigging assemblies.</p>
-            </div>
-            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
-              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- AMC 4: Industrial Automation -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="amc-card">
-            <div>
-              <div class="amc-header">
-                <div class="amc-icon"><i class="fa-solid fa-microchip"></i></div>
-                <h3 class="amc-title">Industrial Automation</h3>
-              </div>
-              <p class="text-muted small mb-4">Software patches, PLC firmware validation, sensor mesh calibration, industrial ethernet health checks, SCADA database backup, and safety PLC audits.</p>
-            </div>
-            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
-              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- AMC 5: Production Line Maintenance -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="amc-card">
-            <div>
-              <div class="amc-header">
-                <div class="amc-icon"><i class="fa-solid fa-network-wired"></i></div>
-                <h3 class="amc-title">Production Line</h3>
-              </div>
-              <p class="text-muted small mb-4">End-to-end alignment check on sorting conveyor tables, packaging line speed optimizations, precision weight scales calibration, and robotic lifters synchronization.</p>
-            </div>
-            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
-              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
-            </a>
-          </div>
-        </div>
-
-        <!-- AMC 6: Emergency Support -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="amc-card">
-            <div>
-              <div class="amc-header">
-                <div class="amc-icon"><i class="fa-solid fa-truck-medical"></i></div>
-                <h3 class="amc-title">Emergency Support</h3>
-              </div>
-              <p class="text-muted small mb-4">Guaranteed 2-hour on-site response window for unexpected critical machine crashes. Includes emergency replacement parts allotment and dedicated on-site logistics coordination.</p>
-            </div>
-            <a href="contact.html" class="text-primary small fw-bold d-flex align-items-center gap-2">
-              <span>Request AMC Structure</span> <i class="fa-solid fa-chevron-right small"></i>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================
-       7. FEATURE COMPARISON TABLE
-       ======================================================== -->
-  <section class="section-padding bg-sub blueprint-bg" id="comparisonTable">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">Deep Contrast</span>
-        <h2 class="h2 text-main fw-bold">Feature Comparison Table</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">Technical side-by-side analysis of all six manufacturing packages to help your procurement division make an informed investment decision.</p>
-      </div>
-
-      <div class="comparison-table-wrap" data-aos="fade-up" data-aos-delay="100">
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Feature Details</th>
-              <th>Basic Support</th>
-              <th>Industrial Prod.</th>
-              <th>Maintenance</th>
-              <th>Automation</th>
-              <th>Enterprise</th>
-              <th>Custom Eng.</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Production Capacity</td>
-              <td>150 Tons</td>
-              <td>500 Tons</td>
-              <td>300 Tons</td>
-              <td>1000 Tons</td>
-              <td>Unlimited</td>
-              <td>Bespoke</td>
-            </tr>
-            <tr>
-              <td>Support Hours</td>
-              <td>8/5 Business</td>
-              <td>16/6 Extended</td>
-              <td>12/5 Extended</td>
-              <td>24/7 Priority</td>
-              <td>24/7/365 Onsite</td>
-              <td>Project-based</td>
-            </tr>
-            <tr>
-              <td>Dedicated Engineer</td>
-              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
-              <td><span class="small fw-semibold text-main">Shared</span></td>
-              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
-              <td><i class="fa-solid fa-circle-check feature-check"></i></td>
-              <td><i class="fa-solid fa-circle-check feature-check"></i> (2 engineers)</td>
-              <td><i class="fa-solid fa-circle-check feature-check"></i> (Project lead)</td>
-            </tr>
-            <tr>
-              <td>Quality Inspection</td>
-              <td>Standard</td>
-              <td>Standard x2</td>
-              <td>Quarterly Audit</td>
-              <td>Advanced Sensor</td>
-              <td>ISO 9001 Metallurgy</td>
-              <td>Forced Tolerance</td>
-            </tr>
-            <tr>
-              <td>Custom Design</td>
-              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
-              <td>Basic adjustments</td>
-              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
-              <td>PLC Schematic</td>
-              <td>Full CAD Blueprint</td>
-              <td>Bespoke Modeling</td>
-            </tr>
-            <tr>
-              <td>Installation Support</td>
-              <td>Remote Only</td>
-              <td>On-site Assistance</td>
-              <td>Calibration Check</td>
-              <td>Turnkey Install</td>
-              <td>Full Commission</td>
-              <td>Bespoke Setup</td>
-            </tr>
-            <tr>
-              <td>Maintenance Frequency</td>
-              <td>Ad-hoc</td>
-              <td>Quarterly</td>
-              <td>Bi-monthly</td>
-              <td>Monthly Audit</td>
-              <td>Continuous</td>
-              <td>Project Phase</td>
-            </tr>
-            <tr>
-              <td>Warranty Period</td>
-              <td>1 Year Limited</td>
-              <td>2 Years Standard</td>
-              <td>1 Year Limited</td>
-              <td>3 Years Premium</td>
-              <td>5 Years Extended</td>
-              <td>Bespoke Spec</td>
-            </tr>
-            <tr>
-              <td>Emergency Support</td>
-              <td>Next Day</td>
-              <td>8-Hour Response</td>
-              <td>12-Hour Response</td>
-              <td>4-Hour Response</td>
-              <td>Instant On-site</td>
-              <td>Next-Day On-site</td>
-            </tr>
-            <tr>
-              <td>Operational Training</td>
-              <td><i class="fa-solid fa-circle-xmark feature-cross"></i></td>
-              <td>1 Session (Basic)</td>
-              <td>1 Session (Safety)</td>
-              <td>3 Sessions (Robotics)</td>
-              <td>Unlimited Coaching</td>
-              <td>Custom Curriculum</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================
-       8. OUR WORK PROCESS TIMELINE
-       ======================================================== -->
-  <section class="section-padding bg-main overflow-hidden" id="workProcessSection">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">Execution Pipeline</span>
-        <h2 class="h2 text-main fw-bold">Our Work Process</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">From technical initial blueprint evaluation to deployment verification, here is how we execute and deliver industrial excellence.</p>
-      </div>
-
-      <div class="timeline-container">
-        <!-- Connecting Line background -->
-        <div class="timeline-line"></div>
-        <div class="timeline-progress" id="timelineProgress"></div>
-
-        <!-- STEP 1: Consultation -->
-        <div class="timeline-item" data-step="1" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">01</div>
-            <h3 class="h5 text-main fw-bold">Consultation</h3>
-            <p class="text-muted small mb-0">Initial meeting to discuss structural targets, plant parameters, material properties, and operational output needs.</p>
-          </div>
-        </div>
-
-        <!-- STEP 2: Requirement Analysis -->
-        <div class="timeline-item" data-step="2" data-aos="fade-left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">02</div>
-            <h3 class="h5 text-main fw-bold">Requirement Analysis</h3>
-            <p class="text-muted small mb-0">Our senior engineering teams analyze metallurgical stress loads, existing factory spacing, and current PLC systems.</p>
-          </div>
-        </div>
-
-        <!-- STEP 3: Planning -->
-        <div class="timeline-item" data-step="3" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">03</div>
-            <h3 class="h5 text-main fw-bold">Planning</h3>
-            <p class="text-muted small mb-0">Drafting strict production schedules, logistics manifests, raw alloy procurement plans, and resource allocations.</p>
-          </div>
-        </div>
-
-        <!-- STEP 4: Engineering -->
-        <div class="timeline-item" data-step="4" data-aos="fade-left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">04</div>
-            <h3 class="h5 text-main fw-bold">Engineering</h3>
-            <p class="text-muted small mb-0">Generative 3D CAD modeling, finite element analysis (FEA), PLC cabinet wiring design, and custom mold parameters drafting.</p>
-          </div>
-        </div>
-
-        <!-- STEP 5: Manufacturing -->
-        <div class="timeline-item" data-step="5" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">05</div>
-            <h3 class="h5 text-main fw-bold">Manufacturing</h3>
-            <p class="text-muted small mb-0">Casting, high-precision multi-axis CNC machining, structural welding, control console assembly, and wiring checks.</p>
-          </div>
-        </div>
-
-        <!-- STEP 6: Installation -->
-        <div class="timeline-item" data-step="6" data-aos="fade-left">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">06</div>
-            <h3 class="h5 text-main fw-bold">Installation</h3>
-            <p class="text-muted small mb-0">On-site equipment positioning, high-voltage panel hookups, sensor diagnostics synchronization, and simulator trial runs.</p>
-          </div>
-        </div>
-
-        <!-- STEP 7: Support -->
-        <div class="timeline-item" data-step="7" data-aos="fade-right">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content-card">
-            <div class="timeline-step-num">07</div>
-            <h3 class="h5 text-main fw-bold">Continuous Support</h3>
-            <p class="text-muted small mb-0">Scheduled safety audits, spare tool supply pipelines, continuous technical coaching, and responsive emergency diagnostics.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================
-       9. WHY INVEST WITH US FEATURE CARDS
-       ======================================================== -->
-  <section class="section-padding bg-sub blueprint-bg">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">Vanguard Shield</span>
-        <h2 class="h2 text-main fw-bold">Why Invest With Us</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">Deploying capital into industrial infrastructure requires complete risk mitigation. Here is why global leaders choose Vanguard Group.</p>
-      </div>
-
-      <div class="row g-4">
-        
-        <!-- CARD 1: Certified Engineers -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="invest-card">
-            <div class="invest-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
-            <h3 class="h5 text-main fw-bold mb-3">Certified Engineers</h3>
-            <p class="text-muted small mb-0">All our field engineers hold ASME, AWS, and ISO 9001 individual certifications and undergo rigorous bi-annual safety audits at our Houston simulation hubs.</p>
-          </div>
-        </div>
-
-        <!-- CARD 2: Latest Technology -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="invest-card">
-            <div class="invest-icon-box"><i class="fa-solid fa-microchip"></i></div>
-            <h3 class="h5 text-main fw-bold mb-3">Latest Technology</h3>
-            <p class="text-muted small mb-0">We operate state-of-the-art 5-axis Mazak milling centers, high-capacity vacuum forging furnaces, and advanced Fanuc automated controllers.</p>
-          </div>
-        </div>
-
-        <!-- CARD 3: Quality Assurance -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="invest-card">
-            <div class="invest-icon-box"><i class="fa-solid fa-microscope"></i></div>
-            <h3 class="h5 text-main fw-bold mb-3">Quality Assurance</h3>
-            <p class="text-muted small mb-0">With coordinate measuring machines (CMM) and non-destructive ultrasonic testing, we verify metallurgical tolerances down to 5 micrometers.</p>
-          </div>
-        </div>
-
-        <!-- CARD 4: Fast Delivery -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="invest-card">
-            <div class="invest-icon-box"><i class="fa-solid fa-truck-ramp-box"></i></div>
-            <h3 class="h5 text-main fw-bold mb-3">Fast Delivery</h3>
-            <p class="text-muted small mb-0">With dual logistics and fabrication centers in Pasadena and Houston, we coordinate efficient container routing to guarantee strict deadline compliance.</p>
-          </div>
-        </div>
-
-        <!-- CARD 5: Long-Term Support -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="invest-card">
-            <div class="invest-icon-box"><i class="fa-solid fa-clock-rotate-left"></i></div>
-            <h3 class="h5 text-main fw-bold mb-3">Long-Term Support</h3>
-            <p class="text-muted small mb-0">We stand by our work for decades. Vanguard provides custom tooling, on-demand spare parts manufacturing, and decades-long archiving for all blueprint files.</p>
-          </div>
-        </div>
-
-        <!-- CARD 6: Global Standards -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="invest-card">
-            <div class="invest-icon-box"><i class="fa-solid fa-globe"></i></div>
-            <h3 class="h5 text-main fw-bold mb-3">Global Standards</h3>
-            <p class="text-muted small mb-0">Vanguard operates in strict accordance with OSHA, ANSI, CE, and DIN guidelines, guaranteeing seamless certification loops for international setups.</p>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================
-       10. CLIENT SUCCESS NUMBERS
-       ======================================================== -->
-  <section class="section-padding bg-main" id="statsSection">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">Vanguard Reach</span>
-        <h2 class="h2 text-main fw-bold">Global Achievements</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">Our performance metrics indicate structured engineering commitment, high operational capacity, and exceptional industrial scale.</p>
-      </div>
-
-      <div class="row g-4 justify-content-center">
-        <!-- Stat 1: Projects -->
-        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in">
-          <div class="stats-block">
-            <div class="stat-icon"><i class="fa-solid fa-folder-closed"></i></div>
-            <div class="stat-number" data-target="1850+">0</div>
-            <span class="text-muted small fw-bold">Projects Complete</span>
-          </div>
-        </div>
-
-        <!-- Stat 2: Clients -->
-        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="100">
-          <div class="stats-block">
-            <div class="stat-icon"><i class="fa-solid fa-building-user"></i></div>
-            <div class="stat-number" data-target="640+">0</div>
-            <span class="text-muted small fw-bold">Global Clients</span>
-          </div>
-        </div>
-
-        <!-- Stat 3: Factories -->
-        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="200">
-          <div class="stats-block">
-            <div class="stat-icon"><i class="fa-solid fa-industry"></i></div>
-            <div class="stat-number" data-target="180+">0</div>
-            <span class="text-muted small fw-bold">Smart Factories</span>
-          </div>
-        </div>
-
-        <!-- Stat 4: Countries -->
-        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="300">
-          <div class="stats-block">
-            <div class="stat-icon"><i class="fa-solid fa-earth-americas"></i></div>
-            <div class="stat-number" data-target="42">0</div>
-            <span class="text-muted small fw-bold">Countries Active</span>
-          </div>
-        </div>
-
-        <!-- Stat 5: Engineers -->
-        <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="400">
-          <div class="stats-block">
-            <div class="stat-icon"><i class="fa-solid fa-user-gear"></i></div>
-            <div class="stat-number" data-target="350+">0</div>
-            <span class="text-muted small fw-bold">On-Floor Engineers</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================
-       11. FAQ ACCORDION
-       ======================================================== -->
-  <section class="section-padding bg-sub blueprint-bg">
-    <div class="container">
-      
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">FAQ</span>
-        <h2 class="h2 text-main fw-bold">Pricing-Related Inquiries</h2>
-        <p class="text-muted max-w-2xl mx-auto mt-2">Answers to the most common inquiries regarding our service plans, annual maintenance structures, and payment terms.</p>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
-          <div class="accordion pricing-faq-accordion" id="faqPricingAccordion">
             
-            <!-- Item 1 -->
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  Can we transition between standard and premium plans?
-                </button>
-              </h3>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqPricingAccordion">
-                <div class="accordion-body">
-                  Yes, absolutely. You can upgrade or adjust your current service parameters at any point. Our engineering logistics manager will conduct a brief on-site visit to inspect the active line configuration and smoothly update the service boundaries without halting active production.
+            <div class="row g-4">
+              <div class="col-sm-6">
+                <div class="philosophy-card-item">
+                  <div class="philosophy-card-icon"><i class="fa-solid fa-magnifying-glass-dollar"></i></div>
+                  <h4 class="h6 text-main fw-bold mb-2">Transparent Pricing</h4>
+                  <p class="text-muted small mb-0">Itemized billings, zero undisclosed overheads, and completely transparent material cost indices.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="philosophy-card-item">
+                  <div class="philosophy-card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+                  <h4 class="h6 text-main fw-bold mb-2">Custom Engineering</h4>
+                  <p class="text-muted small mb-0">Valuations configured specifically to support custom castings, unique geometries, and prototype molds.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="philosophy-card-item">
+                  <div class="philosophy-card-icon"><i class="fa-solid fa-handshake"></i></div>
+                  <h4 class="h6 text-main fw-bold mb-2">Long-Term Alliance</h4>
+                  <p class="text-muted small mb-0">Ongoing calibrations, lifetime blueprint archiving, and dedicated field engineer on-site guarantees.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="philosophy-card-item">
+                  <div class="philosophy-card-icon"><i class="fa-solid fa-sliders"></i></div>
+                  <h4 class="h6 text-main fw-bold mb-2">Flexible Throughput</h4>
+                  <p class="text-muted small mb-0">Scale production runs up or down dynamic levels based on real-time market material demands.</p>
                 </div>
               </div>
             </div>
-
-            <!-- Item 2 -->
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  What is included in the standard AMC package?
-                </button>
-              </h3>
-              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
-                <div class="accordion-body">
-                  Our standard Annual Maintenance Contracts include 4 scheduled full-facility tune-up blocks (spindle alignment, lubrication pressure testing, safety circuit checkups), emergency troubleshooting support with next-day diagnostic response, and continuous digital archiving of all custom blueprint revisions.
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  How are custom engineering quotes calculated?
-                </button>
-              </h3>
-              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
-                <div class="accordion-body">
-                  Custom engineering projects are analyzed by a specialized Vanguard estimator. We base the quote directly on finite element calculation complexity, mold tooling requirements, alloy grades selected (e.g. specialized titanium or high-stress steel), on-site installation difficulty, and hours needed for specialized programmers.
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 4 -->
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                  Do you provide emergency troubleshooting for non-Vanguard equipment?
-                </button>
-              </h3>
-              <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
-                <div class="accordion-body">
-                  Yes, under our Enterprise and Custom Engineering packages, our engineers are fully authorized and trained to troubleshoot, repair, and calibrate third-party manufacturing systems, PLC cabinets, and CNC mills, provided we perform an initial safety audit and system documentation map.
-                </div>
-              </div>
-            </div>
-
-            <!-- Item 5 -->
-            <div class="accordion-item">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                  What are the standard billing and payment terms?
-                </button>
-              </h3>
-              <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqPricingAccordion">
-                <div class="accordion-body">
-                  Service plans and set-ups are invoiced upon successful commissioning. For ongoing AMCs, we support flexible quarterly or bi-annual billing plans. Custom project components are structured with standard 30-40-30 payment milestones (initial planning, production start, and final commissioning sign-off).
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </div>
+    </section>
 
+    <!-- Gear Divider -->
+    <div class="divider-gear-wrap">
+      <i class="fa-solid fa-gear"></i>
     </div>
-  </section>
 
-  <!-- ========================================================
-       12. REQUEST CUSTOM QUOTE CTA BANNER
-       ======================================================== -->
-  <section class="section-padding bg-main text-center">
-    <div class="container">
-      <div class="blueprint-border-box p-5 max-w-5xl mx-auto" data-aos="zoom-in">
-        <span class="text-primary text-uppercase fw-bold letter-spacing-1 d-block mb-3">Custom Configuration</span>
-        <h2 class="h1 text-main fw-bold mb-3">Ready For A Tailor-Made Engineering Plan?</h2>
-        <p class="text-muted max-w-3xl mx-auto mb-4">
-          If our standard packages don't fully fit your exact operational parameters, contact our senior consulting board. We will design a custom manufacturing SLA tailored to your strict requirements.
-        </p>
-        <div class="d-flex flex-wrap justify-content-center gap-3">
-          <a href="contact.html" class="btn-custom btn-custom-primary btn-ripple py-3 px-4">
-            <span>Request Bespoke Quote</span>
-            <i class="fa-solid fa-paper-plane"></i>
-          </a>
-          <a href="tel:+18005550199" class="btn btn-outline-secondary py-3 px-4 border-secondary text-main" style="border-radius: 6px; font-weight: 600;">
-            <i class="fa-solid fa-phone me-2"></i> Speak With Estimator
-          </a>
+    <!-- ========================================================
+         SECTION 3: MANUFACTURING SOLUTIONS CARDS
+         ======================================================== -->
+    <section class="section-padding bg-sub blueprint-pattern-bg rounded-4">
+      <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="premium-header-subtitle">Standard SLA Solutions</span>
+          <h2 class="text-main fw-bold">Manufacturing & Technical Solutions</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">Choose the strategic service segment that matches your operational capacity targets and equipment lifecycle priorities.</p>
+        </div>
+
+        <div class="row g-4">
+          
+          <!-- Card 1: Contract Manufacturing -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="solution-card-wrapper">
+              <div class="solution-img-box premium-zoom-wrap">
+                <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=600&auto=format&fit=crop" alt="Contract Manufacturing">
+                <div class="solution-float-icon"><i class="fa-solid fa-gears"></i></div>
+              </div>
+              <div class="solution-card-content">
+                <h3 class="solution-card-title">Contract Manufacturing</h3>
+                <p class="solution-card-desc">Continuous high-volume production lines for alloys, structural machinery housings, and precision brackets.</p>
+                <ul class="solution-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> High-volume CNC milling blocks</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Dual continuous alloy casting</li>
+                  <li><i class="fa-solid fa-circle-check"></i> ISO 9001 quality audits</li>
+                </ul>
+                <div class="solution-price-box">
+                  <span class="solution-price-label">Starting From</span>
+                  <span class="solution-price-value">$12,500 <span class="small text-muted" style="font-size:0.7rem;">/Mo</span></span>
+                </div>
+                <div class="solution-card-actions">
+                  <a href="request-quote.html" class="btn-custom-sm btn-custom-primary btn-ripple-effect">
+                    <span>Quote</span> <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <a href="#comparisonSection" class="btn-custom-sm btn-custom-outline border-secondary text-main text-center">
+                    <span>Compare</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: OEM Production -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="solution-card-wrapper">
+              <div class="solution-img-box premium-zoom-wrap">
+                <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=600&auto=format&fit=crop" alt="OEM Production">
+                <div class="solution-float-icon"><i class="fa-solid fa-industry"></i></div>
+              </div>
+              <div class="solution-card-content">
+                <h3 class="solution-card-title">OEM Production</h3>
+                <p class="solution-card-desc">Bespoke molds, private labeling, and custom product development for mechanical aerospace or automotive components.</p>
+                <ul class="solution-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> Specialized custom tooling dies</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Complete parts confidentiality</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Streamlined global batch freight</li>
+                </ul>
+                <div class="solution-price-box">
+                  <span class="solution-price-label">Starting From</span>
+                  <span class="solution-price-value">$24,500 <span class="small text-muted" style="font-size:0.7rem;">/Mo</span></span>
+                </div>
+                <div class="solution-card-actions">
+                  <a href="request-quote.html" class="btn-custom-sm btn-custom-primary btn-ripple-effect">
+                    <span>Quote</span> <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <a href="#comparisonSection" class="btn-custom-sm btn-custom-outline border-secondary text-main text-center">
+                    <span>Compare</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Industrial Automation -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="solution-card-wrapper">
+              <div class="solution-img-box premium-zoom-wrap">
+                <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=600&auto=format&fit=crop" alt="Industrial Automation">
+                <div class="solution-float-icon"><i class="fa-solid fa-robot"></i></div>
+              </div>
+              <div class="solution-card-content">
+                <h3 class="solution-card-title">Industrial Automation</h3>
+                <p class="solution-card-desc">Advanced robotics integration, logic PLC cabinets assembly, and central SCADA visualization setups.</p>
+                <ul class="solution-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> 6-Axis robotic synchronization</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Programmable PLC logic mesh</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Thermal telemetry dashboards</li>
+                </ul>
+                <div class="solution-price-box">
+                  <span class="solution-price-label">Starting From</span>
+                  <span class="solution-price-value">$18,000 <span class="small text-muted" style="font-size:0.7rem;">/Setup</span></span>
+                </div>
+                <div class="solution-card-actions">
+                  <a href="request-quote.html" class="btn-custom-sm btn-custom-primary btn-ripple-effect">
+                    <span>Quote</span> <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <a href="#comparisonSection" class="btn-custom-sm btn-custom-outline border-secondary text-main text-center">
+                    <span>Compare</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Custom Fabrication -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="solution-card-wrapper">
+              <div class="solution-img-box premium-zoom-wrap">
+                <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop" alt="Custom Fabrication">
+                <div class="solution-float-icon"><i class="fa-solid fa-fire"></i></div>
+              </div>
+              <div class="solution-card-content">
+                <h3 class="solution-card-title">Custom Fabrication</h3>
+                <p class="solution-card-desc">Structural steel shaping, heavy-arc welding under strict certified protocols, and unique custom alloy forgings.</p>
+                <ul class="solution-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> AWS certified layout welders</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Finite Element Stress Analysis</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Anti-corrosion salt treatments</li>
+                </ul>
+                <div class="solution-price-box">
+                  <span class="solution-price-label">Starting From</span>
+                  <span class="solution-price-value">$9,500 <span class="small text-muted" style="font-size:0.7rem;">/Proj</span></span>
+                </div>
+                <div class="solution-card-actions">
+                  <a href="request-quote.html" class="btn-custom-sm btn-custom-primary btn-ripple-effect">
+                    <span>Quote</span> <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <a href="#comparisonSection" class="btn-custom-sm btn-custom-outline border-secondary text-main text-center">
+                    <span>Compare</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Factory Maintenance -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="solution-card-wrapper">
+              <div class="solution-img-box premium-zoom-wrap">
+                <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop" alt="Factory Maintenance">
+                <div class="solution-float-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+              </div>
+              <div class="solution-card-content">
+                <h3 class="solution-card-title">Factory Maintenance</h3>
+                <p class="solution-card-desc">Scheduled spindle calibrations, vacuum checks, high-voltage thermal imaging audits, and emergency field dispatch.</p>
+                <ul class="solution-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> Guaranteed 4-Hr dispatch SLA</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Spindle vibration analysis</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Automated lubrication refills</li>
+                </ul>
+                <div class="solution-price-box">
+                  <span class="solution-price-label">Starting From</span>
+                  <span class="solution-price-value">$4,800 <span class="small text-muted" style="font-size:0.7rem;">/Mo</span></span>
+                </div>
+                <div class="solution-card-actions">
+                  <a href="request-quote.html" class="btn-custom-sm btn-custom-primary btn-ripple-effect">
+                    <span>Quote</span> <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <a href="#comparisonSection" class="btn-custom-sm btn-custom-outline border-secondary text-main text-center">
+                    <span>Compare</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Enterprise Engineering -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="solution-card-wrapper">
+              <div class="solution-img-box premium-zoom-wrap">
+                <img class="premium-zoom-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop" alt="Enterprise Engineering">
+                <div class="solution-float-icon"><i class="fa-solid fa-user-gear"></i></div>
+              </div>
+              <div class="solution-card-content">
+                <h3 class="solution-card-title">Enterprise Engineering</h3>
+                <p class="solution-card-desc">Full-scale facility overhauls, dedicated resident on-floor engineering staff, and continuous operational advisory.</p>
+                <ul class="solution-features-list">
+                  <li><i class="fa-solid fa-circle-check"></i> 3 Resident on-floor engineers</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Dedicated CAD designer</li>
+                  <li><i class="fa-solid fa-circle-check"></i> Complete line audit reports</li>
+                </ul>
+                <div class="solution-price-box">
+                  <span class="solution-price-label">Pricing SLA</span>
+                  <span class="solution-price-value">Custom Spec</span>
+                </div>
+                <div class="solution-card-actions">
+                  <a href="request-quote.html" class="btn-custom-sm btn-custom-primary btn-ripple-effect">
+                    <span>Quote</span> <i class="fa-solid fa-arrow-right-long"></i>
+                  </a>
+                  <a href="#comparisonSection" class="btn-custom-sm btn-custom-outline border-secondary text-main text-center">
+                    <span>Compare</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 4: WHY CLIENTS CHOOSE US
+         ======================================================== -->
+    <section class="section-padding bg-main">
+      <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="premium-header-subtitle">Performance Metrics</span>
+          <h2 class="text-main fw-bold">Why Industry Leaders Select Vanguard</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">Our operational benchmarks and rigorous certification grids ensure zero-compromise mechanical execution.</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- Card 1: Certified Engineers -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="choose-card">
+              <div class="choose-icon-box"><i class="fa-solid fa-user-check"></i></div>
+              <h3 class="h5 text-main fw-bold mb-3">Certified Engineers</h3>
+              <p class="text-muted small mb-0">Every floor coordinator and field operative holds top-tier technical credentials and complete safety training clearances.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: ISO Standards -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="choose-card">
+              <div class="choose-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+              <h3 class="h5 text-main fw-bold mb-3">ISO Standards</h3>
+              <p class="text-muted small mb-0">We operate in strict compliance with ISO 9001, ISO 14001, and EN 1090 structural execution parameters.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Advanced Machinery -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="choose-card">
+              <div class="choose-icon-box"><i class="fa-solid fa-microchip"></i></div>
+              <h3 class="h5 text-main fw-bold mb-3">Advanced Machinery</h3>
+              <p class="text-muted small mb-0">Our Houston and Stuttgart hubs house 5-axis DMG MORI mills, laser telemetry arrays, and multi-axis welding robots.</p>
+            </div>
+          </div>
+
+          <!-- Card 4: 24/7 Technical Support -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="choose-card">
+              <div class="choose-icon-box"><i class="fa-solid fa-headset"></i></div>
+              <h3 class="h5 text-main fw-bold mb-3">24/7 Technical Support</h3>
+              <p class="text-muted small mb-0">A direct, dedicated telecom link connects your operations manager directly to on-call manufacturing superintendents.</p>
+            </div>
+          </div>
+
+          <!-- Card 5: Fast Production -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="choose-card">
+              <div class="choose-icon-box"><i class="fa-solid fa-bolt"></i></div>
+              <h3 class="h5 text-main fw-bold mb-3">Fast Production</h3>
+              <p class="text-muted small mb-0">Standard tooling setups complete within 48 hours, slashing traditional production lead times by up to 35%.</p>
+            </div>
+          </div>
+
+          <!-- Card 6: Global Delivery -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="choose-card">
+              <div class="choose-icon-box"><i class="fa-solid fa-globe"></i></div>
+              <h3 class="h5 text-main fw-bold mb-3">Global Delivery</h3>
+              <p class="text-muted small mb-0">Integrated customs logistics pipelines ensure heavy machinery and assemblies reach your sites securely on time.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Gear Divider -->
+    <div class="divider-gear-wrap">
+      <i class="fa-solid fa-gear"></i>
     </div>
-  </section>
+
+    <!-- ========================================================
+         SECTION 5: MANUFACTURING PROCESS TIMELINE
+         ======================================================== -->
+    <section class="section-padding bg-sub rounded-4" style="position: relative; overflow: hidden;" id="timelineSection">
+      <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="premium-header-subtitle">Standard Execution Workflow</span>
+          <h2 class="text-main fw-bold">Our Seven-Step Manufacturing Timeline</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">From raw operational inquiry to deployment support, review our highly coordinated execution path.</p>
+        </div>
+
+        <div class="timeline-track-wrapper">
+          <div class="timeline-horizontal-bar"></div>
+          <div class="timeline-active-progress" id="timelineProgressBar"></div>
+          
+          <div class="timeline-steps-grid">
+            <!-- Step 1 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">1</div>
+              <h3 class="timeline-step-title">Inquiry</h3>
+              <p class="timeline-step-desc">Submit mechanical prints or operational capacity specifications.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">2</div>
+              <h3 class="timeline-step-title">Review</h3>
+              <p class="timeline-step-desc">Senior engineers check tolerances, alloy stress thresholds, and tooling paths.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">3</div>
+              <h3 class="timeline-step-title">Design</h3>
+              <p class="timeline-step-desc">CAD specialists draft custom blueprint geometries for milling molds.</p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">4</div>
+              <h3 class="timeline-step-title">Production</h3>
+              <p class="timeline-step-desc">High-speed CNC, forging furnaces, and robot welding cells activate.</p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">5</div>
+              <h3 class="timeline-step-title">Inspection</h3>
+              <p class="timeline-step-desc">Acoustic scanners and laser micrometers verify strict sub-micron alignments.</p>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">6</div>
+              <h3 class="timeline-step-title">Delivery</h3>
+              <p class="timeline-step-desc">Crated components ship securely via our integrated freight channels.</p>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="timeline-step-point">
+              <div class="timeline-step-circle">7</div>
+              <h3 class="timeline-step-title">Support</h3>
+              <p class="timeline-step-desc">Resident engineers coordinate active installation, calibration, and tuning.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 6: PACKAGE COMPARISON (PREMIUM CARDS)
+         ======================================================== -->
+    <section class="section-padding bg-main" id="comparisonSection">
+      <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="premium-header-subtitle">Detailed Comparison</span>
+          <h2 class="text-main fw-bold">SLA Specification Parameters</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">Analyze comparative technical details across Standard, Professional, and Enterprise packages side-by-side.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <!-- Card 1: Standard Plan -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="compare-card">
+              <div class="compare-header">
+                <h3 class="compare-title">Standard SLA</h3>
+                <p class="compare-desc">Designed for small local facilities requiring stable, on-demand support.</p>
+              </div>
+              <div class="compare-specs-list">
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Consultation</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 2 Hours Monthly</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Engineering Support</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Business Hours (8/5)</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Custom Design</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Basic CAD Geometry Tweaks</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Manufacturing</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Basic Castings & Forgings</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Installation</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Remote Technical Guidance</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Maintenance</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Annual Performance Audit</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Warranty</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 12-Month SLA Guarantee</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Emergency SLA</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-xmark cross"></i> 24-Hour Next-Day Dispatch</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Dedicated Manager</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-xmark cross"></i> Shared Queue Only</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Training Workshops</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-xmark cross"></i> Digital Manuals Only</span>
+                </div>
+              </div>
+              <a href="request-quote.html" class="btn btn-outline-secondary py-2 border-secondary text-main w-100" style="border-radius: 8px; font-weight:600;">Request Standard Quote</a>
+            </div>
+          </div>
+
+          <!-- Card 2: Professional Plan -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="compare-card featured-card">
+              <div class="compare-header">
+                <h3 class="compare-title">Professional SLA</h3>
+                <p class="compare-desc">Engineered for scaling manufacturers with continuous assembly loops.</p>
+              </div>
+              <div class="compare-specs-list">
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Consultation</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 10 Hours Monthly</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Engineering Support</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Extended Support (16/6)</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Custom Design</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Full CAD Engineering Blueprints</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Manufacturing</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 5-Axis Precision CNC Milling</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Installation</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> On-Site Calibration Team</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Maintenance</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Bi-Annual Calibration Audits</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Warranty</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 36-Month Machinery Guarantee</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Emergency SLA</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 4-Hour Urgent Response</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Dedicated Manager</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Assigned Technical Lead</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Training Workshops</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 2-Day Operator Onsite Training</span>
+                </div>
+              </div>
+              <a href="request-quote.html" class="btn btn-custom btn-custom-primary btn-ripple-effect w-100 justify-content-center">Request Professional Quote</a>
+            </div>
+          </div>
+
+          <!-- Card 3: Enterprise Plan -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="compare-card">
+              <div class="compare-header">
+                <h3 class="compare-title">Enterprise SLA</h3>
+                <p class="compare-desc">Sovereign turnkey solutions for international heavy corporations.</p>
+              </div>
+              <div class="compare-specs-list">
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Consultation</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Unlimited Advisory Streams</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Engineering Support</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 24/7/365 On-Floor Team</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Custom Design</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Bespoke R&D Simulation Modeling</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Manufacturing</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Multi-Axis Robotics Setup SLA</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Installation</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Complete Turnkey Deployment SLA</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Maintenance</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Continuous Diagnostics Monitoring</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Warranty</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Lifetime Structural Component SLA</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Emergency SLA</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 1-Hour Critical Dispatch SLA</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Dedicated Manager</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> 1-on-1 On-Site Resident Director</span>
+                </div>
+                <div class="compare-spec-row">
+                  <span class="compare-spec-name">Training Workshops</span>
+                  <span class="compare-spec-val"><i class="fa-solid fa-check check"></i> Full Staff Licensing & Certification</span>
+                </div>
+              </div>
+              <a href="request-quote.html" class="btn btn-outline-secondary py-2 border-secondary text-main w-100" style="border-radius: 8px; font-weight:600;">Request Enterprise Quote</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Gear Divider -->
+    <div class="divider-gear-wrap">
+      <i class="fa-solid fa-gear"></i>
+    </div>
+
+    <!-- ========================================================
+         SECTION 7: FEATURED ENTERPRISE PACKAGE
+         ======================================================== -->
+    <section class="section-padding bg-main">
+      <div class="container">
+        
+        <!-- Target for Parallax effect -->
+        <div class="featured-enterprise-section" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1600&auto=format&fit=crop');" id="featuredSectionParallax">
+          <div class="featured-enterprise-overlay"></div>
+          
+          <div class="row align-items-center position-relative featured-enterprise-content g-5">
+            <div class="col-lg-7 text-start">
+              <span class="badge bg-primary px-3 py-2 text-uppercase font-display fw-bold mb-3" style="letter-spacing:1px; font-size: 0.72rem;">Signature Tier: Sovereign SLA</span>
+              <h2 class="text-white font-display mb-3 fw-bold display-5">Enterprise Sovereign Allocation</h2>
+              <p class="text-white-50 lead mb-4">
+                Unlock full-scope manufacturing sovereignty with a tailored service-level agreement designed specifically for multinational assembly hubs, high-temperature alloys operations, and 24/7 continuous casting automation.
+              </p>
+              
+              <div class="row g-3 mb-4">
+                <div class="col-sm-6">
+                  <ul class="list-unstyled text-white-50 small mb-0 d-flex flex-column gap-2">
+                    <li><i class="fa-solid fa-circle-check text-primary me-2"></i> On-floor engineering squad of 3</li>
+                    <li><i class="fa-solid fa-circle-check text-primary me-2"></i> Custom tooling castings reserve</li>
+                    <li><i class="fa-solid fa-circle-check text-primary me-2"></i> Unlimited thermal laser checkups</li>
+                  </ul>
+                </div>
+                <div class="col-sm-6">
+                  <ul class="list-unstyled text-white-50 small mb-0 d-flex flex-column gap-2">
+                    <li><i class="fa-solid fa-circle-check text-primary me-2"></i> SCADA database management API</li>
+                    <li><i class="fa-solid fa-circle-check text-primary me-2"></i> Complete liability indemnity caps</li>
+                    <li><i class="fa-solid fa-circle-check text-primary me-2"></i> Lifetime blueprint file archiving</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="d-flex flex-wrap gap-3">
+                <a href="request-quote.html" class="btn-custom btn-custom-primary btn-ripple-effect px-4 py-3">
+                  <span>Inquire For Sovereign SLA</span> <i class="fa-solid fa-paper-plane"></i>
+                </a>
+                <a href="contact.html" class="btn btn-outline-light px-4 py-3 border-light text-white" style="border-radius: 6px; font-weight:600;">
+                  <span>Speak with Lead Estimator</span>
+                </a>
+              </div>
+            </div>
+            
+            <div class="col-lg-5">
+              <div class="p-4 p-md-5 bg-dark border border-secondary rounded-4 text-center text-white" style="background-color:rgba(15, 17, 19, 0.8) !important; backdrop-filter: blur(10px);">
+                <span class="text-primary text-uppercase font-display fw-bold small letter-spacing-1 d-block mb-2">Bespoke SLA Commission</span>
+                <h3 class="font-display fw-bold mb-3 text-white">Let Us Draft Your Allocation</h3>
+                <p class="text-white-50 small mb-4">Our specialized technical estimating board maps tolerances and material costs directly to your facility blueprints.</p>
+                <div class="border-top border-secondary my-4"></div>
+                <div class="row g-3">
+                  <div class="col-6">
+                    <span class="text-primary font-display fw-bold d-block h4 mb-0">1-Hour</span>
+                    <span class="text-white-50 small">SLA Critical Response</span>
+                  </div>
+                  <div class="col-6">
+                    <span class="text-primary font-display fw-bold d-block h4 mb-0">0% Fault</span>
+                    <span class="text-white-50 small">Target Liability Line</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 8: CLIENT SUCCESS METRICS
+         ======================================================== -->
+    <section class="section-padding bg-sub rounded-4" id="statsSection">
+      <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="premium-header-subtitle">Vanguard Performance</span>
+          <h2 class="text-main fw-bold">Vanguard Global Reach & Volume</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">Check the real-world manufacturing metrics validating our structural engineering commitment.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <!-- Projects -->
+          <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in">
+            <div class="metric-count-box">
+              <div class="metric-count-icon"><i class="fa-solid fa-folder-closed"></i></div>
+              <div class="metric-count-num stat-number" data-target="1850+">0</div>
+              <div class="metric-count-label">Projects Complete</div>
+            </div>
+          </div>
+
+          <!-- Factories -->
+          <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="100">
+            <div class="metric-count-box">
+              <div class="metric-count-icon"><i class="fa-solid fa-industry"></i></div>
+              <div class="metric-count-num stat-number" data-target="180+">0</div>
+              <div class="metric-count-label">Smart Factories</div>
+            </div>
+          </div>
+
+          <!-- Countries -->
+          <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="200">
+            <div class="metric-count-box">
+              <div class="metric-count-icon"><i class="fa-solid fa-earth-americas"></i></div>
+              <div class="metric-count-num stat-number" data-target="42">0</div>
+              <div class="metric-count-label">Countries Active</div>
+            </div>
+          </div>
+
+          <!-- Clients -->
+          <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="metric-count-box">
+              <div class="metric-count-icon"><i class="fa-solid fa-building-user"></i></div>
+              <div class="metric-count-num stat-number" data-target="640+">0</div>
+              <div class="metric-count-label">Global Clients</div>
+            </div>
+          </div>
+
+          <!-- Engineers -->
+          <div class="col-6 col-md-4 col-lg-2-4" data-aos="zoom-in" data-aos-delay="400">
+            <div class="metric-count-box">
+              <div class="metric-count-icon"><i class="fa-solid fa-user-gear"></i></div>
+              <div class="metric-count-num stat-number" data-target="350+">0</div>
+              <div class="metric-count-label">On-Floor Engineers</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Gear Divider -->
+    <div class="divider-gear-wrap">
+      <i class="fa-solid fa-gear"></i>
+    </div>
+
+    <!-- ========================================================
+         SECTION 9: FREQUENTLY ASKED QUESTIONS
+         ======================================================== -->
+    <section class="section-padding bg-main">
+      <div class="container">
+        
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="premium-header-subtitle">FAQ</span>
+          <h2 class="text-main fw-bold">Pricing & Allocation Queries</h2>
+          <p class="text-muted max-w-2xl mx-auto mt-2">Find straightforward answers regarding our invoicing milestones, custom casting quotes, and SLA parameter transfers.</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9" data-aos="fade-up">
+            <div class="accordion faq-accordion-custom" id="faqPricingAccordion">
+              
+              <!-- Accordion item 1 -->
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Can we transition between service solutions or adjust throughput limits mid-contract?
+                  </button>
+                </h3>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqPricingAccordion">
+                  <div class="accordion-body">
+                    Yes. Our contracts are built for industrial fluidity. If your plant assembly lines require scaling up components output or adjusting continuous casting times, simply notify your assigned account manager. A specialized coordinator will visit your facility to adapt your SLA parameters without halting active production.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 2 -->
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    What specific parameter checks are executed during standard AMCs?
+                  </button>
+                </h3>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqPricingAccordion">
+                  <div class="accordion-body">
+                    Annual Maintenance Contracts (AMCs) cover complete structural laser alignment checkups, mechanical spindle run-out diagnostics, high-voltage component thermography, emergency interlock diagnostics, PLC cabinet health checks, lubrication pressure tests, and safety compliance audits.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 3 -->
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    How are custom engineering quotes calculated by Vanguard?
+                  </button>
+                </h3>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqPricingAccordion">
+                  <div class="accordion-body">
+                    Our technical estimating board evaluates custom projects based on: Finite Element Analysis (FEA) stress complexity, physical mold molding overheads, raw metallurgy grades (such as grade-5 titanium or composite alloy), rapid-prototyping CNC spindle hours, and logistics clearance requirements.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 4 -->
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    Does Vanguard support emergency troubleshooting on non-Vanguard factory equipment?
+                  </button>
+                </h3>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqPricingAccordion">
+                  <div class="accordion-body">
+                    Yes. Under our Enterprise and Sovereign Custom SLAs, our certified engineers are fully trained and authorized to inspect, calibrate, and troubleshoot third-party CNC tooling machines, PLC circuits, and SCADA architectures, once a preliminary safety audit has been conducted and filed.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion item 5 -->
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingFive">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                    What are the standard billing terms and project financing cycles?
+                  </button>
+                </h3>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqPricingAccordion">
+                  <div class="accordion-body">
+                    Ongoing SLA services are billed quarterly or bi-annually. Custom projects are structured using a standard 30-40-30 milestone schedule (30% blueprint design approval, 40% active casting & production start, and 30% final post-commissioning sign-off and on-floor testing).
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         SECTION 10: LARGE REQUEST QUOTE CTA
+         ======================================================== -->
+    <section class="section-padding bg-main">
+      <div class="container">
+        <div class="blueprint-brackets-box p-5 max-w-5xl mx-auto text-center" data-aos="zoom-in">
+          <span class="text-primary text-uppercase font-display fw-bold letter-spacing-1 d-block mb-2">Bespoke SLA Configurator</span>
+          <h2 class="text-main fw-bold mb-3 display-6">Need A Custom SLA Blueprint?</h2>
+          <p class="text-muted max-w-3xl mx-auto mb-4">
+            If our standard SLA solution cards do not fully encompass your strict tolerance metrics or continuous throughput parameters, consult with our senior executive board. We will draft a custom manufacturing agreement.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="request-quote.html" class="btn-custom btn-custom-primary btn-ripple-effect px-4 py-3">
+              <span>Request Bespoke Draft</span> <i class="fa-solid fa-paper-plane"></i>
+            </a>
+            <a href="tel:+18005550199" class="btn btn-outline-secondary px-4 py-3 border-secondary text-main" style="border-radius: 6px; font-weight:600;">
+              <i class="fa-solid fa-phone me-2"></i> Call Estimating HQ
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- /main-pricing-wrap -->
 
   <!-- ========================================================
-       13. GLOBAL FOOTER
+       GLOBAL FOOTER
        ======================================================== -->
   <footer class="footer">
     <div class="container">
@@ -1621,7 +1756,7 @@
             <li><a href="about.html">About Us</a></li>
             <li><a href="team.html">Our Team</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="news.html">News</a></li>
+            <li><a href="blog.html">News</a></li>
             <li><a href="careers.html">Careers</a></li>
             <li><a href="pricing.html">Pricing</a></li>
           </ul>
@@ -1689,14 +1824,14 @@
   </footer>
 
   <!-- ========================================================
-       14. BACK TO TOP BUTTON
+       BACK TO TOP BUTTON
        ======================================================== -->
   <button class="back-to-top-btn" id="backToTopBtn" aria-label="Scroll back to top">
     <i class="fa-solid fa-arrow-up-long"></i>
   </button>
 
   <!-- ========================================================
-       15. THIRD PARTY LIBRARIES & INTEGRATED JS
+       THIRD PARTY LIBRARIES & INTEGRATED JS
        ======================================================== -->
   <!-- Bootstrap 5 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -1707,7 +1842,7 @@
   <!-- Custom JS Operations -->
   <script src="/assets/js/main.js"></script>
   
-  <!-- Initialize Animations & Custom Interactive JS effects -->
+  <!-- Custom Interactive Scripts -->
   <script>
     AOS.init({
       duration: 800,
@@ -1717,137 +1852,74 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-      initPricingToggle();
-      initIllustrationParallax();
-      initTimelineProgressAnimation();
-      initButtonRipple();
+      initParallaxMouseEffects();
+      initTimelineScrollAnimation();
+      initCounterAnimation();
+      initButtonRippleEffects();
     });
 
-    // Working Switcher Toggle Functionality
-    function initPricingToggle() {
-      const toggleSwitch = document.getElementById('pricingToggleSwitch');
-      const labelStdText = document.getElementById('labelStdText');
-      const labelPremText = document.getElementById('labelPremText');
-      const standardCards = document.querySelectorAll('.standard-tier');
-      const premiumCards = document.querySelectorAll('.premium-tier');
+    /* Mouse movement parallax on featured background and philosophy image */
+    function initParallaxMouseEffects() {
+      const featuredBox = document.getElementById('featuredSectionParallax');
+      const philosophyImg = document.getElementById('philosophyParallaxImg');
 
-      if (!toggleSwitch) return;
+      if (featuredBox) {
+        featuredBox.addEventListener('mousemove', (e) => {
+          const rect = featuredBox.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const pctX = (x / rect.width) - 0.5;
+          const pctY = (y / rect.height) - 0.5;
+          featuredBox.style.backgroundPosition = `calc(50% + ${pctX * 30}px) calc(50% + ${pctY * 30}px)`;
+        });
+        featuredBox.addEventListener('mouseleave', () => {
+          featuredBox.style.backgroundPosition = 'center';
+        });
+      }
 
-      const performToggle = () => {
-        const isPremiumActive = toggleSwitch.classList.toggle('premium-active');
-        
-        if (isPremiumActive) {
-          labelStdText.classList.remove('active');
-          labelPremText.classList.add('active');
-
-          // Switch Cards with smooth animation
-          standardCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(15px)';
-            setTimeout(() => {
-              card.classList.add('d-none');
-            }, 300);
-          });
-
-          setTimeout(() => {
-            premiumCards.forEach(card => {
-              card.classList.remove('d-none');
-              // Trigger reflow
-              void card.offsetWidth;
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
-          }, 310);
-
-        } else {
-          labelPremText.classList.remove('active');
-          labelStdText.classList.add('active');
-
-          // Switch Cards with smooth animation
-          premiumCards.forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(15px)';
-            setTimeout(() => {
-              card.classList.add('d-none');
-            }, 300);
-          });
-
-          setTimeout(() => {
-            standardCards.forEach(card => {
-              card.classList.remove('d-none');
-              // Trigger reflow
-              void card.offsetWidth;
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            });
-          }, 310);
-        }
-      };
-
-      toggleSwitch.addEventListener('click', performToggle);
-      labelStdText.addEventListener('click', () => {
-        if (toggleSwitch.classList.contains('premium-active')) {
-          performToggle();
-        }
-      });
-      labelPremText.addEventListener('click', () => {
-        if (!toggleSwitch.classList.contains('premium-active')) {
-          performToggle();
-        }
-      });
+      if (philosophyImg) {
+        const parent = philosophyImg.parentElement;
+        parent.addEventListener('mousemove', (e) => {
+          const rect = parent.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const pctX = (x / rect.width) - 0.5;
+          const pctY = (y / rect.height) - 0.5;
+          philosophyImg.style.transform = `scale(1.08) translate3d(${pctX * 20}px, ${pctY * 20}px, 0)`;
+        });
+        parent.addEventListener('mouseleave', () => {
+          philosophyImg.style.transform = 'scale(1) translate3d(0, 0, 0)';
+        });
+      }
     }
 
-    // Interactive mouse movement parallax effect on illustration
-    function initIllustrationParallax() {
-      const container = document.getElementById('illustrationParallax');
-      if (!container) return;
-      const img = container.querySelector('.illustration-parallax-img');
-      if (!img) return;
+    /* Scroll triggered process timeline indicator */
+    function initTimelineScrollAnimation() {
+      const timelineSection = document.getElementById('timelineSection');
+      const progressLine = document.getElementById('timelineProgressBar');
+      const timelineItems = document.querySelectorAll('.timeline-step-point');
+      const timelineWrapper = document.querySelector('.timeline-track-wrapper');
 
-      container.addEventListener('mousemove', (e) => {
-        const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left; // x position within element
-        const y = e.clientY - rect.top;  // y position within element
+      if (!timelineSection || !progressLine) return;
 
-        // Calculate offset percentages
-        const pctX = (x / rect.width) - 0.5; // -0.5 to 0.5
-        const pctY = (y / rect.height) - 0.5;
-
-        // Apply translation
-        const moveX = pctX * 20; // max 10px shift
-        const moveY = pctY * 15; // max 7.5px shift
-
-        img.style.transform = `scale(1.05) translate3d(${moveX}px, ${moveY}px, 0)`;
-      });
-
-      container.addEventListener('mouseleave', () => {
-        img.style.transform = 'scale(1) translate3d(0, 0, 0)';
-      });
-    }
-
-    // Work Process Timeline line animation on scroll
-    function initTimelineProgressAnimation() {
-      const timelineSection = document.getElementById('workProcessSection');
-      const progressLine = document.getElementById('timelineProgress');
-      const timelineItems = document.querySelectorAll('.timeline-item');
-      if (!timelineSection || !progressLine || timelineItems.length === 0) return;
-
-      const handleScroll = () => {
+      const handleTimelineScroll = () => {
         const rect = timelineSection.getBoundingClientRect();
         const viewportHeight = window.innerHeight;
 
-        // Calculate progress line percentage based on scroll entry
         if (rect.top < viewportHeight && rect.bottom > 0) {
+          if (timelineWrapper) {
+            timelineWrapper.classList.add('scrolled');
+          }
           const totalDist = timelineSection.offsetHeight + viewportHeight;
           const currentProgress = viewportHeight - rect.top;
-          let pct = (currentProgress / totalDist) * 1.5; // Acceleration factor
+          let pct = (currentProgress / totalDist) * 1.6;
           pct = Math.max(0, Math.min(1, pct));
-          progressLine.style.height = (pct * 100) + '%';
+          
+          progressLine.style.width = (pct * 100) + '%';
 
-          // Activate timeline dots/cards sequentially based on scrolled position
-          timelineItems.forEach(item => {
-            const itemRect = item.getBoundingClientRect();
-            if (itemRect.top < viewportHeight * 0.75) {
+          timelineItems.forEach((item, index) => {
+            const stepThreshold = (index / (timelineItems.length - 1)) * 0.95;
+            if (pct >= stepThreshold) {
               item.classList.add('active');
             } else {
               item.classList.remove('active');
@@ -1856,13 +1928,50 @@
         }
       };
 
-      window.addEventListener('scroll', handleScroll);
-      handleScroll(); // Trigger initial check
+      window.addEventListener('scroll', handleTimelineScroll);
+      handleTimelineScroll();
     }
 
-    // Button Click Ripple Effect for extra premium micro-interactions
-    function initButtonRipple() {
-      const rippleBtns = document.querySelectorAll('.btn-ripple');
+    /* Animated Counter Functionality */
+    function initCounterAnimation() {
+      const counters = document.querySelectorAll('.stat-number');
+      if (counters.length === 0) return;
+
+      const animateCounter = (counter) => {
+        const targetStr = counter.getAttribute('data-target');
+        const target = parseInt(targetStr.replace(/[^0-9]/g, ''), 10);
+        const suffix = targetStr.replace(/[0-9]/g, '');
+        let count = 0;
+        
+        const updateCount = () => {
+          const increment = Math.ceil(target / 50);
+          if (count < target) {
+            count += increment;
+            if (count > target) count = target;
+            counter.innerText = count + suffix;
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = targetStr;
+          }
+        };
+        updateCount();
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      counters.forEach(counter => observer.observe(counter));
+    }
+
+    /* Button Click Ripple micro-interactions */
+    function initButtonRippleEffects() {
+      const rippleBtns = document.querySelectorAll('.btn-ripple-effect');
       rippleBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
           const rect = btn.getBoundingClientRect();
@@ -1870,12 +1979,11 @@
           const y = e.clientY - rect.top;
 
           const circle = document.createElement('span');
-          circle.classList.add('ripple-effect');
+          circle.classList.add('button-ripple-span');
           circle.style.left = x + 'px';
           circle.style.top = y + 'px';
 
-          // Remove existing ripples if any
-          const existingRipple = btn.querySelector('.ripple-effect');
+          const existingRipple = btn.querySelector('.button-ripple-span');
           if (existingRipple) {
             existingRipple.remove();
           }
@@ -1888,20 +1996,6 @@
         });
       });
     }
-
-    // Compare Package button smooth anchor scroll
-    document.querySelectorAll('a[href^="#comparisonTable"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetElement = document.getElementById('comparisonTable');
-        if (targetElement) {
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
   </script>
 </body>
 </html>
