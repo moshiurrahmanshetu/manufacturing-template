@@ -211,7 +211,7 @@ a:hover {
 
 .btn-custom-outline {
   background-color: transparent;
-  color: var(--color-text-main);
+  color: var(--color-text-main) !important;
   border: 2px solid var(--color-border);
 }
 .btn-custom-outline:hover {
