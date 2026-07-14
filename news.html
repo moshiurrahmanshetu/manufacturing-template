@@ -142,6 +142,26 @@
   </section>
 
   <!-- ========================================================
+       3. PREMIUM HEADLINE NEWS TICKER
+       ======================================================== -->
+  <div class="news-ticker-section py-2">
+    <div class="container d-flex align-items-center gap-3">
+      <div class="ticker-label text-nowrap">
+        <i class="fa-solid fa-rss me-1"></i> NEWS BULLETIN
+      </div>
+      <div class="ticker-wrapper flex-grow-1">
+        <div class="ticker-slider" id="tickerSlider">
+          <div class="ticker-item"><a href="news-details.html?id=1">Vanguard launches zero-emission hydrogen furnace technology at Houston plant.</a></div>
+          <div class="ticker-item"><a href="news-details.html?id=3">Global steel alloy production demand increases by 14% heading into Q3 2026.</a></div>
+          <div class="ticker-item"><a href="news-details.html?id=4">Autonomous AI assembly lines reduce machinery downtime by 32% under pilot program.</a></div>
+          <div class="ticker-item"><a href="news-details.html?id=10">Vanguard secures EPA compliance certificate for new heavy material processing facility.</a></div>
+          <div class="ticker-item"><a href="news-details.html?id=17">Digital Twin simulation platform successfully deployed for aerospace manufacturing clients.</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
        5. FEATURED INDUSTRY NEWS (16:9 Banner)
        ======================================================== -->
   <section class="section-padding bg-main">
@@ -1131,6 +1151,38 @@
       offset: 50
     });
 
+    // 1. News Ticker Auto-slide Script
+    document.addEventListener('DOMContentLoaded', () => {
+      initNewsTickerSlider();
+      initNewsFilter();
+      initFeaturedParallax();
+    });
+
+    function initNewsTickerSlider() {
+      const slider = document.getElementById('tickerSlider');
+      if (!slider) return;
+      const items = slider.querySelectorAll('.ticker-item');
+      if (items.length <= 1) return;
+      let index = 0;
+      let interval;
+      const total = items.length;
+      
+      function startTicker() {
+        interval = setInterval(() => {
+          index = (index + 1) % total;
+          slider.style.transform = `translateY(-${index * 24}px)`;
+        }, 4000);
+      }
+      
+      function stopTicker() {
+        clearInterval(interval);
+      }
+      
+      slider.parentElement.addEventListener('mouseenter', stopTicker);
+      slider.parentElement.addEventListener('mouseleave', startTicker);
+      
+      startTicker();
+    }
 
     // 2. Working Vanilla JS Filtering for Categories
     function initNewsFilter() {
