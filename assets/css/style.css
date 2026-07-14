@@ -270,6 +270,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   border-radius: 4px;
+  max-height: 400px;
 }
 .img-zoom-wrap img {
   transition: var(--transition-slow);
