@@ -73,6 +73,7 @@ body {
   background-color: var(--color-bg-main);
   color: var(--color-text-main);
   transition: var(--transition-smooth);
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -173,7 +174,7 @@ a:hover {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 14px 28px;
+  padding: 8px 12px;
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -313,13 +314,14 @@ a:hover {
   background-color: var(--color-navbar-bg);
   backdrop-filter: blur(10px);
   padding: 20px 0;
-  border-radius: 8px;
-  margin: 0 15px;
+  margin: 0px;
   box-shadow: var(--shadow-md);
   border: 1px solid var(--color-border);
   transition: var(--transition-smooth);
 }
-
+.navbar-collapse{
+    background: rgba(255,0,0,.15);
+}
 .brand-logo {
   font-family: var(--font-display);
   font-weight: 700;
@@ -2267,7 +2269,7 @@ a:hover {
    ======================================================== */
 .container,
 .custom-container {
-  width: 100% !important;
+  width: 100%;
   max-width: 1600px !important;
   padding-left: 30px !important;
   padding-right: 30px !important;
