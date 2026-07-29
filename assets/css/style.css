@@ -2796,7 +2796,7 @@ a:hover {
   height: 100px;
 }
 .text-muted{
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
 }
 /* Team Section Title Decor */
 .title-decor {
