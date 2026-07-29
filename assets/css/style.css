@@ -4900,3 +4900,6 @@ a:hover {
     grid-template-columns: 1fr;
   }
 }
+.text-white{
+  color: #FFFFFF !important;
+}
