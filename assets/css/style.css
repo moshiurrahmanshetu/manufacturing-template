@@ -48,6 +48,7 @@
   --color-bg-accent: #1C1510;     /* Extremely subtle warm dark tone */
   --color-text-main: #F3F4F6;     /* Bright grayish white */
   --color-text-muted: #9CA3AF;    /* Soft zinc text */
+  --text-muted: #b4b9c0;    /* Soft zinc text */
   --color-border: #24292F;        /* Dark structural borders */
   --color-navbar-bg: rgba(15, 17, 19, 0.95);
   --color-topbar-bg: #0B0C0E;
@@ -2794,7 +2795,9 @@ a:hover {
   width: 1px;
   height: 100px;
 }
-
+.text-muted{
+  color: var(--text-muted);
+}
 /* Team Section Title Decor */
 .title-decor {
   width: 60px;
