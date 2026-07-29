@@ -490,6 +490,9 @@ a:hover {
   .hero-title {
     font-size: 3rem;
   }
+  .header-wrap {
+    top: 0;
+  }
 }
 @media (max-width: 768px) {
   .hero-title {
@@ -4345,6 +4348,12 @@ a:hover {
     padding-left: 30px !important;
     padding-right: 30px !important;
   }
+}
+@media (max-width: 1200px) {
+.navbar-toggler{
+    background: #fff !important;
+    padding: 8px 11px;
+}
 }
 @media (max-width: 1199px) and (min-width: 768px) {
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
